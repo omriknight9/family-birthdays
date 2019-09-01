@@ -1,7 +1,7 @@
-﻿
+
 {
     "family" : [
-	{ "name": "David", "birthday": "01/29/1987", "birthdayText":"29/01/1987", "calendar": "01/29", "image": "/david.jpg", "facebook": "null", "instagram": "null", "group": 1.1},
+	{ "name": "David", "birthday": "01/29/1949", "birthdayText":"29/01/1949", "calendar": "01/29", "image": "/david.jpg", "facebook": "null", "instagram": "null", "group": 1.1},
 	{ "name": "Orna", "birthday": "05/27/1960", "birthdayText":"27/05/1960", "calendar": "05/27", "image": "/orna.jpg", "facebook": "null", "instagram": "null", "group": 1.2},
 	{ "name": "Ravit", "birthday": "11/06/1983", "birthdayText":"06/11/1983", "calendar": "11/06", "image": "/ravit.jpg", "facebook": "/profile.php?id=602088481&ref=br_rs", "instagram": "null", "group": 2.1},
 	{ "name": "Aner", "birthday": "11/18/1980", "birthdayText":"18/11/1980", "calendar": "11/18", "image": "/aner.jpg", "facebook": "/aner.dascallu", "instagram": "null", "group": 2.2},
@@ -24,7 +24,7 @@
 	{ "name": "Rotem", "birthday": "02/09/1983", "birthdayText":"09/02/1983", "calendar": "02/09", "image": "/rotem.jpg", "facebook": "/rotem.nagar.395", "instagram": "null", "group": 8.1},
 	{ "name": "Lev", "birthday": "01/18/1986", "birthdayText":"18/01/1986", "calendar": "01/18", "image": "/lev.jpg", "facebook": "/rotem.nagar.395", "instagram": "null", "group": 8.2},
 	{ "name": "Michael", "birthday": "07/03/2015", "birthdayText":"03/07/2015", "calendar": "07/03", "image": "/stock.jpg", "facebook": "null", "instagram": "null", "group": 8.3},
-	{ "name": "Daniel", "birthday": "09/22/2017", "birthdayText":"22/09/1983", "calendar": "09/22", "image": "/stock.jpg", "facebook": "null", "instagram": "null", "group": 8.4},
+	{ "name": "Daniel", "birthday": "09/22/2017", "birthdayText":"22/09/2017", "calendar": "09/22", "image": "/stock.jpg", "facebook": "null", "instagram": "null", "group": 8.4},
 	{ "name": "Barak", "birthday": "07/10/1986", "birthdayText":"10/07/1986", "calendar": "07/10", "image": "/barak.jpg", "facebook": "/barakn", "instagram": "/baraknagar", "group": 9.1},
 	{ "name": "Naama", "birthday": "03/22/1984", "birthdayText":"22/03/1984", "calendar": "03/22", "image": "/naama.jpg", "facebook": "/naama.shoval", "instagram": "/naamashovalnagar", "group": 9.2},
 	{ "name": "Rom", "birthday": "06/01/2015", "birthdayText":"01/06/2015", "calendar": "06/01", "image": "/rom.jpg", "facebook": "null", "instagram": "null", "group": 9.3},
