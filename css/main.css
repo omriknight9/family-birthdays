@@ -385,7 +385,7 @@ p {
     position: fixed;
     width: 40rem;
     background: #fff;
-    padding:3em;
+    padding: 1em;
     top: 10%;
     left: 0;
     right: 0;
@@ -404,14 +404,18 @@ p {
     border-radius: 10px;
 }
 
+.personNamePop {
+    margin-bottom: 0;
+}
+
 .linksWrapper {
     display: flex;
     box-sizing: border-box;
     flex-wrap: nowrap;
-    justify-content:center;
+    justify-content: center;
     width: 100%;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 #facebookLink {
@@ -440,7 +444,7 @@ p {
 
 .popupBtnsWrapper {
     width: 100%;
-    margin-top: 4rem;
+    margin-top: 2rem;
     text-align: center;
 }
 
@@ -473,7 +477,7 @@ p {
 
 .personCoverWrapper {
     position: absolute;
-    top: 8rem;
+    top: 6rem;
     left: 0;
     width: 100%;
     opacity: .5;
@@ -488,7 +492,7 @@ p {
 }
 
 .nextBirthday {
-    margin-top: 15rem;
+    margin-top: 14rem;
 }
 
 #addeventatc1 {
@@ -585,6 +589,16 @@ p {
 
     .searchContant {
         width: 87%;
+    }
+
+    #facebookImage {
+        width: 85px;
+        height: 85px;
+    }
+
+    #instagramImage {
+        width: 85px;
+        height: 85px;
     }
 }
 
