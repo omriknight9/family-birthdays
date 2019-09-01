@@ -16,7 +16,7 @@
 	{ "name": "Oded", "birthday": "09/07/1981", "birthdayText":"07/09/1981", "calendar": "09/07", "image": "/oded.jpg", "facebook": "/oded.ehrlich", "instagram": "/odedehrlich", "group": 5.2},
 	{ "name": "Idan", "birthday": "04/08/2014", "birthdayText":"08/04/2014", "calendar": "04/08", "image": "/idan.jpg", "facebook": "null", "instagram": "null", "group": 5.3},
 	{ "name": "Noga", "birthday": "11/28/2017", "birthdayText":"28/11/2017", "calendar": "11/28", "image": "/noga.jpg", "facebook": "null", "instagram": "null", "group": 5.4},
-	{ "name": "Doron", "birthday": "02/09/1981", "birthdayText":"09/02/1981", "calendar": "02/09", "image": "/doron.jpg", "facebook": "/doronmosco", "instagram": "/doronmosco", "group": 6.1},
+	{ "name": "Doron", "birthday": "02/09/1976", "birthdayText":"09/02/1976", "calendar": "02/09", "image": "/doron.jpg", "facebook": "/doronmosco", "instagram": "/doronmosco", "group": 6.1},
 	{ "name": "Roei", "birthday": "12/15/1981", "birthdayText":"15/12/1981", "calendar": "12/15", "image": "/roei2.jpg", "facebook": "/osnatmosco", "instagram": "/roei_moscovich", "group": 6.2},
 	{ "name": "Yoav", "birthday": "12/15/1981", "birthdayText":"15/12/1981", "calendar": "12/15", "image": "/yoav.jpg", "facebook": "null", "instagram": "null", "group": 6.3},
 	{ "name": "Gila", "birthday": "01/05/1959", "birthdayText":"05/01/1959", "calendar": "01/05", "image": "/gila.jpg", "facebook": "/profile.php?id=100004236600943", "instagram": "null", "group": 7.1},
