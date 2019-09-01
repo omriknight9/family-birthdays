@@ -34,7 +34,7 @@
 	{ "name": "Zvia", "birthday": "05/23/1961", "birthdayText":"23/05/1961", "calendar": "05/23", "image": "/zvia.jpg", "facebook": "/zvia.shalev", "instagram": "/zvias33", "group": 11.2},
 	{ "name": "Assaf", "birthday": "02/04/1986", "birthdayText":"04/02/1986", "calendar": "02/04", "image": "/assaf.jpg", "facebook": "/assafire", "instagram": "/assafshalev", "group": 12.1},
 	{ "name": "Yaara", "birthday": "12/09/1985", "birthdayText":"09/12/1985", "calendar": "12/09", "image": "/yaara.jpg", "facebook": "/yaara.bader", "instagram": "/yaara_bader_shalev", "group": 12.2},
-	{ "name": "Peleg", "birthday": "11/02/2016", "birthdayText":"02/11/2003", "calendar": "11/02", "image": "/peleg.jpg", "facebook": "null", "instagram": "/the_shalevs_and_the_pug", "group": 12.3},
+	{ "name": "Peleg", "birthday": "11/02/2016", "birthdayText":"02/11/2016", "calendar": "11/02", "image": "/peleg.jpg", "facebook": "null", "instagram": "/the_shalevs_and_the_pug", "group": 12.3},
 	{ "name": "Tom", "birthday": "04/28/2019", "birthdayText":"28/04/2019", "calendar": "04/28", "image": "/tom.jpg", "facebook": "null", "instagram": "/the_shalevs_and_the_pug", "group": 12.4},
 	{ "name": "Omri", "birthday":"10/31/1990", "birthdayText":"31/10/1990", "calendar": "10/31",  "image": "/omri.jpg", "facebook": "/omri.shalev.31", "instagram": "/omri_shalev9",  "group": 13.1},
 	{ "name": "Ester", "birthday": "08/01/1991", "birthdayText":"01/08/1991", "calendar": "08/01", "image": "/ester.jpg", "facebook": "/ester.alayev", "instagram": "/esteralayev", "group": 13.2}
