@@ -1,0 +1,109 @@
+﻿<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Family Birthdays</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="My Movie List">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="icon" href="images/birthdayCake.png">
+
+
+    <link href="https://fonts.googleapis.com/css?family=David+Libre&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
+</head>
+<body>
+
+    <header>
+        <div class="headerContainer">
+            <div class="header">
+                <div class="imgWrapper">                 
+                    <h1>Family Birthdays</h1>
+                </div>
+                <div class="searchContainer">
+                    <div class="searchContant">
+                        <input type="text" placeholder="Search A Family Member" id="search" aria-label="Search" />
+                        <span class="focus-border"></span>
+                        <img src="images/search.png" alt="search" id="searchImg" onclick="searchMovie();">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+
+        <div class="spinnerWrapper">
+            <div class="loader loader-1">
+                <div class="loader-outter"></div>
+                <div class="loader-inner"></div>
+            </div>
+        </div>
+
+        <div class="btnWrapper">
+            <button class="" onclick="showFamily(1)">Shalevs</button>
+            <button class="" onclick="showFamily(2)">Waizingers</button>
+            <button class="" onclick="showFamily(3)">Alayevs</button>
+            <button class="" onclick="sortMovies('age', 1)">Sort By Age</button>
+            <button class="" onclick="sortMovies('name', 2)">Sort By Name</button>
+            <button class="groupSortBtn" onclick="sortMovies('group', 3)">Sort By Group</button>
+        </div>
+
+
+        <div class="container">
+            <!--<div class="btnWrapper">
+                <button class="" onclick="sortMovies('age', 1)">Sort By Age</button>
+                <button class="" onclick="sortMovies('name', 2)">Sort By Name</button>
+                <button class="" onclick="sortMovies('group', 3)">Sort By Group</button>
+            </div>-->
+        </div>
+    </main>
+
+
+
+    <img src="images/upBtn.png" alt="up arrow" class="goToTopBtn" onclick="goToTop()" />
+
+    <!----------------POPUPS---------------->
+    <!------------Country Details----------->
+
+    <div id="personDetails" class="popUpInfo">
+        <div class="popupCont">
+            <div class="popupContent"></div>
+            <div class="Xbtn"></div>
+            <h2 class="personNamePop"></h2>
+            <p class="nextBirthday"></p>
+            <div class="personCoverWrapper">
+                <img src="#" id="personCover" alt="person cover" />
+            </div>
+            
+            <div class="linksWrapper">
+                <a href="" target="_blank" id="facebookLink"><img src="./images/facebook.png" alt="facebook image" id="facebookImage" /></a>
+                <a href="" target="_blank" id="instagramLink"><img src="./images/instagram.png" alt="instagram image" id="instagramImage" /></a>
+                <!--<img src="./images/youtube.png" alt="youtube image" id="youtubeImage" />-->
+            </div>
+            <div class="popupBtnsWrapper">
+                <div title="Add to Calendar" class="addeventatc" data-direct="google">
+                    <!--<div title="Add to Calendar" class="addeventatc" data-direct="apple">-->
+                    Add to Calendar
+                    <span class="start">10/31/2019 08:00 AM</span>
+                    <span class="end">10/31/2019 10:00 AM</span>
+                    <span class="timezone">Israel/Tel-Aviv</span>
+                    <span class="title">Birthday</span>
+                    <!--<span class="description">Description</span>-->
+                    <span class="location">My Home</span>
+                </div>
+                <button class="popupBtn" id="" onclick="closeCurrentPopup($(this))">Close</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+﻿
+{
+    "family" : [
+	{ "name": "Marik", "birthday": "06/26/1967", "birthdayText":"26/06/1967", "calendar": "06/26", "image": "/marik.jpg", "facebook": "/marik.alayev", "instagram": "/marikalayev", "group": 1.1},
+	{ "name": "Maya", "birthday": "05/01/1971", "birthdayText":"01/05/1971", "calendar": "05/01", "image": "/maya.jpg", "facebook": "/maya.alayev.9", "instagram": "null", "group": 1.2},
+	{ "name": "Ester", "birthday": "08/01/1991", "birthdayText":"01/08/1991", "calendar": "08/01", "image": "/ester.jpg", "facebook": "/ester.alayev", "instagram": "/esteralayev", "group": 2.1},
+	{ "name": "Omri", "birthday":"10/31/1990", "birthdayText":"31/10/1990", "calendar": "10/31",  "image": "/omri.jpg", "facebook": "/omri.shalev.31", "instagram": "/omri_shalev9",  "group": 2.2},
+	{ "name": "Michael", "birthday": "08/10/1996", "birthdayText":"10/08/1996", "calendar": "08/10", "image": "/michael.jpg", "facebook": "/profile.php?id=100025917169357", "instagram": "/michael_alayev96", "group": 3.1},
+	{ "name": "Avital", "birthday": "11/19/1999", "birthdayText":"19/11/1999", "calendar": "11/19", "image": "/avital.jpg", "facebook": "/actualy", "instagram": "/avital_alayev19", "group": 4.1}
+    ]
+}
