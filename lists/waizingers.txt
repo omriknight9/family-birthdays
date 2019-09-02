@@ -1,8 +1,8 @@
-﻿
+
 {
     "family" : [
-	{ "name": "Yaakov", "birthday": "03/17/1936", "birthdayText":"17/03/1936", "calendar": "03/17", "image": "/yaakov.jpg", "facebook": "null", "instagram": "null", "group": 1.1},
-	{ "name": "Aliza", "birthday": "10/23/1940", "birthdayText":"23/10/1940", "calendar": "10/23", "image": "/aliza.jpg", "facebook": "null", "instagram": "null", "group": 1.2},
+	{ "name": "Yaakov", "birthday": "03/17/1936", "birthdayText":"17/03/1936", "calendar": "03/17", "image": "/yaakov.jpeg", "facebook": "null", "instagram": "null", "group": 1.1},
+	{ "name": "Aliza", "birthday": "10/23/1940", "birthdayText":"23/10/1940", "calendar": "10/23", "image": "/aliza.jpeg", "facebook": "null", "instagram": "null", "group": 1.2},
 	{ "name": "Zvia", "birthday": "05/23/1961", "birthdayText":"23/05/1961", "calendar": "05/23", "image": "/zvia.jpg", "facebook": "/zvia.shalev", "instagram": "/zvias33", "group": 2.1},
 	{ "name": "Ilan", "birthday": "07/27/1961", "birthdayText":"27/07/1961", "calendar": "07/27", "image": "/ilan.jpg", "facebook": "/ilan.shalev.16", "instagram": "/ilan_shalev", "group": 2.2},
 	{ "name": "Assaf", "birthday": "02/04/1986", "birthdayText":"04/02/1986", "calendar": "02/04", "image": "/assaf.jpg", "facebook": "/assafire", "instagram": "/assafshalev", "group": 3.1},
@@ -13,7 +13,7 @@
 	{ "name": "Ester", "birthday": "08/01/1991", "birthdayText":"01/08/1991", "calendar": "08/01", "image": "/ester.jpg", "facebook": "/ester.alayev", "instagram": "/esteralayev", "group": 4.2},
 	{ "name": "Uzi", "birthday": "06/03/1965", "birthdayText":"01/06/1965", "calendar": "06/01", "image": "/uzi.jpg", "facebook": "/uzi.waizinger", "instagram": "/uziwaizinger", "group": 5.1},
 	{ "name": "Shiri", "birthday": "10/02/1974", "birthdayText":"02/10/1974", "calendar": "10/02", "image": "/shiri.jpg", "facebook": "/shiri.waisinger", "instagram": "/shiriwa1", "group": 5.2},
-	{ "name": "Nitzan", "birthday": "07/22/2001", "birthdayText":"22/07/2003", "calendar": "07/22", "image": "/nitzan.jpg", "facebook": "/profile.php?id=100004921933321", "instagram": "/nitzan_waizinger", "group": 6.1},
+	{ "name": "Nitzan", "birthday": "07/22/2001", "birthdayText":"22/07/2001", "calendar": "07/22", "image": "/nitzan.jpg", "facebook": "/profile.php?id=100004921933321", "instagram": "/nitzan_waizinger", "group": 6.1},
 	{ "name": "Ori", "birthday": "10/20/2003", "birthdayText":"20/10/2003", "calendar": "10/20", "image": "/ori.jpg", "facebook": "null", "instagram": "/ori_waizinger", "group": 7.1},
 	{ "name": "Alma", "birthday": "05/05/2010", "birthdayText":"05/05/2010", "calendar": "05/05", "image": "/alma.jpg", "facebook": "null", "instagram": "null", "group": 8.1}
        
