@@ -125,6 +125,7 @@ function buildPeople(div, wrapper, arr) {
             'group': people[i].group,
             'img': people[i].image,
             'colorGroup': people[i].colorGroup,
+            'gender': people[i].gender,
             'facebook': people[i].facebook,
             'instagram': people[i].instagram,
             'calendar': people[i].calendar,
@@ -154,6 +155,20 @@ function buildPeople(div, wrapper, arr) {
 
             }
         }).appendTo(groupWrapper);
+
+        var gender;
+
+        if ($(personWrapper).attr('gender') == 1) {
+            gender = 'male.png';
+        } else {
+            gender = 'female.png';
+        }
+
+        var genderImg = $('<img>', {
+            class: 'genderImg',
+            src: './images/' + gender,
+            alt: 'gender img'
+        }).appendTo(personWrapper);
 
         if ($(personWrapper).attr('colorGroup') % 2 == 0) {
             $(personWrapper).addClass('odd');
