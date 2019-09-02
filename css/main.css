@@ -311,13 +311,19 @@ p {
 }
 
 .groupWrapper:nth-child(odd) {
-    /*background-color: #f39c12;*/
     background-image: linear-gradient(-180deg, #3fe09b, #3a47e4);
 }
 
 .groupWrapper:nth-child(even) {
     background-image: linear-gradient(180deg, #3a47e4, #3fe09b);
-    /*background-color: #bdc3c7;*/
+}
+
+.groupWrapper:nth-child(odd) .personWrapper {
+    background-color: orange;
+}
+
+.groupWrapper:nth-child(even) .personWrapper{
+    background-color: lightgray;
 }
 
 .personWrapper {
