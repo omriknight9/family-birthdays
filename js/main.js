@@ -1,4 +1,4 @@
-﻿
+
 var family = [];
 var counter = 1;
 
@@ -57,6 +57,8 @@ $(document).ready(function (event) {
 function showFamily(num) {
     $('.container').empty();
     family = [];
+    $('.btnWrapper').css('opacity', 0);
+    $('.spinnerWrapper').show();
 
     setTimeout(function () {
         switch (num) {
@@ -175,6 +177,8 @@ function buildPeople(div, wrapper, arr) {
 
     setTimeout(function () {
         checkAge();
+        $('.btnWrapper').css('opacity', 1);
+        $('.spinnerWrapper').hide();
     }, 0);
 }
 
