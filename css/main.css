@@ -15,8 +15,7 @@ body {
 }
 
 main {
-    /*margin-top: 12rem;*/
-    
+    margin-top: 12rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -67,7 +66,7 @@ h1 {
     -webkit-flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 3rem;
-    margin-top: 15rem;
+    /*margin-top: 15rem;*/
     width: 100%;
     opacity: 0;
 }
@@ -326,12 +325,20 @@ p {
     background-color: lightgray;
 }
 
+.odd {
+    background-color: orange;
+}
+
+.even {
+    background-color: lightgray;
+}
+
 .personWrapper {
     box-shadow: 0 3px 8px 3px #848484;
     border-radius: 5px;
     margin: 2rem;
     text-align: center;
-    background-color: white;
+    /*background-color: white;*/
     transition: .3s;
     -webkit-transition: .3s;
     -o-transition: .3s;
