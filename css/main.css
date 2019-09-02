@@ -341,6 +341,13 @@ p {
     /*height: 18rem;*/
 }
 
+.genderImg {
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+    width: 30px;
+}
+
 .personImgWrapper {
     width: 100%;
     /*position: absolute;
