@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 
 <html lang="en">
 <head>
@@ -14,7 +14,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+    <!--<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>-->
+    <script type="text/javascript" src="js/addToCalendar.js" async defer></script>
 
 </head>
 <body>
@@ -27,7 +28,7 @@
                 </div>
                 <div class="searchContainer">
                     <div class="searchContant">
-                        <input type="text" placeholder="Search A Family Member" id="search" aria-label="Search" />
+                        <input type="text" placeholder="Search A Family Member" id="search" aria-label="Search" autocomplete="off" />
                         <span class="focus-border"></span>
                         <img src="images/search.png" alt="search" id="searchImg" onclick="searchMovie();">
                     </div>
