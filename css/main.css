@@ -317,20 +317,12 @@ p {
     background-image: linear-gradient(180deg, #3a47e4, #3fe09b);
 }
 
-.groupWrapper:nth-child(odd) .personWrapper {
-    background-color: orange;
-}
-
-.groupWrapper:nth-child(even) .personWrapper{
-    background-color: lightgray;
-}
-
 .odd {
-    background-color: orange;
+    background-color: lightgray;
 }
 
 .even {
-    background-color: lightgray;
+    background-color: orange;
 }
 
 .personWrapper {
