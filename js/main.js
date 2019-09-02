@@ -126,7 +126,7 @@ function buildPeople(div, wrapper, arr) {
             'img': people[i].image,
             'facebook': people[i].facebook,
             'instagram': people[i].instagram,
-            'calendar': people[i].calendar + '/' + year,
+            'calendar': people[i].calendar,
             click: function () {
                 if ($(this).attr('facebook') == 'null') {
                     $('#facebookLink').hide();
@@ -153,6 +153,14 @@ function buildPeople(div, wrapper, arr) {
 
             }
         }).appendTo(groupWrapper);
+
+        var selectedDate = new Date($(personWrapper).attr('calendar') + '/' + year);
+
+        if (selectedDate < d) {
+            $(personWrapper).attr('calendar', $(personWrapper).attr('calendar') + '/' + Number(year + 1));
+        } else {
+            $(personWrapper).attr('calendar', $(personWrapper).attr('calendar') + '/' + year);
+        }
 
         var personName = $('<p>', {
             class: 'personName',
@@ -302,7 +310,6 @@ function sortMovies(elem1, kind) {
             if (kind == 3) {
                 ids.sort(function (a, b) { return (a.idNum - b.idNum); });
             }
-
         }
 
         for (i = 0; i < ids.length; i++) {
