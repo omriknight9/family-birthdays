@@ -124,6 +124,7 @@ function buildPeople(div, wrapper, arr) {
             'name': people[i].name,
             'group': people[i].group,
             'img': people[i].image,
+            'colorGroup': people[i].colorGroup,
             'facebook': people[i].facebook,
             'instagram': people[i].instagram,
             'calendar': people[i].calendar,
@@ -153,6 +154,12 @@ function buildPeople(div, wrapper, arr) {
 
             }
         }).appendTo(groupWrapper);
+
+        if ($(personWrapper).attr('colorGroup') % 2 == 0) {
+            $(personWrapper).addClass('odd');
+        } else {
+            $(personWrapper).addClass('even');
+        }
 
         var selectedDate = new Date($(personWrapper).attr('calendar') + '/' + year);
 
