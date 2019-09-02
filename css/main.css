@@ -492,7 +492,7 @@ p {
     top: 6rem;
     left: 0;
     width: 100%;
-    opacity: .5;
+    /*opacity: .5;*/
     z-index: 0;
     text-align: center;
 }
