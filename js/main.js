@@ -130,6 +130,7 @@ function buildPeople(div, wrapper, arr) {
             'instagram': people[i].instagram,
             'calendar': people[i].calendar,
             click: function () {
+
                 if ($(this).attr('facebook') == 'null') {
                     $('#facebookLink').hide();
                 } else {
@@ -152,6 +153,14 @@ function buildPeople(div, wrapper, arr) {
                 $('.location').html($(this).attr('name') + "'s Home");
                 $('.nextBirthday').html('Next Birthday Will Be On ' + $(this).attr('nextBirthday'));
                 $('#personDetails').show();
+
+                if ($(this).attr('gender') == 1) {
+                    console.log('Male');
+                    $('#personDetails .popupCont').css('background-color', 'lightblue');
+                } else {
+                    console.log('Female');
+                    $('#personDetails .popupCont').css('background-color', 'pink');
+                }
 
             }
         }).appendTo(groupWrapper);
