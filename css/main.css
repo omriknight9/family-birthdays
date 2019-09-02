@@ -614,7 +614,6 @@ p {
     }
 }
 
-
 @media only screen and (max-width: 370px) {
 
     #search {
@@ -628,5 +627,10 @@ p {
     .personImg {
         width: 6rem;
         height: 6rem;
+    }
+
+    .genderImg {
+        right: .5rem;
+        width: 23px;
     }
 }
