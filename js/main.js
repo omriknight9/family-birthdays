@@ -114,7 +114,13 @@ function buildPeople(div, wrapper, arr) {
         } else {
             groupWrapper = $('<div>', {
                 class: "group" + group + ' groupWrapper'
-            }).appendTo(wrapper)
+            }).appendTo(wrapper);
+
+            if (group % 2 == 0) {
+                $(groupWrapper).addClass('evenGroup');
+            } else {
+                $(groupWrapper).addClass('oddGroup');
+            }
         }
 
         var personWrapper = $('<div>', {
@@ -152,7 +158,7 @@ function buildPeople(div, wrapper, arr) {
                 $('.title').html($(this).attr('name') + "'s Birthday");
                 $('.location').html($(this).attr('name') + "'s Home");
                 $('.nextBirthday').html('Next Birthday Will Be On ' + $(this).attr('nextBirthday'));
-                $('#personDetails').show();
+                $('#personDetails').fadeIn(150);
 
                 if ($(this).attr('gender') == 1) {
                     console.log('Male');
