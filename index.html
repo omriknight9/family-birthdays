@@ -14,7 +14,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
-    <!--<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>-->
     <script type="text/javascript" src="js/addToCalendar.js" async defer></script>
 
 </head>
@@ -57,17 +56,8 @@
             <button class="groupSortBtn" onclick="sortMovies('group', 3)">Sort By Group</button>
         </div>
 
-
-        <div class="container">
-            <!--<div class="btnWrapper">
-                <button class="" onclick="sortMovies('age', 1)">Sort By Age</button>
-                <button class="" onclick="sortMovies('name', 2)">Sort By Name</button>
-                <button class="" onclick="sortMovies('group', 3)">Sort By Group</button>
-            </div>-->
-        </div>
+        <div class="container"></div>
     </main>
-
-
 
     <img src="images/upBtn.png" alt="up arrow" class="goToTopBtn" onclick="goToTop()" />
 
@@ -87,18 +77,15 @@
             <div class="linksWrapper">
                 <a href="" target="_blank" id="facebookLink"><img src="./images/facebook.png" alt="facebook image" id="facebookImage" /></a>
                 <a href="" target="_blank" id="instagramLink"><img src="./images/instagram.png" alt="instagram image" id="instagramImage" /></a>
-                <!--<img src="./images/youtube.png" alt="youtube image" id="youtubeImage" />-->
             </div>
             <div class="popupBtnsWrapper">
                 <div title="Add to Calendar" class="addeventatc" data-direct="google">
-                    <!--<div title="Add to Calendar" class="addeventatc" data-direct="apple">-->
-                    Add to Calendar
-                    <span class="start">10/31/2019 08:00 AM</span>
-                    <span class="end">10/31/2019 10:00 AM</span>
-                    <span class="timezone">Israel/Tel-Aviv</span>
-                    <span class="title">Birthday</span>
-                    <!--<span class="description">Description</span>-->
-                    <span class="location">My Home</span>
+                    Add To Calendar
+                    <span class="start"></span>
+                    <span class="end"></span>
+                    <span class="timezone"></span>
+                    <span class="title"></span>
+                    <span class="location"></span>
                 </div>
                 <button class="popupBtn" id="" onclick="closeCurrentPopup($(this))">Close</button>
             </div>
