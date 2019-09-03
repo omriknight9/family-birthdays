@@ -14,8 +14,10 @@ $(document).ready(function (event) {
         loadJson('./lists/shalevs.txt');
     } else if (window.location.href.indexOf("waizingers") > -1) {
         loadJson('./lists/waizingers.txt');
+        familyNum = 2;
     } else if (window.location.href.indexOf("alayevs") > -1) {
         loadJson('./lists/alayevs.txt');
+        familyNum = 3;
     } else {
         loadJson('./lists/shalevs.txt');
         familyNum = 1;
