@@ -161,10 +161,8 @@ function buildPeople(div, wrapper, arr) {
                 $('#personDetails').fadeIn(150);
 
                 if ($(this).attr('gender') == 1) {
-                    console.log('Male');
                     $('#personDetails .popupCont').css('background-color', 'lightblue');
                 } else {
-                    console.log('Female');
                     $('#personDetails .popupCont').css('background-color', 'pink');
                 }
 
