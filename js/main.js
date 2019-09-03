@@ -57,6 +57,7 @@ $(document).ready(function (event) {
 function showFamily(num) {
     $('.container').empty();
     family = [];
+    counter = 1;
     $('.btnWrapper').css('opacity', 0);
     $('.spinnerWrapper').show();
 
