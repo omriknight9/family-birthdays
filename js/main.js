@@ -93,13 +93,13 @@ function changeToHeb() {
 
     switch (familyNum) {
         case 1:
-            showFamily(4);
+            showFamily(1);
             break;
         case 2:
-            showFamily(5);
+            showFamily(2);
             break;
         case 3:
-            showFamily(6);
+            showFamily(3);
             break;
     }
 }
@@ -128,13 +128,13 @@ function changeToEng() {
     $('.popupBtn').hide().html('Close').fadeIn('slow');
 
     switch (familyNum) {
-        case 4:
+        case 1:
             showFamily(1);
             break;
-        case 5:
+        case 2:
             showFamily(2);
             break;
-        case 6:
+        case 3:
             showFamily(3);
             break;
     }
@@ -147,32 +147,32 @@ function showFamily(num) {
     $('.btnWrapper').css('opacity', 0);
     $('.spinnerWrapper').show();
 
-
     setTimeout(function () {
         switch (num) {
             case 1:
-                loadJson('./lists/shalevs.txt');
+                if (lang == 1) {
+                    loadJson('./lists/shalevs.txt');
+                } else {
+                    loadJson('./lists/‏‏shalevsHeb.txt');
+                }
+                
                 familyNum = 1;
                 break;
             case 2:
-                loadJson('./lists/waizingers.txt');
+                if (lang == 1) {
+                    loadJson('./lists/waizingers.txt');
+                } else {
+                    loadJson('./lists/‏‏waizingersHeb.txt');
+                }
                 familyNum = 2;
                 break;
             case 3:
-                loadJson('./lists/alayevs.txt');
+                if (lang == 1) {
+                    loadJson('./lists/alayevs.txt');
+                } else {
+                    loadJson('./lists/alayevs_heb.txt');
+                }
                 familyNum = 3;
-                break;
-            case 4:
-                loadJson('./lists/‏‏shalevsHeb.txt');
-                familyNum = 4;
-                break;
-            case 5:
-                loadJson('./lists/‏‏waizingersHeb.txt');
-                familyNum = 5;
-                break;
-            case 6:
-                loadJson('./lists/‏‏alayevsHeb.txt');
-                familyNum = 6;
                 break;
         }
     }, 500);
@@ -185,18 +185,6 @@ function loadJson(textFile) {
             buildPeople('familyWrapper', $('.container'), family);
             $('body').css('background-color', '#3fe09b');
         }, 500);
-
-        if (lang == 2) {
-            $('#langBtnHe').css('pointer-events', 'all');
-            setTimeout(function () {
-                $('#langBtnHe').click();
-            }, 700)
-        } else {
-            $('#langBtnEn').css('pointer-events', 'all');
-            setTimeout(function () {
-                $('#langBtnEn').click();
-            }, 700)
-        }
     });
 }
 
