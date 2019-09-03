@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Family Birthdays">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/‏‏main_he.css" id="hebCss" />-->
     <link rel="icon" href="images/birthdayCake.png">
     <link href="https://fonts.googleapis.com/css?family=Kurale&display=swap" rel="stylesheet">
 
@@ -22,8 +23,12 @@
     <header>
         <div class="headerContainer">
             <div class="header">
-                <div class="imgWrapper">                 
-                    <h1>Family Birthdays</h1>
+                <h1>Family Birthdays</h1>
+                <div class="imgWrapper">           
+
+                    <a href="javascript:void(0)"><img src="images/usFlag.png" alt="us flag" id="langBtnEn" /></a>
+                    <a href="javascript:void(0)"><img src="images/israelFlag.png" alt="israel flag" id="langBtnHe" /></a>
+
                 </div>
                 <div class="searchContainer">
                     <div class="searchContant">
@@ -48,11 +53,11 @@
         </div>
 
         <div class="btnWrapper">
-            <button class="" onclick="showFamily(1)">Shalevs</button>
-            <button class="" onclick="showFamily(2)">Waizingers</button>
-            <button class="" onclick="showFamily(3)">Alayevs</button>
-            <button class="" onclick="sortFamily('birthday', 1)">Sort By Age</button>
-            <button class="" onclick="sortFamily('name', 2)">Sort By Name</button>
+            <button class="shalevsBtn" onclick="showFamily(1)">Shalevs</button>
+            <button class="waizingersBtn" onclick="showFamily(2)">Waizingers</button>
+            <button class="alayevsBtn" onclick="showFamily(3)">Alayevs</button>
+            <button class="ageSortsBtn" onclick="sortFamily('birthday', 1)">Sort By Age</button>
+            <button class="nameSortsBtn" onclick="sortFamily('name', 2)">Sort By Name</button>
             <button class="groupSortBtn" onclick="sortFamily('group', 3)">Sort By Group</button>
         </div>
 
@@ -79,8 +84,16 @@
                 <a href="" target="_blank" id="instagramLink"><img src="./images/instagram.png" alt="instagram image" id="instagramImage" /></a>
             </div>
             <div class="popupBtnsWrapper">
-                <div title="Add to Calendar" class="addeventatc" data-direct="google">
+                <div title="Add to Calendar" class="addeventatc engCaneldar" data-direct="google">
                     Add To Calendar
+                    <span class="start"></span>
+                    <span class="end"></span>
+                    <span class="timezone"></span>
+                    <span class="title"></span>
+                    <span class="location"></span>
+                </div>
+                <div title="הוסף ללוח שנה" class="addeventatc hebCaneldar" data-direct="google">
+                    הוסף ללוח שנה
                     <span class="start"></span>
                     <span class="end"></span>
                     <span class="timezone"></span>
