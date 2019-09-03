@@ -278,6 +278,16 @@ function scrollBtn() {
 
 function sortMovies(elem1, kind) {
 
+    $('.groupWrapper').removeClass('oddGroup');
+    $('.groupWrapper').removeClass('evenGroup');
+
+    if ($('.btnWrapper').attr('kind') == kind) {
+
+    } else {
+        $('.btnWrapper').attr('kind', kind);
+        counter = 1;
+    }
+
     if (kind == 3) {
         $('.groupSortBtn').css('pointer-events', 'none');
         $('.container').empty();
@@ -314,12 +324,13 @@ function sortMovies(elem1, kind) {
                     counter = 1;
                     break;
             }
+            $('.btnWrapper').attr('kind', kind);
         } else {
             if (kind == 2) {
                 switch (counter) {
                     case 1:
                         ids.sort(function (a, b) {
-                            if (a.idNum < b.idNum) {
+                            if (a.idNum > b.idNum) {
                                 return 1;
                             } else {
                                 return -1;
@@ -331,7 +342,7 @@ function sortMovies(elem1, kind) {
 
                     case 2:
                         ids.sort(function (a, b) {
-                            if (a.idNum > b.idNum) {
+                            if (a.idNum < b.idNum) {
                                 return 1;
                             } else {
                                 return -1;
@@ -340,6 +351,7 @@ function sortMovies(elem1, kind) {
                         counter = 1;
                         break;
                 }
+                $('.btnWrapper').attr('kind', kind);
             }
 
             if (kind == 3) {
