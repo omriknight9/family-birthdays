@@ -1,6 +1,7 @@
 
 var family = [];
 var counter = 1;
+var familyNum;
 
 var valid;
 var d = new Date();
@@ -16,6 +17,7 @@ $(document).ready(function (event) {
         loadJson('./lists/alayevs.txt');
     } else {
         loadJson('./lists/shalevs.txt');
+        familyNum = 1;
     }
 
     window.onbeforeunload = function () {
@@ -64,13 +66,16 @@ function showFamily(num) {
     setTimeout(function () {
         switch (num) {
             case 1:
-                loadJson('./lists/shalevs.txt')
+                loadJson('./lists/shalevs.txt');
+                familyNum = 1;
                 break;
             case 2:
-                loadJson('./lists/waizingers.txt')
+                loadJson('./lists/waizingers.txt');
+                familyNum = 2;
                 break;
             case 3:
-                loadJson('./lists/alayevs.txt')
+                loadJson('./lists/alayevs.txt');
+                familyNum = 3;
                 break;
         }
     }, 500)
@@ -277,7 +282,7 @@ function scrollBtn() {
     }
 }
 
-function sortMovies(elem1, kind) {
+function sortFamily(elem1, kind) {
 
     $('.groupWrapper').removeClass('oddGroup');
     $('.groupWrapper').removeClass('evenGroup');
@@ -290,13 +295,7 @@ function sortMovies(elem1, kind) {
     }
 
     if (kind == 3) {
-        $('.groupSortBtn').css('pointer-events', 'none');
         $('.container').empty();
-        setTimeout(function () {
-            buildPeople('familyWrapper', $('.container'), family);
-        }, 500)
-    } else {
-        $('.groupSortBtn').css('pointer-events', 'all');
     }
 
     $.each($('.container'), function (key, value) {
@@ -320,20 +319,22 @@ function sortMovies(elem1, kind) {
             ids.push(obj);
         }
 
-        if (kind == 1) {
-            switch (counter) {
-                case 1:
-                    ids.sort(function (a, b) { return (b.idNum - a.idNum); });
-                    counter = 2;
-                    break;
-                case 2:
-                    ids.sort(function (a, b) { return (a.idNum - b.idNum); });
-                    counter = 1;
-                    break;
-            }
-            $('.btnWrapper').attr('kind', kind);
-        } else {
-            if (kind == 2) {
+        switch (kind) {
+            case 1:
+                switch (counter) {
+                    case 1:
+                        ids.sort(function (a, b) { return (b.idNum - a.idNum); });
+                        counter = 2;
+                        break;
+                    case 2:
+                        ids.sort(function (a, b) { return (a.idNum - b.idNum); });
+                        counter = 1;
+                        break;
+                }
+                $('.btnWrapper').attr('kind', kind);
+                $('.groupSortBtn').css('pointer-events', 'all');
+                break;
+            case 2:
                 switch (counter) {
                     case 1:
                         ids.sort(function (a, b) {
@@ -359,11 +360,18 @@ function sortMovies(elem1, kind) {
                         break;
                 }
                 $('.btnWrapper').attr('kind', kind);
-            }
-
-            if (kind == 3) {
-                ids.sort(function (a, b) { return (a.idNum - b.idNum); });
-            }
+                $('.groupSortBtn').css('pointer-events', 'all');
+                break;
+            case 3:
+                $('.spinnerWrapper').show();
+                $('.btnWrapper').css('opacity', 0);
+                $('.groupSortBtn').css('pointer-events', 'none');
+                showFamily(familyNum);
+                setTimeout(function () {
+                    $('.btnWrapper').css('opacity', 1);
+                    $('.spinnerWrapper').hide();
+                }, 500);
+                break;
         }
 
         for (i = 0; i < ids.length; i++) {
