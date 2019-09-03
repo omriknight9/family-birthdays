@@ -305,10 +305,16 @@ function sortMovies(elem1, kind) {
             obj = {};
             obj.element = children[i];
             var elem2 = $(children[i]).attr(elem1);
-            if (kind == 1 || kind == 3) {
-                obj.idNum = parseInt(elem2.replace(/[^\d]/g, ""), 10);
-            } else {
-                obj.idNum = elem2;
+            switch (kind) {
+                case 1:
+                    obj.idNum = new Date(elem2);
+                    break;
+                case 2:
+                    obj.idNum = elem2;
+                    break;
+                case 3:
+                    obj.idNum = parseInt(elem2.replace(/[^\d]/g, ""), 10);
+                    break;
             }
             ids.push(obj);
         }
@@ -316,11 +322,11 @@ function sortMovies(elem1, kind) {
         if (kind == 1) {
             switch (counter) {
                 case 1:
-                    ids.sort(function (a, b) { return (a.idNum - b.idNum); });
+                    ids.sort(function (a, b) { return (b.idNum - a.idNum); });
                     counter = 2;
                     break;
                 case 2:
-                    ids.sort(function (a, b) { return (b.idNum - a.idNum); });
+                    ids.sort(function (a, b) { return (a.idNum - b.idNum); });
                     counter = 1;
                     break;
             }
