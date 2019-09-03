@@ -1,0 +1,43 @@
+﻿
+{
+    "family" : [
+	{ "name": "דוד", "birthday": "01/22/1949", "birthdayText":"22/01/1949", "calendar": "01/22", "image": "/david.jpg", "facebook": "null", "instagram": "null", "group": 1.1, "colorGroup": 1, "gender": 1},
+	{ "name": "אורנה", "birthday": "05/27/1960", "birthdayText":"27/05/1960", "calendar": "05/27", "image": "/orna.jpg", "facebook": "null", "instagram": "null", "group": 1.2, "colorGroup": 1, "gender": 2},
+	{ "name": "רוית", "birthday": "11/06/1983", "birthdayText":"06/11/1983", "calendar": "11/06", "image": "/ravit.jpg", "facebook": "/profile.php?id=602088481&ref=br_rs", "instagram": "null", "group": 2.1, "colorGroup": 2, "gender": 2},
+	{ "name": "אנר", "birthday": "11/18/1980", "birthdayText":"18/11/1980", "calendar": "11/18", "image": "/aner.jpg", "facebook": "/aner.dascallu", "instagram": "null", "group": 2.2, "colorGroup": 2, "gender": 1},
+	{ "name": "אריאל", "birthday": "07/14/2011", "birthdayText":"14/07/2011", "calendar": "07/14", "image": "/ariel.jpg", "facebook": "null", "instagram": "null", "group": 2.3, "colorGroup": 2, "gender": 1},
+	{ "name": "תמר", "birthday": "09/25/2017", "birthdayText":"25/09/2017", "calendar": "09/25", "image": "/tamar.jpg", "facebook": "null", "instagram": "null", "group": 2.4, "colorGroup": 2, "gender": 2},
+	{ "name": "מאור", "birthday": "01/29/1987", "birthdayText":"29/01/1987", "calendar": "01/29", "image": "/maor.jpg", "facebook": "/maor.shalev1", "instagram": "/maor_shalev", "group": 3.1, "colorGroup": 1, "gender": 1},
+	{ "name": "נטלי", "birthday": "08/05/1987", "birthdayText":"05/08/1987", "calendar": "08/05", "image": "/natali.jpg", "facebook": "/natali.alber", "instagram": "/natalialber", "group": 3.2, "colorGroup": 1, "gender": 2},
+	{ "name": "לני", "birthday": "03/18/2018", "birthdayText":"18/03/2018", "calendar": "03/18", "image": "/leni.jpg", "facebook": "null", "instagram": "null", "group": 3.3, "colorGroup": 1, "gender": 1},
+	{ "name": "זהבה", "birthday": "10/14/1952", "birthdayText":"14/10/1952", "calendar": "10/14", "image": "/zehava.jpg", "facebook": "/zehava.shalev", "instagram": "/zehavashalev", "group": 4.1, "colorGroup": 2, "gender": 2},
+	{ "name": "דובי", "birthday": "06/17/1951", "birthdayText":"17/06/1951", "calendar": "06/17", "image": "/dovi.jpg", "facebook": "null", "instagram": "null", "group": 4.2, "colorGroup":2, "gender": 1},
+	{ "name": "אורית", "birthday": "02/09/1981", "birthdayText":"09/02/1981", "calendar": "02/09", "image": "/orit.jpg", "facebook": "/orit.mos", "instagram": "null", "group": 5.1, "colorGroup": 1, "gender": 2},
+	{ "name": "עודד", "birthday": "09/07/1981", "birthdayText":"07/09/1981", "calendar": "09/07", "image": "/oded.jpg", "facebook": "/oded.ehrlich", "instagram": "/odedehrlich", "group": 5.2, "colorGroup": 1, "gender": 1},
+	{ "name": "עידן", "birthday": "04/08/2014", "birthdayText":"08/04/2014", "calendar": "04/08", "image": "/idan.jpg", "facebook": "null", "instagram": "null", "group": 5.3, "colorGroup": 1, "gender": 1},
+	{ "name": "נוגה", "birthday": "11/28/2017", "birthdayText":"28/11/2017", "calendar": "11/28", "image": "/noga.jpg", "facebook": "null", "instagram": "null", "group": 5.4, "colorGroup": 1, "gender": 2},
+	{ "name": "דורון", "birthday": "09/17/1976", "birthdayText":"17/09/1976", "calendar": "09/17", "image": "/doron.jpg", "facebook": "/doronmosco", "instagram": "/doronmosco", "group": 6.1, "colorGroup": 2, "gender": 1},
+	{ "name": "רועי", "birthday": "12/15/2002", "birthdayText":"15/12/2002", "calendar": "12/15", "image": "/roei2.jpg", "facebook": "/osnatmosco", "instagram": "/roei_moscovich", "group": 6.2, "colorGroup": 2, "gender": 1},
+	{ "name": "יואב", "birthday": "09/11/2005", "birthdayText":"11/09/2005", "calendar": "09/11", "image": "/yoav.jpg", "facebook": "null", "instagram": "null", "group": 6.3, "colorGroup": 2, "gender": 1},
+	{ "name": "גילה", "birthday": "01/05/1959", "birthdayText":"05/01/1959", "calendar": "01/05", "image": "/gila.jpg", "facebook": "/profile.php?id=100004236600943", "instagram": "null", "group": 7.1, "colorGroup": 1, "gender": 2},
+	{ "name": "יעקב", "birthday": "01/13/1953", "birthdayText":"13/01/1953", "calendar": "01/13", "image": "/yaakovNagar.jpg", "facebook": "/jacob.nagar.1", "instagram": "null", "group": 7.2, "colorGroup": 1, "gender": 1},
+	{ "name": "רותם", "birthday": "02/09/1983", "birthdayText":"09/02/1983", "calendar": "02/09", "image": "/rotem.jpg", "facebook": "/rotem.nagar.395", "instagram": "null", "group": 8.1, "colorGroup": 2, "gender": 2},
+	{ "name": "לב", "birthday": "01/18/1986", "birthdayText":"18/01/1986", "calendar": "01/18", "image": "/lev.jpg", "facebook": "null", "instagram": "null", "group": 8.2, "colorGroup": 2, "gender": 1},
+	{ "name": "מיכאל", "birthday": "07/03/2015", "birthdayText":"03/07/2015", "calendar": "07/03", "image": "/michaelNagar.jpeg", "facebook": "null", "instagram": "null", "group": 8.3, "colorGroup": 2, "gender": 1},
+	{ "name": "דניאל", "birthday": "09/22/2017", "birthdayText":"22/09/2017", "calendar": "09/22", "image": "/daniel2.jpeg", "facebook": "null", "instagram": "null", "group": 8.4, "colorGroup": 2, "gender": 1},
+	{ "name": "ברק", "birthday": "07/10/1986", "birthdayText":"10/07/1986", "calendar": "07/10", "image": "/barak.jpg", "facebook": "/barakn", "instagram": "/baraknagar", "group": 9.1, "colorGroup": 1, "gender": 1},
+	{ "name": "נעמה", "birthday": "03/22/1984", "birthdayText":"22/03/1984", "calendar": "03/22", "image": "/naama.jpg", "facebook": "/naama.shoval", "instagram": "/naamashovalnagar", "group": 9.2, "colorGroup": 1, "gender": 2},
+	{ "name": "רום", "birthday": "06/01/2015", "birthdayText":"01/06/2015", "calendar": "06/01", "image": "/rom.jpg", "facebook": "null", "instagram": "null", "group": 9.3, "colorGroup": 1, "gender": 1},
+	{ "name": "זיו", "birthday": "03/16/2018", "birthdayText":"16/03/2018", "calendar": "03/16", "image": "/ziv.jpeg", "facebook": "null", "instagram": "null", "group": 9.4, "colorGroup": 1, "gender": 2},
+	{ "name": "אור", "birthday": "09/15/1999", "birthdayText":"15/09/1999", "calendar": "09/15", "image": "/or.jpg", "facebook": "/Nagaror", "instagram": "/or_nagar2", "group": 10.1, "colorGroup": 2, "gender": 2},
+	{ "name": "אילן", "birthday": "07/27/1961", "birthdayText":"27/07/1961", "calendar": "07/27", "image": "/ilan.jpg", "facebook": "/ilan.shalev.16", "instagram": "/ilan_shalev", "group": 11.1, "colorGroup": 1, "gender": 1},
+	{ "name": "צביה", "birthday": "05/23/1961", "birthdayText":"23/05/1961", "calendar": "05/23", "image": "/zvia.jpg", "facebook": "/zvia.shalev", "instagram": "/zvias33", "group": 11.2, "colorGroup": 1, "gender": 2},
+	{ "name": "אסף", "birthday": "02/04/1986", "birthdayText":"04/02/1986", "calendar": "02/04", "image": "/assaf.jpg", "facebook": "/assafire", "instagram": "/assafshalev", "group": 12.1, "colorGroup": 2, "gender": 1},
+	{ "name": "יערה", "birthday": "12/09/1985", "birthdayText":"09/12/1985", "calendar": "12/09", "image": "/yaara.jpg", "facebook": "/yaara.bader", "instagram": "/yaara_bader_shalev", "group": 12.2, "colorGroup": 2, "gender": 2},
+	{ "name": "פלג", "birthday": "11/02/2016", "birthdayText":"02/11/2016", "calendar": "11/02", "image": "/peleg.jpg", "facebook": "null", "instagram": "/the_shalevs_and_the_pug", "group": 12.3, "colorGroup": 2, "gender": 1},
+	{ "name": "טום", "birthday": "04/28/2019", "birthdayText":"28/04/2019", "calendar": "04/28", "image": "/tom.jpg", "facebook": "null", "instagram": "/the_shalevs_and_the_pug", "group": 12.4, "colorGroup": 2, "gender": 1},
+	{ "name": "עמרי", "birthday":"10/31/1990", "birthdayText":"31/10/1990", "calendar": "10/31",  "image": "/omri.jpg", "facebook": "/omri.shalev.31", "instagram": "/omri_shalev9",  "group": 13.1, "colorGroup": 1, "gender": 1},
+	{ "name": "אסתר", "birthday": "08/01/1991", "birthdayText":"01/08/1991", "calendar": "08/01", "image": "/ester.jpg", "facebook": "/ester.alayev", "instagram": "/esteralayev", "group": 13.2, "colorGroup": 1, "gender": 2}
+
+    ]
+}
