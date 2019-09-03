@@ -563,6 +563,10 @@ p {
     font-size: 1.1rem;
 }
 
+#addeventatc2 {
+    display: none;
+}
+
 
 @media only screen and (max-width: 1200px) {
     .personWrapper {
