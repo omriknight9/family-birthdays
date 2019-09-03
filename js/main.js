@@ -2,6 +2,7 @@
 var family = [];
 var counter = 1;
 var familyNum;
+var lang = 1;
 
 var valid;
 var d = new Date();
@@ -19,6 +20,14 @@ $(document).ready(function (event) {
         loadJson('./lists/shalevs.txt');
         familyNum = 1;
     }
+
+    $('#langBtnHe').click(function () {
+        changeToHeb();
+    })
+
+    $('#langBtnEn').click(function () {
+        changeToEng();
+    })
 
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
@@ -56,12 +65,88 @@ $(document).ready(function (event) {
     })
 });
 
+function changeToHeb() {
+
+    lang = 2;
+    $('#langBtnHe').css('pointer-events', 'none');
+    $('#langBtnEn').css('pointer-events', 'all');
+
+    $("head").append("<link rel='stylesheet' type='text/css' href='css/main_he.css' id='hebCss'/>");
+    $('title').html('ימי הולדת - משפחה');
+
+    $('h1').hide().html('ימי הולדת - משפחה').fadeIn('slow');
+    $('#search').hide().attr('placeholder', 'חפש במשפחה').fadeIn('slow');
+
+    $('.shalevsBtn').hide().html('משפחת שלו').fadeIn('slow');
+    $('.waizingersBtn').hide().html('משפחת ויזינגר').fadeIn('slow');
+    $('.alayevsBtn').hide().html('משפחת אלייב').fadeIn('slow');
+
+    $('.ageSortsBtn').hide().html('סדר לפי גיל').fadeIn('slow');
+    $('.nameSortsBtn').hide().html('סדר לפי שם').fadeIn('slow');
+    $('.groupSortBtn').hide().html('סדר לפי קבוצה').fadeIn('slow');
+
+    $('.hebCaneldar').show();
+    $('.engCaneldar').hide();
+
+    $('.popupBtn').hide().html('סגור').fadeIn('slow');
+
+
+    switch (familyNum) {
+        case 1:
+            showFamily(4);
+            break;
+        case 2:
+            showFamily(5);
+            break;
+        case 3:
+            showFamily(6);
+            break;
+    }
+}
+
+function changeToEng() {
+    lang = 1;
+    $('#langBtnEn').css('pointer-events', 'none');
+    $('#langBtnHe').css('pointer-events', 'all');
+
+    $('#hebCss').remove();
+    $('title').html('Family Birthdays');
+    $('h1').hide().html('Family Birthdays').fadeIn('slow');
+    $('#search').hide().attr('placeholder', 'Search A Family Member').fadeIn('slow');
+
+    $('.shalevsBtn').hide().html('Shalevs').fadeIn('slow');
+    $('.waizingersBtn').hide().html('Waizingers').fadeIn('slow');
+    $('.alayevsBtn').hide().html('Alayevs').fadeIn('slow');
+
+    $('.ageSortsBtn').hide().html('Sort By Age').fadeIn('slow');
+    $('.nameSortsBtn').hide().html('Sort By Name').fadeIn('slow');
+    $('.groupSortBtn').hide().html('Sort By Group').fadeIn('slow');
+
+    $('.hebCaneldar').hide();
+    $('.engCaneldar').show();
+
+    $('.popupBtn').hide().html('Close').fadeIn('slow');
+
+    switch (familyNum) {
+        case 4:
+            showFamily(1);
+            break;
+        case 5:
+            showFamily(2);
+            break;
+        case 6:
+            showFamily(3);
+            break;
+    }
+}
+
 function showFamily(num) {
     $('.container').empty();
     family = [];
     counter = 1;
     $('.btnWrapper').css('opacity', 0);
     $('.spinnerWrapper').show();
+
 
     setTimeout(function () {
         switch (num) {
@@ -77,8 +162,20 @@ function showFamily(num) {
                 loadJson('./lists/alayevs.txt');
                 familyNum = 3;
                 break;
+            case 4:
+                loadJson('./lists/‏‏shalevsHeb.txt');
+                familyNum = 4;
+                break;
+            case 5:
+                loadJson('./lists/‏‏waizingersHeb.txt');
+                familyNum = 5;
+                break;
+            case 6:
+                loadJson('./lists/‏‏alayevsHeb.txt');
+                familyNum = 6;
+                break;
         }
-    }, 500)
+    }, 500);
 }
 
 function loadJson(textFile) {
@@ -88,6 +185,18 @@ function loadJson(textFile) {
             buildPeople('familyWrapper', $('.container'), family);
             $('body').css('background-color', '#3fe09b');
         }, 500);
+
+        if (lang == 2) {
+            $('#langBtnHe').css('pointer-events', 'all');
+            setTimeout(function () {
+                $('#langBtnHe').click();
+            }, 700)
+        } else {
+            $('#langBtnEn').css('pointer-events', 'all');
+            setTimeout(function () {
+                $('#langBtnEn').click();
+            }, 700)
+        }
     });
 }
 
@@ -107,6 +216,7 @@ function buildPeople(div, wrapper, arr) {
     var people = arr[0].family;
     var date = new Date();
     var year = date.getFullYear();
+    var birthday;
 
     for (var i = 0; i < people.length; i++) {
 
@@ -163,7 +273,12 @@ function buildPeople(div, wrapper, arr) {
                 $('.end').html($(this).attr('calendar') + '10:00 AM');
                 $('.title').html($(this).attr('name') + "'s Birthday");
                 $('.location').html($(this).attr('name') + "'s Home");
-                $('.nextBirthday').html('Next Birthday Will Be On ' + $(this).attr('nextBirthday'));
+                if (lang == 1) {
+                    $('.nextBirthday').html('Next Birthday Will Be On ' + $(this).attr('nextBirthday'));
+                } else {
+                    $('.nextBirthday').html('היומולדת הבאה תהיה ביום ' + $(this).attr('nextBirthday'));
+                }
+
                 $('#personDetails').fadeIn(150);
 
                 if ($(this).attr('gender') == 1) {
@@ -181,6 +296,12 @@ function buildPeople(div, wrapper, arr) {
             gender = 'male.png';
         } else {
             gender = 'female.png';
+        }
+        
+        if (lang == 1) {
+            birthday = 'Birthday: ';
+        } else {
+            birthday = 'יומולדת: '
         }
 
         var genderImg = $('<img>', {
@@ -208,9 +329,11 @@ function buildPeople(div, wrapper, arr) {
             text: people[i].name
         }).appendTo(personWrapper);
 
+
+
         var personBirthday = $('<p>', {
             class: 'personBirthday',
-            text: 'Birthday: ' + people[i].birthdayText
+            text: birthday + people[i].birthdayText
         }).appendTo(personWrapper);
 
         var personImgWrapper = $('<div>', {
@@ -243,15 +366,27 @@ function getAge(div, dateString, calendar) {
     var calendarBirthday = new Date(calendar);
     var age = today.getFullYear() - birthDate.getFullYear();
     var m = today.getMonth() - birthDate.getMonth();
+    var ageText;
 
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var daysEng = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var daysHeb = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];
 
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        $(div).attr('nextBirthday', days[calendarBirthday.getDay()]);
+        if (lang == 1) {
+            $(div).attr('nextBirthday', daysEng[calendarBirthday.getDay()]);
+        } else {
+            $(div).attr('nextBirthday', daysHeb[calendarBirthday.getDay()]);
+        }
+        
         age--;
     } else {
         calendarBirthday.setFullYear(calendarBirthday.getFullYear() + 1);
-        $(div).attr('nextBirthday', days[calendarBirthday.getDay()]);
+        if (lang == 1) {
+            $(div).attr('nextBirthday', daysEng[calendarBirthday.getDay()]);
+        } else {
+            $(div).attr('nextBirthday', daysHeb[calendarBirthday.getDay()]);
+        }
+
     }
 
     if (age == 0) {
@@ -260,9 +395,15 @@ function getAge(div, dateString, calendar) {
 
     $(div).attr('age', age);
 
+    if (lang == 1) {
+        ageText = 'Age: ';
+    } else {
+        ageText = 'גיל: ';
+    }
+
     var personAge = $('<p>', {
         class: 'personAge',
-        text: 'Age: ' + age
+        text: ageText + age
     }).insertBefore($(div).find($('.personImgWrapper')));
 
     return age;
