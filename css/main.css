@@ -47,7 +47,7 @@ main {
     -webkit-transition: .5s;
     -o-transition: .5s;
     -moz-transition: .5s;
-    z-index: 3;
+    z-index: 4;
 }
 
 h1 {
@@ -82,6 +82,7 @@ h1 {
     margin-bottom: 3rem;
     width: 100%;
     opacity: 0;
+    position: relative;
 }
 
 .btnWrapper button {
@@ -101,6 +102,31 @@ h1 {
     font-family: Kurale, sans-serif;
     font-size: 1rem;
 }
+
+.sortContainer {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 5rem;
+    z-index: 3;
+}
+
+.sortContent {
+    width: 50%;
+    display: flex;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right,#e0ffff,rgba(255,0,0,.9),#e0ffff);
+    border-radius: 5px;
+    box-shadow: 0 1px 3px 3px #848484;
+    margin: auto;
+}
+
 
 button:active {
   box-shadow: 0 5px 5px #666;
@@ -569,6 +595,11 @@ p {
 
 
 @media only screen and (max-width: 1200px) {
+
+    .sortContent {
+        width: 70%;
+    }
+
     .personWrapper {
         width: 15rem;
         margin: 1rem;
@@ -591,6 +622,10 @@ p {
 }
 
 @media only screen and (max-width: 880px) {
+ 
+    .sortContent {
+        width: 90%;
+    }
 
     .personWrapper img {
         margin-right: 0;
