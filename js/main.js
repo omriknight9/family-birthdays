@@ -7,6 +7,7 @@ var lang = 1;
 var valid;
 var d = new Date();
 var currentYear = d.getFullYear();
+var sortBtnCounter = 1;
 
 $(document).ready(function (event) {
 
@@ -66,6 +67,16 @@ $(document).ready(function (event) {
         });
     })
 });
+
+function sort() {
+    if (sortBtnCounter == 1) {
+        $('.sortContainer').fadeIn('fast');
+        sortBtnCounter = 2;
+    } else {
+        $('.sortContainer').fadeOut('fast');
+        sortBtnCounter = 1;
+    }
+}
 
 function changeToHeb() {
 
@@ -182,6 +193,7 @@ function showFamily(num) {
     }, 500);
 
     $('.sortContainer').fadeOut('fast');
+    sortBtnCounter = 1
 }
 
 function loadJson(textFile) {
@@ -514,6 +526,7 @@ function sortFamily(elem1, kind) {
     });
 
     $('.sortContainer').fadeOut('fast');
+    sortBtnCounter = 1
 }
 
 function removePopup(container) {
