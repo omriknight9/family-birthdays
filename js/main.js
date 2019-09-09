@@ -263,11 +263,13 @@ function buildPeople(div, wrapper, arr) {
                 $('#personCover').attr('src', ('./images/people' + $(this).attr('img')));
                 $('.start').html($(this).attr('calendar') + '08:00 AM');
                 $('.end').html($(this).attr('calendar') + '10:00 AM');
-                $('.title').html($(this).attr('name') + "'s Birthday");
-                $('.location').html($(this).attr('name') + "'s Home");
                 if (lang == 1) {
+                    $('.title').html($(this).attr('name') + "'s Birthday");
+                    $('.location').html($(this).attr('name') + "'s Home");
                     $('.nextBirthday').html('Next Birthday Will Be On ' + $(this).attr('nextBirthday'));
                 } else {
+                    $('.title').html('יומולדת ל' + $(this).attr('name'));
+                    $('.location').html('הבית של ' + $(this).attr('name'));
                     $('.nextBirthday').html('היומולדת הבאה תהיה ביום ' + $(this).attr('nextBirthday'));
                 }
 
@@ -278,7 +280,6 @@ function buildPeople(div, wrapper, arr) {
                 } else {
                     $('#personDetails .popupCont').css('background-color', 'pink');
                 }
-
             }
         }).appendTo(groupWrapper);
 
