@@ -79,6 +79,7 @@ function changeToHeb() {
     $('h1').hide().html('ימי הולדת - משפחה').fadeIn('slow');
     $('#search').hide().attr('placeholder', 'חפש במשפחה').fadeIn('slow');
 
+    $('.sortBtn').hide().html('סדר').fadeIn('slow');
     $('.shalevsBtn').hide().html('משפחת שלו').fadeIn('slow');
     $('.waizingersBtn').hide().html('משפחת ויזינגר').fadeIn('slow');
     $('.alayevsBtn').hide().html('משפחת אלייב').fadeIn('slow');
@@ -116,6 +117,7 @@ function changeToEng() {
     $('h1').hide().html('Family Birthdays').fadeIn('slow');
     $('#search').hide().attr('placeholder', 'Search A Family Member').fadeIn('slow');
 
+    $('.sortBtn').hide().html('Sort').fadeIn('slow');
     $('.shalevsBtn').hide().html('Shalevs').fadeIn('slow');
     $('.waizingersBtn').hide().html('Waizingers').fadeIn('slow');
     $('.alayevsBtn').hide().html('Alayevs').fadeIn('slow');
