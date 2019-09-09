@@ -178,6 +178,8 @@ function showFamily(num) {
                 break;
         }
     }, 500);
+
+    $('.sortContainer').fadeOut('fast');
 }
 
 function loadJson(textFile) {
@@ -318,8 +320,6 @@ function buildPeople(div, wrapper, arr) {
             class: 'personName',
             text: people[i].name
         }).appendTo(personWrapper);
-
-
 
         var personBirthday = $('<p>', {
             class: 'personBirthday',
@@ -509,6 +509,8 @@ function sortFamily(elem1, kind) {
             $(this).append(ids[i].element);
         }
     });
+
+    $('.sortContainer').fadeOut('fast');
 }
 
 function removePopup(container) {
