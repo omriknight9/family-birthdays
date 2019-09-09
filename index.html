@@ -53,16 +53,21 @@
         </div>
 
         <div class="btnWrapper">
+            <div class="sortContainer">
+                <div class="sortContent">
+                    <button class="ageSortsBtn" onclick="sortFamily('birthday', 1)">Sort By Age</button>
+                    <button class="nameSortsBtn" onclick="sortFamily('name', 2)">Sort By Name</button>
+                    <button class="groupSortBtn" onclick="sortFamily('group', 3)">Sort By Group</button>
+                </div>
+            </div>
+            <button class="sortBtn" onclick="$('.sortContainer').fadeIn('fast')">Sort</button>
             <button class="shalevsBtn" onclick="showFamily(1)">Shalevs</button>
             <button class="waizingersBtn" onclick="showFamily(2)">Waizingers</button>
             <button class="alayevsBtn" onclick="showFamily(3)">Alayevs</button>
-            <button class="ageSortsBtn" onclick="sortFamily('birthday', 1)">Sort By Age</button>
-            <button class="nameSortsBtn" onclick="sortFamily('name', 2)">Sort By Name</button>
-            <button class="groupSortBtn" onclick="sortFamily('group', 3)">Sort By Group</button>
         </div>
 
         <div class="container"></div>
-    </main>
+</main>
 
     <img src="images/upBtn.png" alt="up arrow" class="goToTopBtn" onclick="goToTop()" />
 
