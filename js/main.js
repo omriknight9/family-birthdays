@@ -254,6 +254,7 @@ function buildPeople(div, wrapper, arr) {
             'birthday': people[i].birthday,
             'birthdayText': people[i].birthdayText,
             'name': people[i].name,
+            'nameEng': people[i].nameEng,
             'group': people[i].group,
             'img': people[i].image,
             'colorGroup': people[i].colorGroup,
@@ -277,7 +278,12 @@ function buildPeople(div, wrapper, arr) {
                     $('#instagramLink').attr('href', 'https://www.instagram.com' + $(this).attr('instagram'));
                 }
                 
-                $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('name') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
+                if (lang == 1) {
+                    $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('name') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
+                } else {
+                    $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('nameEng') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
+                }
+
 
                 $('.personNamePop').html($(this).attr('name'));
                 $('#personCover').attr('src', ('./images/people' + $(this).attr('img')));
