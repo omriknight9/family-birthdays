@@ -9,6 +9,9 @@ var d = new Date();
 var currentYear = d.getFullYear();
 var sortBtnCounter = 1;
 
+var day;
+var month;
+
 $(document).ready(function (event) {
 
     if (window.location.href.indexOf("shalevs") > -1) {
@@ -99,6 +102,8 @@ function changeToHeb() {
     $('.nameSortsBtn').hide().html('סדר לפי שם').fadeIn('slow');
     $('.groupSortBtn').hide().html('סדר לפי קבוצה').fadeIn('slow');
 
+    $('#checkBirthdaysLink').hide().html('בדוק באילו יום נופל היומולדת בשנים הקרובות').fadeIn('slow');
+    
     $('.hebCaneldar').show();
     $('.engCaneldar').hide();
 
@@ -136,6 +141,8 @@ function changeToEng() {
     $('.ageSortsBtn').hide().html('Sort By Age').fadeIn('slow');
     $('.nameSortsBtn').hide().html('Sort By Name').fadeIn('slow');
     $('.groupSortBtn').hide().html('Sort By Group').fadeIn('slow');
+
+    $('#checkBirthdaysLink').hide().html('Check Your Birthday For Upcomming Years').fadeIn('slow');
 
     $('.hebCaneldar').hide();
     $('.engCaneldar').show();
@@ -273,6 +280,7 @@ function buildPeople(div, wrapper, arr) {
                     $('#instagramLink').attr('href', 'https://www.instagram.com' + $(this).attr('instagram'));
                 }
                 
+                $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays');
                 $('.personNamePop').html($(this).attr('name'));
                 $('#personCover').attr('src', ('./images/people' + $(this).attr('img')));
                 $('.start').html($(this).attr('calendar') + '08:00 AM');
@@ -385,8 +393,9 @@ function getAge(div, dateString, calendar) {
         
         age--;
     } else {
-        calendarBirthday.setFullYear(calendarBirthday.getFullYear() + 1);
+        calendarBirthday.setFullYear(calendarBirthday.getFullYear());
         if (lang == 1) {
+            //console.log(calendarBirthday);
             $(div).attr('nextBirthday', daysEng[calendarBirthday.getDay()]);
         } else {
             $(div).attr('nextBirthday', daysHeb[calendarBirthday.getDay()]);
