@@ -473,17 +473,7 @@ p {
     right: 0;
     margin: auto;
     border-radius: 10px;
-}
-
-.popupContent {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: .3;
-    border-radius: 10px;
+    text-align: center;
 }
 
 .personNamePop {
@@ -526,7 +516,7 @@ p {
 
 .popupBtnsWrapper {
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-align: center;
 }
 
