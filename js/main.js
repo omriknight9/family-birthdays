@@ -99,7 +99,7 @@ function changeToHeb() {
     $('.nameSortsBtn').hide().html('סדר לפי שם').fadeIn('slow');
     $('.groupSortBtn').hide().html('סדר לפי קבוצה').fadeIn('slow');
 
-    $('#checkBirthdaysLink').hide().html('בדוק באילו יום נופל היומולדת בשנים הקרובות').fadeIn('slow');
+    $('#checkBirthdaysLink').hide().html('בדוק באיזה יום נופל היומולדת בשנים הקרובות').fadeIn('slow');
     
     $('.hebCaneldar').show();
     $('.engCaneldar').hide();
@@ -139,7 +139,7 @@ function changeToEng() {
     $('.nameSortsBtn').hide().html('Sort By Name').fadeIn('slow');
     $('.groupSortBtn').hide().html('Sort By Group').fadeIn('slow');
 
-    $('#checkBirthdaysLink').hide().html('Check Your Birthday For Upcomming Years').fadeIn('slow');
+    $('#checkBirthdaysLink').hide().html('Check What Day Is The Birthday For Upcoming Years').fadeIn('slow');
 
     $('.hebCaneldar').hide();
     $('.engCaneldar').show();
