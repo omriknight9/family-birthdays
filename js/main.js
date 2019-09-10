@@ -9,9 +9,6 @@ var d = new Date();
 var currentYear = d.getFullYear();
 var sortBtnCounter = 1;
 
-var day;
-var month;
-
 $(document).ready(function (event) {
 
     if (window.location.href.indexOf("shalevs") > -1) {
@@ -280,7 +277,8 @@ function buildPeople(div, wrapper, arr) {
                     $('#instagramLink').attr('href', 'https://www.instagram.com' + $(this).attr('instagram'));
                 }
                 
-                $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays');
+                $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('name') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
+
                 $('.personNamePop').html($(this).attr('name'));
                 $('#personCover').attr('src', ('./images/people' + $(this).attr('img')));
                 $('.start').html($(this).attr('calendar') + '08:00 AM');
@@ -381,6 +379,9 @@ function getAge(div, dateString, calendar) {
     var m = today.getMonth() - birthDate.getMonth();
     var ageText;
 
+    var month = calendarBirthday.getMonth() + 1;
+    var day = calendarBirthday.getDate();
+
     var daysEng = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var daysHeb = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];
 
@@ -395,12 +396,10 @@ function getAge(div, dateString, calendar) {
     } else {
         calendarBirthday.setFullYear(calendarBirthday.getFullYear());
         if (lang == 1) {
-            //console.log(calendarBirthday);
             $(div).attr('nextBirthday', daysEng[calendarBirthday.getDay()]);
         } else {
             $(div).attr('nextBirthday', daysHeb[calendarBirthday.getDay()]);
         }
-
     }
 
     if (age == 0) {
@@ -408,6 +407,8 @@ function getAge(div, dateString, calendar) {
     }
 
     $(div).attr('age', age);
+    $(div).attr('month', month);
+    $(div).attr('day', day);
 
     if (lang == 1) {
         ageText = 'Age: ';
