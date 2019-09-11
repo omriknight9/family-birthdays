@@ -95,8 +95,8 @@ function changeToHeb() {
     $('.waizingersBtn').hide().html('משפחת ויזינגר').fadeIn('slow');
     $('.alayevsBtn').hide().html('משפחת אלייב').fadeIn('slow');
 
-    $('.ageSortsBtn').hide().html('סדר לפי גיל').fadeIn('slow');
-    $('.nameSortsBtn').hide().html('סדר לפי שם').fadeIn('slow');
+    $('.ageSortBtn').hide().html('סדר לפי גיל').fadeIn('slow');
+    $('.nameSortBtn').hide().html('סדר לפי שם').fadeIn('slow');
     $('.groupSortBtn').hide().html('סדר לפי קבוצה').fadeIn('slow');
 
     $('#checkBirthdaysLink').hide().html('בדוק באיזה יום נופל היומולדת בשנים הקרובות').fadeIn('slow');
@@ -135,7 +135,7 @@ function changeToEng() {
     $('.waizingersBtn').hide().html('Waizingers').fadeIn('slow');
     $('.alayevsBtn').hide().html('Alayevs').fadeIn('slow');
 
-    $('.ageSortsBtn').hide().html('Sort By Age').fadeIn('slow');
+    $('.ageSortBtn').hide().html('Sort By Age').fadeIn('slow');
     $('.nameSortsBtn').hide().html('Sort By Name').fadeIn('slow');
     $('.groupSortBtn').hide().html('Sort By Group').fadeIn('slow');
 
@@ -449,9 +449,15 @@ function sortFamily(elem1, kind) {
     $('.groupWrapper').removeClass('oddGroup');
     $('.groupWrapper').removeClass('evenGroup');
 
-    if ($('.btnWrapper').attr('kind') == kind) {
+    if (elem1 == 'calendar') {
+        counter = 2;
+    }
 
-    } else {
+    else if ($('.btnWrapper').attr('kind') == kind) {
+
+    }
+
+    else {
         $('.btnWrapper').attr('kind', kind);
         counter = 1;
     }
