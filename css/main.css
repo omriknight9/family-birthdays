@@ -468,7 +468,7 @@ p {
     width: 40rem;
     background: #fff;
     padding: 1em;
-    top: 8%;
+    top: 5%;
     left: 0;
     right: 0;
     margin: auto;
@@ -478,6 +478,7 @@ p {
 
 .personNamePop {
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 .linksWrapper {
@@ -487,7 +488,7 @@ p {
     justify-content: center;
     width: 100%;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 11rem;
 }
 
 #facebookLink {
@@ -516,7 +517,7 @@ p {
 
 .popupBtnsWrapper {
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 2rem;
     text-align: center;
 }
 
@@ -551,7 +552,7 @@ p {
 
 .personCoverWrapper {
     position: absolute;
-    top: 6rem;
+    top: 5rem;
     left: 0;
     width: 100%;
     z-index: 0;
@@ -562,10 +563,32 @@ p {
     width: 180px;
     height: 180px;
     border-radius: 5px;
+    opacity: .3;
 }
 
 .nextBirthday {
-    margin-top: 14rem;
+    margin: 0;
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    color: white;
+    text-shadow: 1px 1px 6px black;
+    z-index: 3;
+    font-size: 1.2rem;
+}
+
+.checkBirthdayWrapper {
+    width: 100%;
+    position: absolute;
+    top: 11rem;
+    left: 0;
+    z-index: 3;
+}
+
+#checkBirthdaysLink {
+    text-shadow: 1px 1px 6px black;
+    color: white;
+    font-size: 1.2rem;
 }
 
 #addeventatc1, #addeventatc2 {
@@ -633,15 +656,22 @@ p {
     }
 }
 
-@media only screen and (max-width: 765px) {
-
-    .popupCont {
-        top: 5%;
-    }
-}
-
-
 @media only screen and (max-width: 550px) {
+
+    .popUpInfo p , .nextBirthday, #checkBirthdaysLink {
+        font-size: 1rem;
+    }
+
+    #facebookImage {
+        width: 85px;
+        height: 85px;
+    }
+
+    #instagramImage {
+        width: 85px;
+        height: 85px;
+    }
+
 
     .personWrapper {
         width: 12rem;
@@ -659,13 +689,13 @@ p {
     }
 
     #facebookImage {
-        width: 85px;
-        height: 85px;
+        width: 75px;
+        height: 75px;
     }
 
     #instagramImage {
-        width: 85px;
-        height: 85px;
+        width: 75px;
+        height: 75px;
     }
 }
 @media only screen and (max-width: 410px) {
@@ -673,9 +703,23 @@ p {
     h1 {
         font-size: 1.5rem;
     }
+
+    .popupCont {
+        top: 2%;
+    }
 }
 
 @media only screen and (max-width: 370px) {
+
+    #facebookImage {
+        width: 65px;
+        height: 65px;
+    }
+
+    #instagramImage {
+        width: 65px;
+        height: 65px;
+    }
 
     #search {
         font-size: 1.1rem;
@@ -700,5 +744,9 @@ p {
 
     h1 {
         font-size: 1.2rem;
+    }
+
+    .popupBtnsWrapper {
+        margin-top: 1rem;
     }
 }
