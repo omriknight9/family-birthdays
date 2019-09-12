@@ -298,7 +298,7 @@ function buildPeople(div, wrapper, arr) {
                 } else {
                     $('.title').html('יומולדת ל' + $(this).attr('name'));
                     $('.location').html('הבית של ' + $(this).attr('name'));
-                    $('.nextBirthday').html('היומולדת הבאה תהיה ביום ' + $(this).attr('nextBirthday'));
+                    $('.nextBirthday').html('היומולדת הבא יהיה ביום ' + $(this).attr('nextBirthday'));
                 }
 
                 $('#personDetails').fadeIn(150);
