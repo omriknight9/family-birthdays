@@ -411,7 +411,11 @@ function getAge(div, dateString, calendar) {
     }
 
     if (age == 0) {
-        age = today.getMonth() - (birthDate.getMonth() + 1) + ' Months';
+        if (lang == 1) {
+            age = today.getMonth() - (birthDate.getMonth() + 1) + ' Months';
+        } else {
+            age = today.getMonth() - (birthDate.getMonth() + 1) + ' חודשים';
+        }
     }
 
     $(div).attr('age', age);
