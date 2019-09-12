@@ -95,9 +95,10 @@ function changeToHeb() {
     $('.waizingersBtn').hide().html('משפחת ויזינגר').fadeIn('slow');
     $('.alayevsBtn').hide().html('משפחת אלייב').fadeIn('slow');
 
-    $('.ageSortBtn').hide().html('סדר לפי גיל').fadeIn('slow');
-    $('.nameSortBtn').hide().html('סדר לפי שם').fadeIn('slow');
-    $('.groupSortBtn').hide().html('סדר לפי קבוצה').fadeIn('slow');
+    $('.ageSortBtn').hide().html('לפי גיל').fadeIn('slow');
+    $('.nameSortBtn').hide().html('לפי שם').fadeIn('slow');
+    $('.groupSortBtn').hide().html('לפי קבוצה').fadeIn('slow');
+    $('.calendarSortBtn').hide().html('לפי תאריך').fadeIn('slow');
 
     $('#checkBirthdaysLink').hide().html('בדוק באיזה יום נופל היומולדת בשנים הקרובות').fadeIn('slow');
     
@@ -135,9 +136,10 @@ function changeToEng() {
     $('.waizingersBtn').hide().html('Waizingers').fadeIn('slow');
     $('.alayevsBtn').hide().html('Alayevs').fadeIn('slow');
 
-    $('.ageSortBtn').hide().html('Sort By Age').fadeIn('slow');
-    $('.nameSortsBtn').hide().html('Sort By Name').fadeIn('slow');
-    $('.groupSortBtn').hide().html('Sort By Group').fadeIn('slow');
+    $('.ageSortBtn').hide().html('By Age').fadeIn('slow');
+    $('.nameSortBtn').hide().html('By Name').fadeIn('slow');
+    $('.groupSortBtn').hide().html('By Group').fadeIn('slow');
+    $('.calendarSortBtn').hide().html('By Date').fadeIn('slow');
 
     $('#checkBirthdaysLink').hide().html('Check What Day Is The Birthday For Upcoming Years').fadeIn('slow');
 
