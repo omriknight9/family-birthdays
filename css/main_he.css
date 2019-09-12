@@ -34,6 +34,14 @@ body {
     right: 8px;
 }
 
+.personWrapper p {
+    font-size: 1.3rem;
+}
+
+.popUpInfo p {
+    font-size: 1.3rem;
+}
+
 @media only screen and (max-width: 440px) {
     h1 {
         font-size: 1.5rem;
