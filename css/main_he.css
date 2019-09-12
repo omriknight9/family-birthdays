@@ -20,7 +20,7 @@ body {
     left: 1rem;
 }
 
-.nextBirthday {
+.nextBirthday, .btnWrapper, .sortContainer {
     direction: rtl;
 }
 
