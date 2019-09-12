@@ -1,6 +1,10 @@
 
 body {
-    
+    font-family: 'David Libre', serif;
+}
+
+.popupBtn {
+    font-family: 'David Libre', serif;
 }
 
 .container {
@@ -18,6 +22,16 @@ body {
 
 .nextBirthday {
     direction: rtl;
+}
+
+.addeventatc {
+    padding: 13px 43px 12px 12px;
+    font-family: 'David Libre', serif !important;
+}
+
+.addeventatc .addeventatc_icon {
+    left: unset;
+    right: 8px;
 }
 
 @media only screen and (max-width: 440px) {
