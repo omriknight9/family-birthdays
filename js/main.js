@@ -167,7 +167,7 @@ function buildPeople(div, wrapper, arr) {
         var date = new Date(people[i].birthday);
         var day = date.getDate();
         var month = date.getMonth() + 1;
-        var year = date.getFullYear();
+        var yearToShow = date.getFullYear();
 
         if (day < 10) {
             day = '0' + day
@@ -181,7 +181,8 @@ function buildPeople(div, wrapper, arr) {
             month = month;
         }
 
-        var dateForShow = day + '/' + month + '/' + year;
+        var calendar = month + '/' + day;
+        var dateForShow = day + '/' + month + '/' + yearToShow;
 
         var personWrapper = $('<div>', {
             class: 'personWrapper' ,
@@ -194,7 +195,7 @@ function buildPeople(div, wrapper, arr) {
             'gender': people[i].gender,
             'facebook': people[i].facebook,
             'instagram': people[i].instagram,
-            'calendar': people[i].calendar,
+            'calendar': calendar,
             click: function () {
 
                 if ($(this).attr('facebook') == 'null') {
@@ -227,8 +228,8 @@ function buildPeople(div, wrapper, arr) {
                     $('.location').html($(this).attr('name') + "'s Home");
                     $('.nextBirthday').html('Next Birthday Will Be On ' + $(this).attr('nextBirthday'));
                 } else {
-                    $('.title').html('יומולדת ל' + $(this).attr('name'));
-                    $('.location').html('הבית של ' + $(this).attr('name'));
+                    $('.title').html('יומולדת ל' + $(this).attr('nameHeb'));
+                    $('.location').html('הבית של ' + $(this).attr('nameHeb'));
                     $('.nextBirthday').html('היומולדת הבא יהיה ביום ' + $(this).attr('nextBirthday'));
                 }
 
