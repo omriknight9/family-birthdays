@@ -78,89 +78,6 @@ function sort() {
     }
 }
 
-function changeToHeb() {
-
-    lang = 2;
-    $('#langBtnHe').css('pointer-events', 'none');
-    $('#langBtnEn').css('pointer-events', 'all');
-
-    $("head").append("<link rel='stylesheet' type='text/css' href='css/main_he.css' id='hebCss'/>");
-    $('title').html('ימי הולדת - משפחה');
-
-    $('h1').hide().html('ימי הולדת - משפחה').fadeIn('slow');
-    $('#search').hide().attr('placeholder', 'חפש במשפחה').fadeIn('slow');
-
-    $('.sortBtn').hide().html('סדר').fadeIn('slow');
-    $('.shalevsBtn').hide().html('משפחת שלו').fadeIn('slow');
-    $('.waizingersBtn').hide().html('משפחת ויזינגר').fadeIn('slow');
-    $('.alayevsBtn').hide().html('משפחת אלייב').fadeIn('slow');
-
-    $('.ageSortBtn').hide().html('לפי גיל').fadeIn('slow');
-    $('.nameSortBtn').hide().html('לפי שם').fadeIn('slow');
-    $('.groupSortBtn').hide().html('לפי קבוצה').fadeIn('slow');
-    $('.calendarSortBtn').hide().html('לפי תאריך').fadeIn('slow');
-
-    $('#checkBirthdaysLink').hide().html('בדוק באיזה יום נופל היומולדת בשנים הקרובות').fadeIn('slow');
-    
-    $('.hebCaneldar').show();
-    $('.engCaneldar').hide();
-
-    $('.popupBtn').hide().html('סגור').fadeIn('slow');
-
-
-    switch (familyNum) {
-        case 1:
-            showFamily(1);
-            break;
-        case 2:
-            showFamily(2);
-            break;
-        case 3:
-            showFamily(3);
-            break;
-    }
-}
-
-function changeToEng() {
-    lang = 1;
-    $('#langBtnEn').css('pointer-events', 'none');
-    $('#langBtnHe').css('pointer-events', 'all');
-
-    $('#hebCss').remove();
-    $('title').html('Family Birthdays');
-    $('h1').hide().html('Family Birthdays').fadeIn('slow');
-    $('#search').hide().attr('placeholder', 'Search A Family Member').fadeIn('slow');
-
-    $('.sortBtn').hide().html('Sort').fadeIn('slow');
-    $('.shalevsBtn').hide().html('Shalevs').fadeIn('slow');
-    $('.waizingersBtn').hide().html('Waizingers').fadeIn('slow');
-    $('.alayevsBtn').hide().html('Alayevs').fadeIn('slow');
-
-    $('.ageSortBtn').hide().html('By Age').fadeIn('slow');
-    $('.nameSortBtn').hide().html('By Name').fadeIn('slow');
-    $('.groupSortBtn').hide().html('By Group').fadeIn('slow');
-    $('.calendarSortBtn').hide().html('By Date').fadeIn('slow');
-
-    $('#checkBirthdaysLink').hide().html('Check What Day Is The Birthday For Upcoming Years').fadeIn('slow');
-
-    $('.hebCaneldar').hide();
-    $('.engCaneldar').show();
-
-    $('.popupBtn').hide().html('Close').fadeIn('slow');
-
-    switch (familyNum) {
-        case 1:
-            showFamily(1);
-            break;
-        case 2:
-            showFamily(2);
-            break;
-        case 3:
-            showFamily(3);
-            break;
-    }
-}
-
 function showFamily(num) {
     $('.container').empty();
     family = [];
@@ -247,10 +164,28 @@ function buildPeople(div, wrapper, arr) {
             nameToShow = people[i].nameHeb;
         }
 
+        var date = new Date(people[i].birthday);
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (day < 10) {
+            day = '0' + day
+        } else {
+            day = day;
+        }
+
+        if (month < 10) {
+            month = '0' + month
+        } else {
+            month = month;
+        }
+
+        var dateForShow = day + '/' + month + '/' + year;
+
         var personWrapper = $('<div>', {
             class: 'personWrapper' ,
             'birthday': people[i].birthday,
-            'birthdayText': people[i].birthdayText,
             'name': people[i].name,
             'nameHeb': people[i].nameHeb,
             'group': people[i].group,
@@ -260,7 +195,6 @@ function buildPeople(div, wrapper, arr) {
             'facebook': people[i].facebook,
             'instagram': people[i].instagram,
             'calendar': people[i].calendar,
-            'zodiac': people[i].zodiac,
             click: function () {
 
                 if ($(this).attr('facebook') == 'null') {
@@ -276,14 +210,9 @@ function buildPeople(div, wrapper, arr) {
                     $('#instagramLink').show();
                     $('#instagramLink').attr('href', 'https://www.instagram.com' + $(this).attr('instagram'));
                 }
-                
-                //if (lang == 1) {
-                //    $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('name') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
-                //} else {
-                //    $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('nameEng') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
-                //}
 
                 $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('name') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
+
                 if (lang == 1) {
                     $('.personNamePop').html($(this).attr('name'));
                 } else {
@@ -360,7 +289,7 @@ function buildPeople(div, wrapper, arr) {
 
         var personBirthday = $('<p>', {
             class: 'personBirthday',
-            text: birthday + people[i].birthdayText
+            text: birthday + dateForShow
         }).appendTo(personWrapper);
 
         var personImgWrapper = $('<div>', {
@@ -563,6 +492,89 @@ function sortFamily(elem1, kind) {
 
     $('.sortContainer').fadeOut('fast');
     sortBtnCounter = 1
+}
+
+function changeToHeb() {
+
+    lang = 2;
+    $('#langBtnHe').css('pointer-events', 'none');
+    $('#langBtnEn').css('pointer-events', 'all');
+
+    $("head").append("<link rel='stylesheet' type='text/css' href='css/main_he.css' id='hebCss'/>");
+    $('title').html('ימי הולדת - משפחה');
+
+    $('h1').hide().html('ימי הולדת - משפחה').fadeIn('slow');
+    $('#search').hide().attr('placeholder', 'חפש במשפחה').fadeIn('slow');
+
+    $('.sortBtn').hide().html('סדר').fadeIn('slow');
+    $('.shalevsBtn').hide().html('משפחת שלו').fadeIn('slow');
+    $('.waizingersBtn').hide().html('משפחת ויזינגר').fadeIn('slow');
+    $('.alayevsBtn').hide().html('משפחת אלייב').fadeIn('slow');
+
+    $('.ageSortBtn').hide().html('לפי גיל').fadeIn('slow');
+    $('.nameSortBtn').hide().html('לפי שם').fadeIn('slow');
+    $('.groupSortBtn').hide().html('לפי קבוצה').fadeIn('slow');
+    $('.calendarSortBtn').hide().html('לפי תאריך').fadeIn('slow');
+
+    $('#checkBirthdaysLink').hide().html('בדוק באיזה יום נופל היומולדת בשנים הקרובות').fadeIn('slow');
+
+    $('.hebCaneldar').show();
+    $('.engCaneldar').hide();
+
+    $('.popupBtn').hide().html('סגור').fadeIn('slow');
+
+
+    switch (familyNum) {
+        case 1:
+            showFamily(1);
+            break;
+        case 2:
+            showFamily(2);
+            break;
+        case 3:
+            showFamily(3);
+            break;
+    }
+}
+
+function changeToEng() {
+    lang = 1;
+    $('#langBtnEn').css('pointer-events', 'none');
+    $('#langBtnHe').css('pointer-events', 'all');
+
+    $('#hebCss').remove();
+    $('title').html('Family Birthdays');
+    $('h1').hide().html('Family Birthdays').fadeIn('slow');
+    $('#search').hide().attr('placeholder', 'Search A Family Member').fadeIn('slow');
+
+    $('.sortBtn').hide().html('Sort').fadeIn('slow');
+    $('.shalevsBtn').hide().html('Shalevs').fadeIn('slow');
+    $('.waizingersBtn').hide().html('Waizingers').fadeIn('slow');
+    $('.alayevsBtn').hide().html('Alayevs').fadeIn('slow');
+
+    $('.ageSortBtn').hide().html('By Age').fadeIn('slow');
+    $('.nameSortBtn').hide().html('By Name').fadeIn('slow');
+    $('.groupSortBtn').hide().html('By Group').fadeIn('slow');
+    $('.calendarSortBtn').hide().html('By Date').fadeIn('slow');
+
+    $('#checkBirthdaysLink').hide().html('Check What Day Is The Birthday For Upcoming Years').fadeIn('slow');
+
+    $('.hebCaneldar').hide();
+    $('.engCaneldar').show();
+
+    $('.popupBtn').hide().html('Close').fadeIn('slow');
+
+    switch (familyNum) {
+        case 1:
+            showFamily(1);
+            break;
+        case 2:
+            showFamily(2);
+            break;
+        case 3:
+            showFamily(3);
+            break;
+    }
 }
 
 function removePopup(container) {
