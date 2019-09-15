@@ -756,7 +756,8 @@ p {
     }
 
     .zodiacImg {
-        left: .5rem;
+        width: 25px;
+        left: .2rem;
     }
 }
 
