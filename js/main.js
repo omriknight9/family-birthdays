@@ -171,28 +171,15 @@ function showFamily(num) {
     setTimeout(function () {
         switch (num) {
             case 1:
-                if (lang == 1) {
-                    loadJson('./lists/shalevs.txt');
-                } else {
-                    loadJson('./lists/‏‏shalevsHeb.txt');
-                }
-                
+                loadJson('./lists/shalevs.txt');
                 familyNum = 1;
                 break;
             case 2:
-                if (lang == 1) {
-                    loadJson('./lists/waizingers.txt');
-                } else {
-                    loadJson('./lists/‏‏waizingersHeb.txt');
-                }
+                loadJson('./lists/waizingers.txt');
                 familyNum = 2;
                 break;
             case 3:
-                if (lang == 1) {
-                    loadJson('./lists/alayevs.txt');
-                } else {
-                    loadJson('./lists/alayevs_heb.txt');
-                }
+                loadJson('./lists/alayevs.txt');
                 familyNum = 3;
                 break;
         }
@@ -225,6 +212,7 @@ function goToDiv(div) {
 
 function buildPeople(div, wrapper, arr) {
 
+
     var people = arr[0].family;
     var date = new Date();
     var year = date.getFullYear();
@@ -251,12 +239,20 @@ function buildPeople(div, wrapper, arr) {
             }
         }
 
+        var nameToShow;
+
+        if (lang == 1) {
+            nameToShow = people[i].name;
+        } else {
+            nameToShow = people[i].nameHeb;
+        }
+
         var personWrapper = $('<div>', {
             class: 'personWrapper' ,
             'birthday': people[i].birthday,
             'birthdayText': people[i].birthdayText,
             'name': people[i].name,
-            'nameEng': people[i].nameEng,
+            'nameHeb': people[i].nameHeb,
             'group': people[i].group,
             'img': people[i].image,
             'colorGroup': people[i].colorGroup,
@@ -264,6 +260,7 @@ function buildPeople(div, wrapper, arr) {
             'facebook': people[i].facebook,
             'instagram': people[i].instagram,
             'calendar': people[i].calendar,
+            'zodiac': people[i].zodiac,
             click: function () {
 
                 if ($(this).attr('facebook') == 'null') {
@@ -280,14 +277,19 @@ function buildPeople(div, wrapper, arr) {
                     $('#instagramLink').attr('href', 'https://www.instagram.com' + $(this).attr('instagram'));
                 }
                 
+                //if (lang == 1) {
+                //    $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('name') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
+                //} else {
+                //    $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('nameEng') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
+                //}
+
+                $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('name') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
                 if (lang == 1) {
-                    $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('name') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
+                    $('.personNamePop').html($(this).attr('name'));
                 } else {
-                    $('#checkBirthdaysLink').attr('href', 'https://omriknight9.github.io/birthdays' + '?name=' + $(this).attr('nameEng') + '&day=' + $(this).attr('day') + '&month=' + $(this).attr('month'));
+                    $('.personNamePop').html($(this).attr('nameHeb'));
                 }
 
-
-                $('.personNamePop').html($(this).attr('name'));
                 $('#personCover').attr('src', ('./images/people' + $(this).attr('img')));
                 $('.start').html($(this).attr('calendar') + '08:00 AM');
                 $('.end').html($(this).attr('calendar') + '10:00 AM');
@@ -331,6 +333,12 @@ function buildPeople(div, wrapper, arr) {
             alt: 'gender img'
         }).appendTo(personWrapper);
 
+        var zodiacImg = $('<img>', {
+            class: 'zodiacImg',
+            src: './images/zodiac' + people[i].zodiac,
+            alt: 'zodiac img'
+        }).appendTo(personWrapper);
+
         if ($(personWrapper).attr('colorGroup') % 2 == 0) {
             $(personWrapper).addClass('odd');
         } else {
@@ -347,7 +355,7 @@ function buildPeople(div, wrapper, arr) {
 
         var personName = $('<p>', {
             class: 'personName',
-            text: people[i].name
+            text: nameToShow
         }).appendTo(personWrapper);
 
         var personBirthday = $('<p>', {
