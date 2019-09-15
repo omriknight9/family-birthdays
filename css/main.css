@@ -61,6 +61,7 @@ h1 {
     height: 70px;
     top: 1rem;
     left: 0;
+    pointer-events: none;
 }
 
 #langBtnHe {
@@ -416,6 +417,13 @@ p {
     width: 30px;
 }
 
+.zodiacImg {
+    position: absolute;
+    top: .5rem;
+    left: 1rem;
+    width: 40px;
+}
+
 .personImgWrapper {
     width: 100%;
     text-align: center;
@@ -680,6 +688,15 @@ p {
 
 @media only screen and (max-width: 460px) {
 
+    .genderImg {
+        width: 20px;
+    }
+
+    .zodiacImg {
+        left: .5rem;
+        width: 30px;
+    }
+
     .personWrapper {
         width: 9rem;
     }
@@ -736,7 +753,10 @@ p {
 
     .genderImg {
         right: .5rem;
-        width: 23px;
+    }
+
+    .zodiacImg {
+        left: .5rem;
     }
 }
 
