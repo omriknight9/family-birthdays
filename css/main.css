@@ -152,6 +152,40 @@ button:active {
     margin: auto;
 }
 
+#searchResults {
+    display: none;
+    position: absolute;
+    background-image: linear-gradient(-180deg, #3fe09b, white);
+    border-radius: 5px;
+    height: 18rem;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.resultImgWrapper {
+    width: 50%;
+}
+
+.result {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.resultName {
+    width: 50%;
+    font-size: 1.5rem;
+}
+
+.resultImg {
+    width: 100px;
+    border-radius: 5px;
+}
+
 #search {
     border: none;
     width: 100%;
