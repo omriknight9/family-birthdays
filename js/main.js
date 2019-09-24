@@ -51,17 +51,58 @@ $(document).ready(function (event) {
     }, 1500);
 
     $('#search').on('input', function () {
-        window.scrollTo(0, 0);
+        $('#searchResults').empty();
         $.each($('.personWrapper'), function (key, value) {
             for (var i = 0; i < $(this).length; i++) {
-                var personName = $($(this)[i]).attr('name').toLowerCase();
+                let personName;
+                if (lang == 1) {
+                    personName = $($(this)[i]).attr('name').toLowerCase();
+                } else {
+                    personName = $($(this)[i]).attr('nameHeb');
+                }
+
+                var personImg = $($(this)[i]).attr('img');
                 var searchVal = $('#search').val();
                 var searchValCapitalized = searchVal.charAt(0).toUpperCase() + searchVal.slice(1);
 
-                if (personName.includes(searchValCapitalized) || personName.includes(searchValCapitalized.toLowerCase())) {
-                    $($(this)[i]).show();
+                if (searchVal.length == 0) {
+                    $('#searchResults').hide();
                 } else {
-                    $($(this)[i]).hide();
+                    $('#searchResults').show();
+                }
+
+                let personNameCapital = personName[0].toUpperCase() + personName.substr(1);
+
+                if (personName.includes(searchValCapitalized) || personName.includes(searchValCapitalized.toLowerCase())) {
+                    let result = $('<div>', {
+                        class: 'result',
+                        click: function() {
+
+                            let that = this;
+                            let pickedName = $(that).find($('.resultName')).html();
+                            $.each($('.personWrapper'), function (key, value) {
+                                if (pickedName == $(this).attr('name') || pickedName == $(this).attr('nameHeb')) {
+                                    goToDiv($(this).parent());
+                                    $('#searchResults').hide();
+                                    $('#search').val('');
+                                }
+                            });
+                        }
+                    }).appendTo($('#searchResults'));
+
+                    let resultImgWrapper = $('<div>', {
+                        class: 'resultImgWrapper',
+                    }).appendTo(result);
+
+                    let resultImg = $('<img>', {
+                        class: 'resultImg',
+                        src: './images/people' + personImg
+                    }).appendTo(resultImgWrapper);
+
+                    let resultName = $('<p>', {
+                        class: 'resultName',
+                        text: personNameCapital
+                    }).appendTo(result);
                 }
             }
         });
@@ -117,18 +158,10 @@ function loadJson(textFile) {
 }
 
 function goToDiv(div) {
-    if ($(window).width() > 550) {
-        $('html, body').animate({ scrollTop: $(div).position().top }, 'slow');
-    } else {
-        $('html, body').animate({ scrollTop: $(div).position().top }, 'slow');
-    }
-    setTimeout(function () {
-        $('.header').css('margin-top', '-100rem');
-    }, 700);
+    $('html, body').animate({ scrollTop: $(div).position().top -170 }, 1500);
 }
 
 function buildPeople(div, wrapper, arr) {
-
 
     var people = arr[0].family;
     var date = new Date();
@@ -406,10 +439,6 @@ function sortFamily(elem1, kind) {
         counter = 1;
     }
 
-    if (kind == 3) {
-        $('.container').empty();
-    }
-
     $.each($('.container'), function (key, value) {
         var ids = [], obj, i, len;
         var children = $(this).find('.personWrapper');
@@ -423,9 +452,6 @@ function sortFamily(elem1, kind) {
                     break;
                 case 2:
                     obj.idNum = elem2;
-                    break;
-                case 3:
-                    obj.idNum = parseInt(elem2.replace(/[^\d]/g, ""), 10);
                     break;
             }
             ids.push(obj);
@@ -444,7 +470,6 @@ function sortFamily(elem1, kind) {
                         break;
                 }
                 $('.btnWrapper').attr('kind', kind);
-                $('.groupSortBtn').css('pointer-events', 'all');
                 break;
             case 2:
                 switch (counter) {
@@ -472,17 +497,6 @@ function sortFamily(elem1, kind) {
                         break;
                 }
                 $('.btnWrapper').attr('kind', kind);
-                $('.groupSortBtn').css('pointer-events', 'all');
-                break;
-            case 3:
-                $('.spinnerWrapper').show();
-                $('.btnWrapper').css('opacity', 0);
-                $('.groupSortBtn').css('pointer-events', 'none');
-                showFamily(familyNum);
-                setTimeout(function () {
-                    $('.btnWrapper').css('opacity', 1);
-                    $('.spinnerWrapper').hide();
-                }, 500);
                 break;
         }
 
