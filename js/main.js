@@ -439,6 +439,10 @@ function sortFamily(elem1, kind) {
         counter = 1;
     }
 
+    if (kind == 3) {
+        $('.container').empty();
+    }
+
     $.each($('.container'), function (key, value) {
         var ids = [], obj, i, len;
         var children = $(this).find('.personWrapper');
@@ -452,6 +456,9 @@ function sortFamily(elem1, kind) {
                     break;
                 case 2:
                     obj.idNum = elem2;
+                    break;
+                case 3:
+                    obj.idNum = parseInt(elem2.replace(/[^\d]/g, ""), 10);
                     break;
             }
             ids.push(obj);
@@ -470,6 +477,7 @@ function sortFamily(elem1, kind) {
                         break;
                 }
                 $('.btnWrapper').attr('kind', kind);
+                $('.groupSortBtn').css('pointer-events', 'all');
                 break;
             case 2:
                 switch (counter) {
@@ -497,6 +505,17 @@ function sortFamily(elem1, kind) {
                         break;
                 }
                 $('.btnWrapper').attr('kind', kind);
+                $('.groupSortBtn').css('pointer-events', 'all');
+                break;
+            case 3:
+                $('.spinnerWrapper').show();
+                $('.btnWrapper').css('opacity', 0);
+                $('.groupSortBtn').css('pointer-events', 'none');
+                showFamily(familyNum);
+                setTimeout(function () {
+                    $('.btnWrapper').css('opacity', 1);
+                    $('.spinnerWrapper').hide();
+                }, 500);
                 break;
         }
 
