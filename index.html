@@ -35,6 +35,10 @@
                         <input type="text" placeholder="Search A Family Member" id="search" aria-label="Search" autocomplete="off" />
                         <span class="focus-border"></span>
                         <img src="images/search.png" alt="search" id="searchImg" onclick="searchMovie();">
+
+                        <div id="searchResults">
+                            
+                        </div>
                     </div>
                 </div>
                 
@@ -58,7 +62,6 @@
                     <button class="ageSortBtn" onclick="sortFamily('birthday', 1)">By Age</button>
                     <button class="calendarSortBtn" onclick="sortFamily('calendar', 1)">By Date</button>
                     <button class="nameSortBtn" onclick="sortFamily('name', 2)">By Name</button>
-                    <button class="groupSortBtn" onclick="sortFamily('group', 3)">By Group</button>
                 </div>
             </div>
             <button class="sortBtn" onclick="sort()">Sort</button>
