@@ -41,7 +41,7 @@ $(document).ready(function (event) {
     }
 
     $('.Xbtn').click(function () {
-        $(this).parent().parent().hide();
+        $(this).parent().parent().fadeOut(150);
     })
 
     setTimeout(function () {
@@ -546,5 +546,5 @@ function removePopup(container) {
 }
 
 function closeCurrentPopup(that) {
-    $($(that)[0].parentElement.parentElement.parentElement).hide();
+    $($(that)[0].parentElement.parentElement.parentElement).fadeOut(150);
 }
