@@ -82,9 +82,17 @@ $(document).ready(function (event) {
                             let pickedName = $(that).find($('.resultName')).html();
                             $.each($('.personWrapper'), function (key, value) {
                                 if (pickedName == $(this).attr('name') || pickedName == $(this).attr('nameHeb')) {
+                                    $('body').css('pointer-events', 'none');
                                     goToDiv($(this).parent());
+                                    let selectedDiv = this;
                                     $('#searchResults').hide();
                                     $('#search').val('');
+                                    console.log(selectedDiv);
+                                    setTimeout(function() {
+                                        console.log(selectedDiv);
+                                        $(selectedDiv).click();
+                                        $('body').css('pointer-events', 'all');
+                                    }, 2000)
                                 }
                             });
                         }
