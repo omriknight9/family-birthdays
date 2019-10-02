@@ -87,9 +87,7 @@ $(document).ready(function (event) {
                                     let selectedDiv = this;
                                     $('#searchResults').hide();
                                     $('#search').val('');
-                                    console.log(selectedDiv);
                                     setTimeout(function() {
-                                        console.log(selectedDiv);
                                         $(selectedDiv).click();
                                         $('body').css('pointer-events', 'all');
                                     }, 2000)
