@@ -83,14 +83,17 @@ $(document).ready(function (event) {
                             $.each($('.personWrapper'), function (key, value) {
                                 if (pickedName == $(this).attr('name') || pickedName == $(this).attr('nameHeb')) {
                                     $('body').css('pointer-events', 'none');
-                                    goToDiv($(this).parent());
+                                    // goToDiv($(this).parent());
                                     let selectedDiv = this;
                                     $('#searchResults').hide();
                                     $('#search').val('');
+
+                                    goToDiv($(this).parent());
+                                    
                                     setTimeout(function() {
                                         $(selectedDiv).click();
                                         $('body').css('pointer-events', 'all');
-                                    }, 2000)
+                                    }, 1500)
                                 }
                             });
                         }
