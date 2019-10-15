@@ -28,7 +28,7 @@ $(document).ready(function (event) {
         setTimeout(function(){
             changeToHeb();
             window.history.pushState('page2', 'Title', 'index.html');
-        }, 500)
+        }, 600)
     }
 
     $('#langBtnHe').click(function () {
