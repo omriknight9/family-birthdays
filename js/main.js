@@ -215,6 +215,9 @@ function buildPeople(div, wrapper, arr) {
             nameToShow = people[i].nameHeb;
         }
 
+        var dateNow = new Date();
+        var yearNow = dateNow.getFullYear();
+
         var date = new Date(people[i].birthday);
         var day = date.getDate();
         var month = date.getMonth() + 1;
@@ -322,9 +325,31 @@ function buildPeople(div, wrapper, arr) {
             alt: 'zodiac img'
         }).appendTo(personWrapper);
 
+        var age = yearNow - yearToShow;
+
         if ($(personWrapper).attr('isParent') == 1) {
             $(personWrapper).appendTo(parentDiv);
+            if ($(personWrapper).attr('gender') == 1) {
+                $(personWrapper).addClass('suit');
+                buildCloths('suitImg', 'suit', 'suit img', personWrapper);
+            } else {
+                buildCloths('dressImg', 'dress', 'dress img', personWrapper);
+            }
+
         } else {
+            if ($(personWrapper).attr('gender') == 1) {
+                if (age < 5) {
+                    buildCloths('babyBoyImg', 'babyBoy', 'baby boy img', personWrapper);
+                } else {
+                    buildCloths('boyImg', 'boy', 'boy img', personWrapper);
+                }
+            } else {
+                if (age < 5) {
+                    buildCloths('babyGirlImg', 'babyGirl', 'baby girl img', personWrapper);
+                } else {
+                    buildCloths('girlImg', 'girl', 'girl img', personWrapper);
+                }
+            }
             $(personWrapper).appendTo(groupWrapper);
         }
 
@@ -368,6 +393,15 @@ function checkAge() {
     $.each($('.personWrapper'), function (key, value) {
         getAge($(this), $(this).attr('birthday'), $(this).attr('calendar'));
     });
+}
+
+function buildCloths(param, img, alt, wrapper) {
+    console.log('buildCloths()');
+    var param = $('<img>', {
+        class: 'clothesImg',
+        src: './images/' + img + '.png',
+        alt: alt
+    }).appendTo(wrapper);
 }
 
 function getAge(div, dateString, calendar) {
