@@ -298,8 +298,10 @@ function buildPeople(div, wrapper, arr) {
 
         if ($(personWrapper).attr('gender') == 1) {
             gender = 'male.png';
+            $(personWrapper).addClass('boy');
         } else {
             gender = 'female.png';
+            $(personWrapper).addClass('girl');
         }
         
         if (lang == 1) {
@@ -321,18 +323,8 @@ function buildPeople(div, wrapper, arr) {
         }).appendTo(personWrapper);
 
         if ($(personWrapper).attr('isParent') == 1) {
-            if ($(personWrapper).attr('gender') == 1) {
-                $(personWrapper).addClass('boy');
-            } else {
-                $(personWrapper).addClass('girl');
-            }
             $(personWrapper).appendTo(parentDiv);
         } else {
-            if ($(personWrapper).attr('gender') == 1) {
-                $(personWrapper).addClass('boy');
-            } else {
-                $(personWrapper).addClass('girl');
-            }
             $(personWrapper).appendTo(groupWrapper);
         }
 
