@@ -24,6 +24,13 @@ $(document).ready(function (event) {
         familyNum = 1;
     }
 
+    if (window.location.href.indexOf("lang=he") > -1) {
+        setTimeout(function(){
+            changeToHeb();
+            window.history.pushState('page2', 'Title', 'index.html');
+        }, 500)
+    }
+
     $('#langBtnHe').click(function () {
         changeToHeb();
     })
@@ -83,7 +90,6 @@ $(document).ready(function (event) {
                             $.each($('.personWrapper'), function (key, value) {
                                 if (pickedName == $(this).attr('name') || pickedName == $(this).attr('nameHeb')) {
                                     $('body').css('pointer-events', 'none');
-                                    // goToDiv($(this).parent());
                                     let selectedDiv = this;
                                     $('#searchResults').hide();
                                     $('#search').val('');
@@ -178,7 +184,6 @@ function buildPeople(div, wrapper, arr) {
     var birthday;
 
     for (var i = 0; i < people.length; i++) {
-
         var groupStr = JSON.stringify(people[i].group);
         var group = groupStr.substring(0, groupStr.indexOf('.'));
 
@@ -190,6 +195,10 @@ function buildPeople(div, wrapper, arr) {
             groupWrapper = $('<div>', {
                 class: "group" + group + ' groupWrapper'
             }).appendTo(wrapper);
+
+            var parentDiv = $('<div>', {
+                class: 'parentDiv'            
+            }).appendTo(groupWrapper);
 
             if (group % 2 == 0) {
                 $(groupWrapper).addClass('evenGroup');
@@ -227,13 +236,13 @@ function buildPeople(div, wrapper, arr) {
         var dateForShow = day + '/' + month + '/' + yearToShow;
 
         var personWrapper = $('<div>', {
-            class: 'personWrapper' ,
+            class: 'personWrapper',
             'birthday': people[i].birthday,
             'name': people[i].name,
             'nameHeb': people[i].nameHeb,
             'group': people[i].group,
             'img': people[i].image,
-            'colorGroup': people[i].colorGroup,
+            'isParent': people[i].parent,
             'gender': people[i].gender,
             'facebook': people[i].facebook,
             'instagram': people[i].instagram,
@@ -283,7 +292,7 @@ function buildPeople(div, wrapper, arr) {
                     $('#personDetails .popupCont').css('background-color', 'pink');
                 }
             }
-        }).appendTo(groupWrapper);
+        })
 
         var gender;
 
@@ -311,10 +320,20 @@ function buildPeople(div, wrapper, arr) {
             alt: 'zodiac img'
         }).appendTo(personWrapper);
 
-        if ($(personWrapper).attr('colorGroup') % 2 == 0) {
-            $(personWrapper).addClass('odd');
+        if ($(personWrapper).attr('isParent') == 1) {
+            if ($(personWrapper).attr('gender') == 1) {
+                $(personWrapper).addClass('boy');
+            } else {
+                $(personWrapper).addClass('girl');
+            }
+            $(personWrapper).appendTo(parentDiv);
         } else {
-            $(personWrapper).addClass('even');
+            if ($(personWrapper).attr('gender') == 1) {
+                $(personWrapper).addClass('boy');
+            } else {
+                $(personWrapper).addClass('girl');
+            }
+            $(personWrapper).appendTo(groupWrapper);
         }
 
         var selectedDate = new Date($(personWrapper).attr('calendar') + '/' + year);
