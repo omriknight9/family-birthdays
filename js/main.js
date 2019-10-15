@@ -396,7 +396,6 @@ function checkAge() {
 }
 
 function buildCloths(param, img, alt, wrapper) {
-    console.log('buildCloths()');
     var param = $('<img>', {
         class: 'clothesImg',
         src: './images/' + img + '.png',
