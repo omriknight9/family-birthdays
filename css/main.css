@@ -128,7 +128,6 @@ h1 {
     margin: auto;
 }
 
-
 button:active {
   box-shadow: 0 5px 5px #666;
   transform: translateY(4px);
@@ -385,6 +384,17 @@ p {
     position: relative;
 }
 
+.parentDiv {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    justify-content: center;
+}
+
 .oddGroup {
     background-image: linear-gradient(-180deg, #3fe09b, #3a47e4);
 }
@@ -413,11 +423,15 @@ p {
     height: 1px;
 }
 
-.odd {
-    background-color: lightgray;
+.girl {
+    background-color: pink;
 }
 
-.even {
+.boy {
+    background-color: lightblue;
+}
+
+.parent {
     background-color: orange;
 }
 
