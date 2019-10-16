@@ -1,13 +1,13 @@
 
-var family = [];
-var counter = 1;
-var familyNum;
-var lang = 1;
+let family = [];
+let counter = 1;
+let familyNum;
+let lang = 1;
 
 var valid;
-var d = new Date();
-var currentYear = d.getFullYear();
-var sortBtnCounter = 1;
+let d = new Date();
+let currentYear = d.getFullYear();
+let sortBtnCounter = 1;
 
 $(document).ready(function (event) {
 
@@ -94,8 +94,12 @@ $(document).ready(function (event) {
                                     $('#searchResults').hide();
                                     $('#search').val('');
 
-                                    goToDiv($(this).parent());
-                                    
+                                    if ($(this).attr('isParent') == 1) {
+                                        goToDiv($(this).parent().parent());
+                                    } else {
+                                        goToDiv($(this).parent());
+                                    }
+
                                     setTimeout(function() {
                                         $(selectedDiv).click();
                                         $('body').css('pointer-events', 'all');
