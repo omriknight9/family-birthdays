@@ -361,15 +361,20 @@ function buildPeople(div, wrapper, arr) {
             $(personWrapper).attr('calendar', $(personWrapper).attr('calendar') + '/' + year);
         }
 
+        
+        var personDetailsWrapper = $('<div>', {
+            class: 'personDetailsWrapper',
+        }).appendTo(personWrapper);
+
         var personName = $('<p>', {
             class: 'personName',
             text: nameToShow
-        }).appendTo(personWrapper);
+        }).appendTo(personDetailsWrapper);
 
         var personBirthday = $('<p>', {
             class: 'personBirthday',
             text: birthday + dateForShow
-        }).appendTo(personWrapper);
+        }).appendTo(personDetailsWrapper);
 
         var personImgWrapper = $('<div>', {
             class: 'personImgWrapper',
@@ -396,8 +401,10 @@ function checkAge() {
 }
 
 function buildCloths(param, img, alt, wrapper) {
+    
     var param = $('<img>', {
         class: 'clothesImg',
+        id: img,
         src: './images/' + img + '.png',
         alt: alt
     }).appendTo(wrapper);
@@ -455,7 +462,7 @@ function getAge(div, dateString, calendar) {
     var personAge = $('<p>', {
         class: 'personAge',
         text: ageText + age
-    }).insertBefore($(div).find($('.personImgWrapper')));
+    }).appendTo($(div).find($('.personDetailsWrapper')));
 
     return age;
 }
