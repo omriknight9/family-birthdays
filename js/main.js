@@ -62,6 +62,7 @@ $(document).ready(function (event) {
             for (let i = 0; i < $(this).length; i++) {
                 let personName;
                 let personNameHeb;
+                let personNameCapital;
 
                 personName = $($(this)[i]).attr('name').toLowerCase();
                 personNameHeb = $($(this)[i]).attr('nameHeb');
@@ -76,7 +77,13 @@ $(document).ready(function (event) {
                     $('#searchResults').show();
                 }
 
-                let personNameCapital = personName[0].toUpperCase() + personName.substr(1);
+                if (lang == 1) {
+                    personNameCapital = personName[0].toUpperCase() + personName.substr(1);
+                } else {
+                    personNameCapital = personNameHeb[0].toUpperCase() + personNameHeb.substr(1);
+                }
+
+
 
                 if (personName.includes(searchValCapitalized) || personName.includes(searchValCapitalized.toLowerCase()) || personNameHeb.includes(searchValCapitalized)) {
                     let result = $('<div>', {
