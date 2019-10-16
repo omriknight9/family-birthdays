@@ -104,6 +104,13 @@ h1 {
     font-size: 1rem;
 }
 
+#animalImg {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    z-index: 3;
+}
+
 .sortContainer {
     display: none;
     width: 100%;
@@ -445,14 +452,6 @@ p {
     z-index: 1;
 }
 
-/* #dress, #girl {
-    opacity: .3;
-}
-
-#girl, #suit {
-    opacity: .2;
-} */
-
 .personWrapper {
     box-shadow: 0 3px 8px 3px #848484;
     border-radius: 5px;
@@ -508,8 +507,6 @@ p {
     bottom: 1.5rem;
     width: 100%;
     text-align: center;
-    /* margin-top: 2rem;
-    margin-bottom: 2rem; */
     z-index: 999;
 }
 
@@ -717,7 +714,15 @@ p {
     }
 }
 
+@media only screen and (max-width: 1100px) {
+    #animalImg {
+        width: 150px;
+        height: 150px;
+    }
+}
+
 @media only screen and (max-width: 1000px) {
+
     .popupCont {
         width: 65%;
     }
@@ -728,6 +733,10 @@ p {
 }
 
 @media only screen and (max-width: 880px) {
+
+    #animalImg {
+        display: none;
+    }
  
     .sortContent {
         width: 90%;
