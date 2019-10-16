@@ -4,7 +4,7 @@
 	{ "name": "David", "nameHeb": "דוד", "birthday": "01/22/1949", "image": "/david.jpg", "facebook": "null", "instagram": "null", "group": 1.1, "gender": 1, "zodiac": "/aquarius.png", "parent": 1},
 	{ "name": "Orna", "nameHeb": "אורנה", "birthday": "05/27/1960", "image": "/orna.jpg", "facebook": "null", "instagram": "null", "group": 1.2, "gender": 2, "zodiac": "/gemini.png", "parent": 1},
 	{ "name": "Ravit", "nameHeb": "רוית", "birthday": "11/06/1983", "image": "/ravit.jpg", "facebook": "/profile.php?id=602088481&ref=br_rs", "instagram": "null", "group": 2.1, "gender": 2, "zodiac": "/scorpio.png", "parent": 1},
-	{ "name": "Aner", "nameHeb": "אנר", "birthday": "11/18/1980", "image": "/aner.jpg", "facebook": "/aner.dascallu", "instagram": "null", "group": 2.2, "gender": 1, "zodiac": "/scorpio.png", "parent": 1},
+	{ "name": "Aner", "nameHeb": "ענר", "birthday": "11/18/1980", "image": "/aner.jpg", "facebook": "/aner.dascallu", "instagram": "null", "group": 2.2, "gender": 1, "zodiac": "/scorpio.png", "parent": 1},
 	{ "name": "Ariel", "nameHeb": "אריאל", "birthday": "07/14/2011", "image": "/ariel.jpg", "facebook": "null", "instagram": "null", "group": 2.3, "gender": 1, "zodiac": "/cancer.png", "parent": 0},
 	{ "name": "Tamar", "nameHeb": "תמר", "birthday": "09/25/2017", "image": "/tamar.jpg", "facebook": "null", "instagram": "null", "group": 2.4, "gender": 2, "zodiac": "/libra.png", "parent": 0},
 	{ "name": "Maor", "nameHeb": "מאור", "birthday": "01/29/1987", "image": "/maor.jpg", "facebook": "/maor.shalev1", "instagram": "/maor_shalev", "group": 3.1, "gender": 1, "zodiac": "/aquarius.png", "parent": 1},
