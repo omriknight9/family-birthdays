@@ -83,8 +83,6 @@ $(document).ready(function (event) {
                     personNameCapital = personNameHeb[0].toUpperCase() + personNameHeb.substr(1);
                 }
 
-
-
                 if (personName.includes(searchValCapitalized) || personName.includes(searchValCapitalized.toLowerCase()) || personNameHeb.includes(searchValCapitalized)) {
                     let result = $('<div>', {
                         class: 'result',
