@@ -4,7 +4,6 @@ let counter = 1;
 let familyNum;
 let lang = 1;
 
-var valid;
 let d = new Date();
 let currentYear = d.getFullYear();
 let sortBtnCounter = 1;
