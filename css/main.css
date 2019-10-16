@@ -437,13 +437,21 @@ p {
 
 .clothesImg {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: .1;
+    opacity: .3;
     z-index: 1;
 }
+
+/* #dress, #girl {
+    opacity: .3;
+}
+
+#girl, #suit {
+    opacity: .2;
+} */
 
 .personWrapper {
     box-shadow: 0 3px 8px 3px #848484;
@@ -457,7 +465,14 @@ p {
     cursor: pointer;
     position: relative;
     width: 20rem;
+    height: 25rem;
     z-index: 2;
+}
+
+.personDetailsWrapper {
+    position: absolute;
+    width: 100%;
+    z-index: 999;
 }
 
 .personWrapper p {
@@ -477,6 +492,7 @@ p {
     top: .5rem;
     right: 1rem;
     width: 30px;
+    z-index: 999;
 }
 
 .zodiacImg {
@@ -484,13 +500,17 @@ p {
     top: .5rem;
     left: 1rem;
     width: 40px;
+    z-index: 999;
 }
 
 .personImgWrapper {
+    position: absolute;
+    bottom: 1.5rem;
     width: 100%;
     text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    /* margin-top: 2rem;
+    margin-bottom: 2rem; */
+    z-index: 999;
 }
 
 .personImg {
@@ -687,6 +707,10 @@ p {
         margin: 1rem;
     }
 
+    .clothesImg {
+        height: 90%;
+    }
+
     .personImg {
         width: 8rem;
         height: 8rem;
@@ -748,9 +772,12 @@ p {
         height: 85px;
     }
 
-
     .personWrapper {
         width: 12rem;
+    }
+
+    #dress {
+        height: 80%;
     }
 }
 
@@ -795,6 +822,14 @@ p {
 }
 
 @media only screen and (max-width: 370px) {
+
+    .clothesImg {
+        height: 80%;
+    }
+
+    #suit {
+        opacity: .15;
+    }
 
     #facebookImage {
         width: 65px;
