@@ -59,17 +59,16 @@ $(document).ready(function (event) {
     $('#search').on('input', function () {
         $('#searchResults').empty();
         $.each($('.personWrapper'), function (key, value) {
-            for (var i = 0; i < $(this).length; i++) {
+            for (let i = 0; i < $(this).length; i++) {
                 let personName;
-                if (lang == 1) {
-                    personName = $($(this)[i]).attr('name').toLowerCase();
-                } else {
-                    personName = $($(this)[i]).attr('nameHeb');
-                }
+                let personNameHeb;
 
-                var personImg = $($(this)[i]).attr('img');
-                var searchVal = $('#search').val();
-                var searchValCapitalized = searchVal.charAt(0).toUpperCase() + searchVal.slice(1);
+                personName = $($(this)[i]).attr('name').toLowerCase();
+                personNameHeb = $($(this)[i]).attr('nameHeb');
+
+                let personImg = $($(this)[i]).attr('img');
+                let searchVal = $('#search').val();
+                let searchValCapitalized = searchVal.charAt(0).toUpperCase() + searchVal.slice(1);
 
                 if (searchVal.length == 0) {
                     $('#searchResults').hide();
@@ -79,7 +78,7 @@ $(document).ready(function (event) {
 
                 let personNameCapital = personName[0].toUpperCase() + personName.substr(1);
 
-                if (personName.includes(searchValCapitalized) || personName.includes(searchValCapitalized.toLowerCase())) {
+                if (personName.includes(searchValCapitalized) || personName.includes(searchValCapitalized.toLowerCase()) || personNameHeb.includes(searchValCapitalized)) {
                     let result = $('<div>', {
                         class: 'result',
                         click: function() {
