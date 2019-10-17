@@ -41,7 +41,9 @@ main {
     top: 0;
     width: 100%;
     height: 10rem;
-    background-color: #EAEAEA;
+    /* background-color: #EAEAEA; */
+    /* background-image: linear-gradient(to right, rgba(0, 200, 180, .95), rgba(200,180,200,.95)); */
+    background-image: linear-gradient(to right, rgba(238, 227, 0, .95), rgba(238,0,0,.95));
     box-shadow: 0 3px 8px 3px #848484;
     transition: .5s;
     -webkit-transition: .5s;
@@ -203,6 +205,10 @@ button:active {
     border-bottom: 1px solid #ccc;
     background: none;
     font-family: Kurale, sans-serif;
+}
+
+#search::placeholder {
+    color: lightgray;
 }
 
 #searchImg {
