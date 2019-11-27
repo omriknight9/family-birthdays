@@ -1,4 +1,4 @@
-﻿function changeToHeb() {
+function changeToHeb() {
 
     lang = 2;
     $('#langBtnHe').css('pointer-events', 'none');
@@ -10,7 +10,7 @@
     $('h1').hide().html('ימי הולדת - משפחה').fadeIn('slow');
     $('#search').hide().attr('placeholder', 'חפש במשפחה').fadeIn('slow');
 
-    $('.sortBtn').hide().html('סדר').fadeIn('slow');
+    $('.sortBtn').hide().html('מיין').fadeIn('slow');
     $('.shalevsBtn').hide().html('משפחת שלו').fadeIn('slow');
     $('.waizingersBtn').hide().html('משפחת ויזינגר').fadeIn('slow');
     $('.alayevsBtn').hide().html('משפחת אלייב').fadeIn('slow');
