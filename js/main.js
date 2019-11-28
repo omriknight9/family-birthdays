@@ -517,6 +517,10 @@ function sortFamily(elem1, kind) {
         $('.container').empty();
     }
 
+    if (lang == 2 && elem1 == 'name') {
+        elem1 = 'nameHeb';
+    }
+
     $.each($('.container'), function (key, value) {
         var ids = [], obj, i, len;
         var children = $(this).find('.personWrapper');
@@ -557,11 +561,12 @@ function sortFamily(elem1, kind) {
                 switch (counter) {
                     case 1:
                         ids.sort(function (a, b) {
-                            if (a.idNum > b.idNum) {
-                                return 1;
-                            } else {
-                                return -1;
-                            }
+                            return a.idNum.localeCompare(b.idNum);
+                            // if (a.idNum > b.idNum) {
+                            //     return 1;
+                            // } else {
+                            //     return -1;
+                            // }
                         });
 
                         counter = 2;
@@ -569,11 +574,12 @@ function sortFamily(elem1, kind) {
 
                     case 2:
                         ids.sort(function (a, b) {
-                            if (a.idNum < b.idNum) {
-                                return 1;
-                            } else {
-                                return -1;
-                            }
+                            return b.idNum.localeCompare(a.idNum);
+                            // if (a.idNum < b.idNum) {
+                            //     return 1;
+                            // } else {
+                            //     return -1;
+                            // }
                         });
                         counter = 1;
                         break;
