@@ -145,6 +145,7 @@ function sort() {
 
 function showFamily(num) {
     $('.container').empty();
+    $('#closestBirth').html('');
     family = [];
     counter = 1;
     $('.btnWrapper').css('opacity', 0);
