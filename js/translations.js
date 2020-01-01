@@ -11,6 +11,7 @@ function changeToHeb() {
     $('#search').hide().attr('placeholder', 'חפש במשפחה').fadeIn('slow');
 
     $('#closestBirth').html('');
+    $('#BirthdayWish').html('');
 
     $('.sortBtn').hide().html('מיין').fadeIn('slow');
     $('.shalevsBtn').hide().html('משפחת שלו').fadeIn('slow');
@@ -54,6 +55,7 @@ function changeToEng() {
     $('#search').hide().attr('placeholder', 'Search A Family Member').fadeIn('slow');
 
     $('#closestBirth').html('');
+    $('#BirthdayWish').html('');
 
     $('.sortBtn').hide().html('Sort').fadeIn('slow');
     $('.shalevsBtn').hide().html('Shalevs').fadeIn('slow');
