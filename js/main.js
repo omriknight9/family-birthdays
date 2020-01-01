@@ -9,6 +9,10 @@ let currentYear = now.getFullYear();
 let sortBtnCounter = 1;
 
 let birthdayArr = [];
+let birthdayToday = false;
+
+let searchVal;
+let lastChar;
 
 $(document).ready(function (event) {
 
@@ -34,10 +38,20 @@ $(document).ready(function (event) {
 
     $('#langBtnHe').click(function () {
         changeToHeb();
+        $('#search').val('');
+        $('#searchResults').hide();
+        if (birthdayToday) {
+            $('.personWrapper').first().remove();
+        }
     })
 
     $('#langBtnEn').click(function () {
         changeToEng();
+        $('#search').val('');
+        $('#searchResults').hide();
+        if (birthdayToday) {
+            $('.personWrapper').first().remove();
+        }
     })
 
     window.onbeforeunload = function () {
@@ -59,79 +73,107 @@ $(document).ready(function (event) {
     }, 1500);
 
     $('#search').on('input', function () {
-        $('#searchResults').empty();
-        $.each($('.personWrapper'), function (key, value) {
-            for (let i = 0; i < $(this).length; i++) {
-                let personName;
-                let personNameHeb;
-                let personNameCapital;
+        searchVal = $('#search').val();
+        lastChar = searchVal.substr(searchVal.length - 1);
 
-                personName = $($(this)[i]).attr('name').toLowerCase();
-                personNameHeb = $($(this)[i]).attr('nameHeb');
+        if (lastChar == ' ') {
+            return; 
+        } else {
+            $('#searchResults').empty();
+            $('#searchResults').hide();
+        }
 
-                let personImg = $($(this)[i]).attr('img');
-                let searchVal = $('#search').val();
-                let searchValCapitalized = searchVal.charAt(0).toUpperCase() + searchVal.slice(1);
-
-                if (searchVal.length == 0) {
-                    $('#searchResults').hide();
-                } else {
-                    $('#searchResults').show();
-                }
-
-                if (lang == 1) {
-                    personNameCapital = personName[0].toUpperCase() + personName.substr(1);
-                } else {
-                    personNameCapital = personNameHeb[0].toUpperCase() + personNameHeb.substr(1);
-                }
-
-                if (personName.includes(searchValCapitalized) || personName.includes(searchValCapitalized.toLowerCase()) || personNameHeb.includes(searchValCapitalized)) {
-                    let result = $('<div>', {
-                        class: 'result',
-                        click: function() {
-
-                            let that = this;
-                            let pickedName = $(that).find($('.resultName')).html();
-                            $.each($('.personWrapper'), function (key, value) {
-                                if (pickedName == $(this).attr('name') || pickedName == $(this).attr('nameHeb')) {
-                                    $('body').css('pointer-events', 'none');
-                                    let selectedDiv = this;
-                                    $('#searchResults').hide();
-                                    $('#search').val('');
-
-                                    if ($(this).attr('isParent') == 1) {
-                                        goToDiv($(this).parent().parent());
-                                    } else {
-                                        goToDiv($(this).parent());
-                                    }
-
-                                    setTimeout(function() {
-                                        $(selectedDiv).click();
-                                        $('body').css('pointer-events', 'all');
-                                    }, 1500)
-                                }
-                            });
-                        }
-                    }).appendTo($('#searchResults'));
-
-                    let resultImgWrapper = $('<div>', {
-                        class: 'resultImgWrapper',
-                    }).appendTo(result);
-
-                    let resultImg = $('<img>', {
-                        class: 'resultImg',
-                        src: './images/people' + personImg
-                    }).appendTo(resultImgWrapper);
-
-                    let resultName = $('<p>', {
-                        class: 'resultName',
-                        text: personNameCapital
-                    }).appendTo(result);
-                }
-            }
+        $.each($('.container .personWrapper'), function (key, value) {
+            let familyNumId = $(value).attr('numId');
+            showResult($(this), familyNumId);
         });
     })
 });
+
+function showResult(that, resultNum) {
+    
+    for (let i = 0; i < $(that).length; i++) {
+        let personName = $($(that)[i]).attr('name').toLowerCase();
+        let personNameHeb = $($(that)[i]).attr('nameHeb');
+        let personNameCapital;
+        let personImg = $($(that)[i]).attr('img');
+        let searchVal = $('#search').val();
+        let searchValCapitalized = searchVal.charAt(0).toUpperCase() + searchVal.slice(1);
+
+        let cap;
+        let serachFinal;
+
+        if (lang == 1) {
+            personNameCapital = personName.toUpperCase();
+        } else {
+            personNameCapital = personNameHeb.toUpperCase();
+        }
+
+        try {
+            if (lang == 1) {
+                cap = capitalize(personName);
+            } else {
+                cap = personNameHeb;
+            }
+            
+            serachFinal = capitalize(searchValCapitalized);
+        } catch (error) {
+            return;
+        }
+    
+        if (cap.includes(serachFinal) || cap.includes(serachFinal.toLowerCase()) || personNameHeb.includes(serachFinal)) {
+            let result = $('<div>', {
+                class: 'result',
+                id: resultNum,
+                click: function() {
+
+                    let that = this;
+                    let pickedId = $(that).attr('id');
+                    $.each($('.container .personWrapper'), function (key, value) {
+
+                        if ($(this).attr('numId') == pickedId) {
+                            $('body').css('pointer-events', 'none');
+                            let selectedDiv = this;
+                            $('#searchResults').hide();
+                            $('#search').val('');
+
+                            if ($(this).attr('isParent') == 1) {
+                                goToDiv($(this).parent().parent());
+                            } else {
+                                goToDiv($(this).parent());
+                            }
+
+                            setTimeout(function() {
+                                $(selectedDiv).click();
+                                $('body').css('pointer-events', 'all');
+                            }, 1500)
+                        }
+                    });
+                }
+            }).appendTo($('#searchResults'));
+
+            let resultImgWrapper = $('<div>', {
+                class: 'resultImgWrapper',
+            }).appendTo(result);
+
+            let resultImg = $('<img>', {
+                class: 'resultImg',
+                src: './images/people' + personImg
+            }).appendTo(resultImgWrapper);
+
+            let resultName = $('<p>', {
+                class: 'resultName',
+                text: cap
+            }).appendTo(result);
+        }
+
+        if (searchVal.length == 0 || $('.result').length < 1 || searchVal == '') {
+            $('#searchResults').hide();
+        } else {
+            $('#searchResults').show();
+        }
+    }
+}
 
 function sort() {
     if (sortBtnCounter == 1) {
@@ -144,6 +186,9 @@ function sort() {
 }
 
 function showFamily(num) {
+    if (birthdayToday) {
+        $('.personWrapper').first().remove();
+    }
     $('.container').empty();
     $('#closestBirth').html('');
     family = [];
@@ -177,7 +222,8 @@ function loadJson(textFile) {
         family.push(JSON.parse(data));
         setTimeout(function () {
             buildPeople('familyWrapper', $('.container'), family);
-            $('body').css('background-color', '#3fe09b');
+            // $('body').css('background-color', '#3fe09b');
+            $('body').css('background-image', 'linear-gradient(180deg,rgba(200, 200, 200, .95), rgba(50,50,50,.95))');
         }, 500);
     });
 }
@@ -251,6 +297,7 @@ function buildPeople(div, wrapper, arr) {
 
         var personWrapper = $('<div>', {
             class: 'personWrapper',
+            'numId': people[i].id,
             'birthday': people[i].birthday,
             'name': people[i].name,
             'nameHeb': people[i].nameHeb,
@@ -309,18 +356,47 @@ function buildPeople(div, wrapper, arr) {
             }
         })
 
-        var gender;
+        let gender;
+        let newDay;
+        let newMonth;
 
         if ($(personWrapper).attr('gender') == 1) {
             gender = 'male.png';
             $(personWrapper).addClass('boy');
-            if (day == dateNow.getDate() && monthNow == month) {
+
+            if (day.toString().charAt(0) == '0') {
+                newDay = day.replace('0', '');
+            } else {
+                newDay = day;
+            }
+
+            if (month.toString().charAt(0) == '0') {
+                newMonth = month.replace('0', '');
+            } else {
+                newMonth = month;
+            }
+
+            if (newDay == now.getDate() && (now.getMonth() + 1) == newMonth) {
                 $(personWrapper).addClass('boyBornToday');
             }
+
         } else {
             gender = 'female.png';
             $(personWrapper).addClass('girl');
-            if (day == dateNow.getDate() && monthNow == month) {
+
+            if (day.toString().charAt(0) == '0') {
+                newDay = day.replace('0', '');
+            } else {
+                newDay = day;
+            }
+
+            if (month.toString().charAt(0) == '0') {
+                newMonth = month.replace('0', '');
+            } else {
+                newMonth = month;
+            }
+
+            if (newDay == now.getDate() && (now.getMonth() + 1) == newMonth) {
                 $(personWrapper).addClass('girlBornToday');
             }
         }
@@ -511,8 +587,9 @@ function buildPeople(div, wrapper, arr) {
 }
 
 function checkClosest() {
-    let year;
+    let year
     birthdayArr = [];
+    
     for (let i = 0; i < $('.groupWrapper .personWrapper').length; i++) {
         let name = $($('.groupWrapper .personWrapper')[i]).attr('name');
         let nameHeb = $($('.groupWrapper .personWrapper')[i]).attr('nameHeb');
@@ -521,7 +598,10 @@ function checkClosest() {
         let gender = $($('.groupWrapper .personWrapper')[i]).attr('gender');
         let date = new Date(now.getFullYear() + '/' + birthdayMonth + '/' + birthdayDay);
 
-        if (date < now) {
+        if (now.getDate() == birthdayDay && now.getMonth() + 1 == birthdayMonth) {
+            year = now.getFullYear();
+            birthdayToday = true;
+        } else if (date < now) {
             year = now.getFullYear() + 1;
         } else {
             year = now.getFullYear();
@@ -539,9 +619,49 @@ function checkClosest() {
         });
 
         if (lang == 1) {
-            $('#closestBirth').html('Closest Birthday: ' + "<span id='birthdayColor'>" + birthdayArr[0].name + "</span>");
+            if (birthdayToday) {
+                $.each($('.personWrapper'), function (key, value) {
+                    if ($(value).attr('name') == birthdayArr[0].name) {
+                        $(value).clone().insertAfter($('#closestBirth'));
+                        $('.personWrapper').first().css('margin', '1rem auto 1rem auto');
+                        let personId = $('.personWrapper').first().attr('numId');
+                        $('.personWrapper').first().click(function() {
+                            goToBirthdayPerson(personId);
+                        })
+                    }
+                });
+                $('#closestBirth').html("It's " + "<span id='birthdayColor'>" + birthdayArr[0].name + "'s" +  "</span>" + " Birthday Today!");
+            } else {
+                $('#closestBirth').html('Closest Birthday: ' + "<span id='birthdayColor'>" + birthdayArr[0].name + "</span>");
+            }
+
         } else {
-            $('#closestBirth').append('החוגג הקרוב: ' + "<span id='birthdayColor'>" + birthdayArr[0].nameHeb + "</span>");
+            if (birthdayToday) {
+                let gender;
+                $.each($('.personWrapper'), function (key, value) {
+                    if ($(value).attr('name') == birthdayArr[0].name) {
+                        $(value).clone().insertAfter($('#closestBirth'));
+                        $('.personWrapper').first().css('margin', '1rem auto 1rem auto');
+                        let personId = $('.personWrapper').first().attr('numId');
+                        $('.personWrapper').first().click(function() {
+                            goToBirthdayPerson(personId);
+                        })
+
+                        if ($(value).attr('gender') == 1) {
+                            gender = 1;
+                        } else {
+                            gender = 2;
+                        }
+                    }
+                });
+                if (gender == 1) {
+                    $('#closestBirth').append("<span id='birthdayColor'>" + birthdayArr[0].nameHeb + "</span>" + " חוגג היום!");
+                } else {
+                    $('#closestBirth').append("<span id='birthdayColor'>" + birthdayArr[0].nameHeb + "</span>" + " חוגגת היום!");
+                }
+            } else {
+                $('#closestBirth').append('החוגג הקרוב: ' + "<span id='birthdayColor'>" + birthdayArr[0].nameHeb + "</span>");
+            }
         }
 
         if (birthdayArr[0].gender == 1) {
@@ -551,6 +671,15 @@ function checkClosest() {
         }
 
     }, 1000);
+}
+
+function goToBirthdayPerson(id) {
+    
+    $.each($('.container .personWrapper'), function (key, value) {
+        if ($(value).attr('numId') == id) {
+            $(value).click();
+        }
+    });
 }
 
 function checkAge() {
@@ -733,6 +862,12 @@ function sortFamily(elem1, kind) {
                 $('.groupSortBtn').css('pointer-events', 'all');
                 break;
             case 3:
+                $('#closestBirth').html('');
+                if (birthdayToday) {
+                    $('.personWrapper').first().remove();
+                }
+                
+                $('body').css('background-image', 'unset');
                 $('.spinnerWrapper').show();
                 $('.btnWrapper').css('opacity', 0);
                 $('.groupSortBtn').css('pointer-events', 'none');
@@ -766,4 +901,13 @@ function removePopup(container) {
 
 function closeCurrentPopup(that) {
     $($(that)[0].parentElement.parentElement.parentElement).fadeOut(150);
+}
+
+function capitalize(str) {
+    str = str.split(' ');
+    for (let i = 0; i < str.length; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+
+    return str.join(" ");
 }
