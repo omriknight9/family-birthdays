@@ -106,13 +106,6 @@ h1 {
     font-size: 1rem;
 }
 
-#animalImg {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    z-index: 3;
-}
-
 .sortContainer {
     display: none;
     width: 100%;
@@ -373,6 +366,14 @@ h2 {
 p {
     width: 100%;
     text-align: center;
+}
+
+#closestBirth {
+    font-size: 1.5rem;
+}
+
+#birthdayColor {
+    text-shadow: 1px 1px 6px black;
 }
 
 .container {
@@ -730,13 +731,6 @@ p {
     }
 }
 
-@media only screen and (max-width: 1100px) {
-    #animalImg {
-        width: 150px;
-        height: 150px;
-    }
-}
-
 @media only screen and (max-width: 1000px) {
 
     .popupCont {
@@ -749,10 +743,6 @@ p {
 }
 
 @media only screen and (max-width: 880px) {
-
-    #animalImg {
-        display: none;
-    }
  
     .sortContent {
         width: 90%;
