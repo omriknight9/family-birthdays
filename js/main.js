@@ -597,6 +597,7 @@ function checkClosest() {
         let birthdayDay = $($('.groupWrapper .personWrapper')[i]).attr('day');
         let birthdayMonth = $($('.groupWrapper .personWrapper')[i]).attr('month');
         let gender = $($('.groupWrapper .personWrapper')[i]).attr('gender');
+        let img = $($('.groupWrapper .personWrapper')[i]).attr('img');
         let date = new Date(now.getFullYear() + '/' + birthdayMonth + '/' + birthdayDay);
 
         if (now.getDate() == birthdayDay && now.getMonth() + 1 == birthdayMonth) {
@@ -609,7 +610,7 @@ function checkClosest() {
         }
         
         let finalDate = new Date(year + '/' + birthdayMonth + '/' + birthdayDay);
-        birthdayArr.push({'name': name, gender: gender, 'nameHeb': nameHeb, date: finalDate});
+        birthdayArr.push({name: name, gender: gender, nameHeb: nameHeb, date: finalDate, img: img});
     }
     setTimeout(function() {
 
@@ -650,6 +651,33 @@ function checkClosest() {
                 
             } else {
                 $('#closestBirth').html('Closest Birthday: ' + "<span id='birthdayColor'>" + birthdayArr[0].name + "</span>");
+                if ($(window).width() > 765) {
+                    $('#closestBirth').mouseenter(function () {
+                        if (!$('#searchResults').is(':visible')) {
+                            let hoverImgContainer = $('<div>', {
+                                class: 'hoverImgContainer',
+                            }).hide().appendTo($('#closestBirth')).fadeIn();
+                            
+                            let hoverImgWrapper = $('<div>', {
+                                class: 'hoverImgWrapper',
+                            }).appendTo(hoverImgContainer);
+            
+                            let hoverImg = $('<img>', {
+                                class: 'hoverImg',
+                                src: './images/people' + birthdayArr[0].img
+                            }).appendTo(hoverImgWrapper)
+                        }
+                    });
+                 
+                    $('#closestBirth').mouseleave(function () {
+                        $('.hoverImgContainer').fadeOut(400);
+                        $('#closestBirth').css('pointer-events', 'none');
+                        setTimeout(function() {
+                            $('.hoverImgContainer').remove();
+                            $('#closestBirth').css('pointer-events', 'all');
+                        }, 600);
+                    }).mouseleave()
+                }
             }
 
         } else {
@@ -682,6 +710,33 @@ function checkClosest() {
                 }
             } else {
                 $('#closestBirth').html('החוגג הקרוב: ' + "<span id='birthdayColor'>" + birthdayArr[0].nameHeb + "</span>");
+                if ($(window).width() > 765) {
+                    $('#closestBirth').mouseenter(function () {
+                        if (!$('#searchResults').is(':visible')) {
+                            let hoverImgContainer = $('<div>', {
+                                class: 'hoverImgContainer',
+                            }).hide().appendTo($('#closestBirth')).fadeIn();
+                            
+                            let hoverImgWrapper = $('<div>', {
+                                class: 'hoverImgWrapper',
+                            }).appendTo(hoverImgContainer);
+            
+                            let hoverImg = $('<img>', {
+                                class: 'hoverImg',
+                                src: './images/people' + birthdayArr[0].img
+                            }).appendTo(hoverImgWrapper)
+                        }
+                    });
+                 
+                    $('#closestBirth').mouseleave(function () {
+                        $('.hoverImgContainer').fadeOut(400);
+                        $('#closestBirth').css('pointer-events', 'none');
+                        setTimeout(function() {
+                            $('.hoverImgContainer').remove();
+                            $('#closestBirth').css('pointer-events', 'all');
+                        }, 600);
+                    }).mouseleave()
+                }
             }
         }
 
