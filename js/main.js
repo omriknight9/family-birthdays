@@ -194,6 +194,7 @@ function showFamily(num) {
     $('#BirthdayWish').html('');
     family = [];
     counter = 1;
+    birthdayToday = false;
     $('.btnWrapper').css('opacity', 0);
     $('.spinnerWrapper').show();
 
