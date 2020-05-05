@@ -224,7 +224,6 @@ function loadJson(textFile) {
         family.push(JSON.parse(data));
         setTimeout(function () {
             buildPeople('familyWrapper', $('.container'), family);
-            // $('body').css('background-color', '#3fe09b');
             $('body').css('background-image', 'linear-gradient(180deg,rgba(200, 200, 200, .95), rgba(50,50,50,.95))');
         }, 500);
     });
@@ -588,7 +587,7 @@ function buildPeople(div, wrapper, arr) {
 }
 
 function checkClosest() {
-    let year
+    let year;
     birthdayArr = [];
     
     for (let i = 0; i < $('.groupWrapper .personWrapper').length; i++) {
@@ -609,9 +608,10 @@ function checkClosest() {
             year = now.getFullYear();
         }
         
-        let finalDate = new Date(year + '/' + birthdayMonth + '/' + birthdayDay);
+        var finalDate = new Date(year + '/' + birthdayMonth + '/' + birthdayDay);
         birthdayArr.push({name: name, gender: gender, nameHeb: nameHeb, date: finalDate, img: img});
     }
+    
     setTimeout(function() {
 
         birthdayArr.sort(function(a, b) {
@@ -623,18 +623,8 @@ function checkClosest() {
         if (lang == 1) {
             let gender;
             if (birthdayToday) {
-
                 $.each($('.personWrapper'), function (key, value) {
-                    if ($(value).attr('name') == birthdayArr[0].name) {
-                        $(value).clone().appendTo($('#birthdayToday'));
-                        if ($(value).attr('gender') == 1) {
-                            gender = 1;
-                        } else {
-                            gender = 2;
-                        }
-                    }
-
-                    if ($(value).attr('name') == birthdayArr[1].name) {
+                    if ($(value).attr('month') == now.getMonth() + 1 && $(value).attr('day') == now.getDate()) {
                         $(value).clone().appendTo($('#birthdayToday'));
                         if ($(value).attr('gender') == 1) {
                             gender = 1;
@@ -744,19 +734,8 @@ function checkClosest() {
         } else {
             let gender;
             if (birthdayToday) {
-                
                 $.each($('.personWrapper'), function (key, value) {
-                    if ($(value).attr('name') == birthdayArr[0].name) {
-                        $(value).clone().appendTo($('#birthdayToday'));
-
-                        if ($(value).attr('gender') == 1) {
-                            gender = 1;
-                        } else {
-                            gender = 2;
-                        }
-                    }
-                
-                    if ($(value).attr('name') == birthdayArr[1].name) {
+                    if ($(value).attr('month') == now.getMonth() + 1 && $(value).attr('day') == now.getDate()) {
                         $(value).clone().appendTo($('#birthdayToday'));
                         if ($(value).attr('gender') == 1) {
                             gender = 1;
@@ -918,7 +897,6 @@ function getAge(div, dateString, calendar) {
             $(div).attr('nextBirthday', daysHeb[calendarBirthday.getDay()]);
         }
     }
-
 
     if (age == 0) {
 
