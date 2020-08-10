@@ -1,22 +1,21 @@
 function changeToHeb() {
+    $('#birthdayToday').empty();
+    $('.closestBirth').remove();
 
     lang = 2;
     $('#langBtnHe').css('pointer-events', 'none');
     $('#langBtnEn').css('pointer-events', 'all');
 
     $("head").append("<link rel='stylesheet' type='text/css' href='css/main_he.css' id='hebCss'/>");
-    $('title').html('ימי הולדת - משפחה');
+    $('title').html('ימי הולדת - חברים');
 
-    $('h1').hide().html('ימי הולדת - משפחה').fadeIn('slow');
-    $('#search').hide().attr('placeholder', 'חפש במשפחה').fadeIn('slow');
+    $('h1').hide().html('ימי הולדת - חברים').fadeIn('slow');
+    $('#search').hide().attr('placeholder', 'חפש בחברים').fadeIn('slow');
 
     $('#closestBirth').html('');
     $('#BirthdayWish').html('');
 
     $('.sortBtn').hide().html('מיין').fadeIn('slow');
-    $('.shalevsBtn').hide().html('משפחת שלו').fadeIn('slow');
-    $('.waizingersBtn').hide().html('משפחת ויזינגר').fadeIn('slow');
-    $('.alayevsBtn').hide().html('משפחת אלייב').fadeIn('slow');
 
     $('.ageSortBtn').hide().html('לפי גיל').fadeIn('slow');
     $('.nameSortBtn').hide().html('לפי שם').fadeIn('slow');
@@ -30,37 +29,26 @@ function changeToHeb() {
 
     $('.popupBtn').hide().html('סגור').fadeIn('slow');
 
-
-    switch (familyNum) {
-        case 1:
-            showFamily(1);
-            break;
-        case 2:
-            showFamily(2);
-            break;
-        case 3:
-            showFamily(3);
-            break;
-    }
+    showFriends();
 }
 
 function changeToEng() {
+    $('#birthdayToday').empty();
+    $('.closestBirth').remove();
+    
     lang = 1;
     $('#langBtnEn').css('pointer-events', 'none');
     $('#langBtnHe').css('pointer-events', 'all');
 
     $('#hebCss').remove();
-    $('title').html('Family Birthdays');
-    $('h1').hide().html('Family Birthdays').fadeIn('slow');
-    $('#search').hide().attr('placeholder', 'Search A Family Member').fadeIn('slow');
+    $('title').html('Friends Birthdays');
+    $('h1').hide().html('Friends Birthdays').fadeIn('slow');
+    $('#search').hide().attr('placeholder', 'Search A Friend').fadeIn('slow');
 
     $('#closestBirth').html('');
     $('#BirthdayWish').html('');
 
     $('.sortBtn').hide().html('Sort').fadeIn('slow');
-    $('.shalevsBtn').hide().html('Shalevs').fadeIn('slow');
-    $('.waizingersBtn').hide().html('Waizingers').fadeIn('slow');
-    $('.alayevsBtn').hide().html('Alayevs').fadeIn('slow');
 
     $('.ageSortBtn').hide().html('By Age').fadeIn('slow');
     $('.nameSortBtn').hide().html('By Name').fadeIn('slow');
@@ -74,15 +62,5 @@ function changeToEng() {
 
     $('.popupBtn').hide().html('Close').fadeIn('slow');
 
-    switch (familyNum) {
-        case 1:
-            showFamily(1);
-            break;
-        case 2:
-            showFamily(2);
-            break;
-        case 3:
-            showFamily(3);
-            break;
-    }
+    showFriends();
 }
