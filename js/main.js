@@ -14,6 +14,8 @@ let birthdayToday = false;
 let searchVal;
 let lastChar;
 
+const hebCalendarUrl = 'https://www.hebcal.com/converter?cfg=json';
+
 $(document).ready(function (event) {
 
     if (window.location.href.indexOf("shalevs") > -1) {
@@ -310,6 +312,7 @@ function buildPeople(div, wrapper, arr) {
             'facebook': people[i].facebook,
             'instagram': people[i].instagram,
             'calendar': calendar,
+            'year': yearToShow,
             click: function () {
 
                 if ($(this).attr('facebook') == 'null') {
@@ -346,6 +349,16 @@ function buildPeople(div, wrapper, arr) {
                     $('.location').html('הבית של ' + $(this).attr('nameHeb'));
                     $('.nextBirthday').html('היומולדת הבא יהיה ביום ' + $(this).attr('nextBirthday'));
                 }
+
+                $('.hebBirthday').html('');
+
+                $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1`, function (data) {
+                    $('.hebBirthday').html(data.hebrew);
+                });
+
+                $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1&gs=on`, function (data) {
+                    $('.hebBirthday').append('/' + data.hebrew);
+                });
 
                 $('#personDetails').fadeIn(150);
 
@@ -635,6 +648,9 @@ function checkClosest() {
                 });
 
                 $.each($('#birthdayToday .personWrapper'), function (key, value) {
+
+                    $('.closestBirth').remove();
+
                     let closest = $('<p>',{
                         class: 'closestBirth',
                         text: "It's "
@@ -786,6 +802,8 @@ function checkClosest() {
                 });
 
             } else {
+
+                $('.closestBirth').remove();
 
                 let closest = $('<p>',{
                     class: 'closestBirth',
