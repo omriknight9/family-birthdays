@@ -11,7 +11,7 @@ body {
     font-family: 'David Libre', serif;
 }
 
-.container, #search, #closestBirth {
+.container, #search, .closestBirth {
     direction: rtl;
 }
 
@@ -25,7 +25,7 @@ body {
 }
 
 .hoverImgWrapper {
-    background: url(../images/‏‏thoughtHeb.png) center center no-repeat;
+    background: url(../images/‏‏thoughtHeb.webp) center center no-repeat;
     background-size: 15rem 15rem;
     right: unset;
     left: 0;  
