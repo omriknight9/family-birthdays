@@ -649,8 +649,6 @@ function checkClosest() {
 
                 $.each($('#birthdayToday .personWrapper'), function (key, value) {
 
-                    $('.closestBirth').remove();
-
                     let closest = $('<p>',{
                         class: 'closestBirth',
                         text: "It's "
@@ -802,8 +800,6 @@ function checkClosest() {
                 });
 
             } else {
-
-                $('.closestBirth').remove();
 
                 let closest = $('<p>',{
                     class: 'closestBirth',
