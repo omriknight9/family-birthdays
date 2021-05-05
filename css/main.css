@@ -734,6 +734,17 @@ p {
     font-size: 1.2rem;
 }
 
+.hebBirthday {
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 4rem;
+    color: white;
+    text-shadow: 1px 1px 6px black;
+    z-index: 3;
+    font-size: 1.2rem;
+}
+
 .checkBirthdayWrapper {
     width: 100%;
     position: absolute;
