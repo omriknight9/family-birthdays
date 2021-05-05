@@ -244,6 +244,7 @@ function buildPeople(div, wrapper, arr) {
     var date = new Date();
     var year = date.getFullYear();
     var birthday;
+    let deathday;
 
     for (var i = 0; i < people.length; i++) {
         var groupStr = JSON.stringify(people[i].group);
@@ -298,8 +299,26 @@ function buildPeople(div, wrapper, arr) {
             month = month;
         }
 
-        var calendar = month + '/' + day;
+        var deathdate = new Date(people[i].deathDate);
+        var deathDayForShow = deathdate.getDate();
+        var deathMonth = deathdate.getMonth() + 1;
+        var deathYear = deathdate.getFullYear();
+
+        if (deathDayForShow < 10) {
+            deathDayForShow = '0' + deathDayForShow
+        } else {
+            deathDayForShow = deathDayForShow;
+        }
+
+        if (deathMonth < 10) {
+            deathMonth = '0' + deathMonth
+        } else {
+            deathMonth = deathMonth;
+        }
+
+        var calendar = month + '/' + day;;
         var dateForShow = day + '/' + month + '/' + yearToShow;
+        var deathdDateForShow = deathDayForShow + '/' + deathMonth + '/' + deathYear;
 
         var personWrapper = $('<div>', {
             class: 'personWrapper',
@@ -316,6 +335,7 @@ function buildPeople(div, wrapper, arr) {
             'instagram': people[i].instagram,
             'calendar': calendar,
             'year': yearToShow,
+            'deathDate': people[i].deathDate,
             'afterSunset': people[i].afterSunset,
             click: function () {
 
@@ -433,8 +453,14 @@ function buildPeople(div, wrapper, arr) {
         }
         
         if (lang == 1) {
+        if (people[i].deathDate !== 'null') {
+            deathday = 'Death Date: '
+        }
             birthday = 'Birthday: ';
         } else {
+            if (people[i].deathDate !== 'null') {
+                deathday = 'תאריך פטירה: '
+            }
             birthday = 'יומולדת: '
         }
 
@@ -597,6 +623,13 @@ function buildPeople(div, wrapper, arr) {
             text: birthday + dateForShow
         }).appendTo(personDetailsWrapper);
 
+        if (people[i].deathDate !== 'null') {
+            var personDeathDay = $('<p>', {
+                class: 'personDeathDay',
+                text: deathday + deathdDateForShow
+            }).appendTo(personDetailsWrapper);
+        }
+
         var personImgWrapper = $('<div>', {
             class: 'personImgWrapper',
         }).appendTo(personWrapper);
@@ -621,6 +654,7 @@ function checkClosest() {
     birthdayArr = [];
     
     for (let i = 0; i < $('.groupWrapper .personWrapper').length; i++) {
+
         let name = $($('.groupWrapper .personWrapper')[i]).attr('name');
         let nameHeb = $($('.groupWrapper .personWrapper')[i]).attr('nameHeb');
         let birthdayDay = $($('.groupWrapper .personWrapper')[i]).attr('day');
@@ -639,7 +673,10 @@ function checkClosest() {
         }
         
         var finalDate = new Date(year + '/' + birthdayMonth + '/' + birthdayDay);
-        birthdayArr.push({name: name, gender: gender, nameHeb: nameHeb, date: finalDate, img: img});
+
+        if ($($('.groupWrapper .personWrapper')[i]).attr('deathDate') == 'null') {
+            birthdayArr.push({name: name, gender: gender, nameHeb: nameHeb, date: finalDate, img: img});
+        }
     }
     
     setTimeout(function() {
@@ -864,12 +901,6 @@ function checkClosest() {
             }
         }
 
-        // if (birthdayArr[0].gender == 1) {
-        //     $('.birthdayColor').css('color', 'lightblue');
-        // } else {
-        //     $('.birthdayColor').css('color', 'pink');
-        // }
-
     }, 1000);
 }
 
@@ -884,7 +915,11 @@ function goToBirthdayPerson(id) {
 
 function checkAge() {
     $.each($('.personWrapper'), function (key, value) {
-        getAge($(this), $(this).attr('birthday'), $(this).attr('calendar'));
+        if ($(value).attr('deathDate') == 'null') {
+            getAge($(value), $(value).attr('birthday'), $(value).attr('calendar'));
+        } else {
+            getDeathAge($(value), $(value).attr('deathdate'), $(value).attr('birthday'));
+        }
     });
 }
 
@@ -896,6 +931,25 @@ function buildCloths(param, img, alt, wrapper) {
         src: './images/' + img + '.webp',
         alt: alt
     }).appendTo(wrapper);
+}
+
+function getDeathAge(div, death, birth) {
+    var deathDate = new Date(death);
+    var birthDate = new Date(birth);
+    var age = deathDate.getFullYear() - birthDate.getFullYear();
+    var m = deathDate.getMonth() - birthDate.getMonth();
+    var ageText;
+
+    if (lang == 1) {
+        ageText = 'Died: ' + age;
+    } else {
+        ageText = ' נפטר בגיל: ' + age;
+    }
+
+    var personAge = $('<p>', {
+        class: 'personAge',
+        text: ageText
+    }).appendTo($(div).find($('.personDetailsWrapper')));
 }
 
 function getAge(div, dateString, calendar) {
