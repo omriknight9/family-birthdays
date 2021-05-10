@@ -4,7 +4,7 @@ let counter = 1;
 let familyNum;
 let lang = 1;
 
-let now = new Date();
+let now = new Date()
 let currentYear = now.getFullYear();
 let sortBtnCounter = 1;
 
@@ -824,10 +824,21 @@ function checkClosest() {
                         text: birthdayArr[key].nameHeb
 
                     }).appendTo(closest);
- 
+
+                    let celebrateText;
+                    let wishText;
+
+                    if ($(value).attr('gender') == 1) {
+                        celebrateText = ' חוגג היום!';
+                        wishText = 'אחל/י לו יום הולדת שמח';
+                    } else {
+                        celebrateText = ' חוגגת היום!';
+                        wishText = 'אחל/י לה יום הולדת שמח';
+                    }
+                    
                     let closestSpan = $('<span>',{
                         class: 'closestSpan',
-                        text: ' חוגג היום!'
+                        text: celebrateText
                     }).appendTo(closest);
 
                     let birthdayWish = $('<p>', {
@@ -838,7 +849,7 @@ function checkClosest() {
                         let facebookTest = $('<a>', {
                             href: 'https://www.facebook.com' + $(value).attr('facebook'),
                             target: '_blank',
-                            text: 'אחל/י לו יום הולדת שמח'
+                            text: wishText
                         }).appendTo(birthdayWish);
                     }
 
