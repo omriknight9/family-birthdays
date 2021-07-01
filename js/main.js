@@ -16,7 +16,7 @@ let lastChar;
 
 const hebCalendarUrl = 'https://www.hebcal.com/converter?cfg=json';
 
-$(document).ready(function (event) {
+$(document).ready(() => {
 
     if (window.location.href.indexOf("shalevs") > -1) {
         loadJson('./lists/shalevs.txt');
@@ -32,35 +32,17 @@ $(document).ready(function (event) {
     }
 
     if (window.location.href.indexOf("lang=he") > -1) {
-        setTimeout(function(){
-            changeToHeb();
+        setTimeout(() => {
+            changeToHeb(2);
             window.history.pushState('page2', 'Title', 'index.html');
         }, 600)
     }
 
-    $('#langBtnHe').click(function () {
-        changeToHeb();
-        $('#search').val('');
-        $('#searchResults').hide();
-        if (birthdayToday) {
-            $('.personWrapper').first().remove();
-        }
-    })
-
-    $('#langBtnEn').click(function () {
-        changeToEng();
-        $('#search').val('');
-        $('#searchResults').hide();
-        if (birthdayToday) {
-            $('.personWrapper').first().remove();
-        }
-    })
-
-    window.onbeforeunload = function () {
+    window.onbeforeunload = () => {
         window.scrollTo(0, 0);
     }
 
-    window.onscroll = function () {
+    window.onscroll = () => {
         scrollBtn();
     }
 
@@ -68,13 +50,13 @@ $(document).ready(function (event) {
         $(this).parent().parent().fadeOut(150);
     })
 
-    setTimeout(function () {
+    setTimeout(() => {
         $('.spinnerWrapper').hide();
         $('.searchContainer').show();
         $('.btnWrapper').css('opacity', 1);
     }, 1500);
 
-    $('#search').on('input', function () {
+    $('#search').on('input', () => {
         searchVal = $('#search').val();
         lastChar = searchVal.substr(searchVal.length - 1);
 
@@ -92,7 +74,32 @@ $(document).ready(function (event) {
     })
 });
 
-function showResult(that, resultNum) {
+const menuItemClicked = (type) => {
+    switch (type) {
+        case 1:
+            changeToEng();
+            $('#search').val('');
+            $('#searchResults').hide();
+            if (birthdayToday) {
+                $('.personWrapper').first().remove();
+            }
+
+            break;
+        case 2:
+            changeToHeb(1);
+            $('#search').val('');
+            $('#searchResults').hide();
+            if (birthdayToday) {
+                $('.personWrapper').first().remove();
+            }
+            break;
+    
+        default:
+            break;
+    }
+} 
+
+const showResult = (that, resultNum) => {
     
     for (let i = 0; i < $(that).length; i++) {
         let personName = $($(that)[i]).attr('name').toLowerCase();
@@ -128,7 +135,6 @@ function showResult(that, resultNum) {
                 class: 'result',
                 id: resultNum,
                 click: function() {
-
                     let that = this;
                     let pickedId = $(that).attr('id');
                     $.each($('.container .personWrapper'), function (key, value) {
@@ -148,7 +154,7 @@ function showResult(that, resultNum) {
                             setTimeout(function() {
                                 $(selectedDiv).click();
                                 $('body').css('pointer-events', 'all');
-                            }, 1500)
+                            }, 500)
                         }
                     });
                 }
@@ -177,7 +183,7 @@ function showResult(that, resultNum) {
     }
 }
 
-function sort() {
+const sort = () => {
     if (sortBtnCounter == 1) {
         $('.sortContainer').fadeIn('fast');
         sortBtnCounter = 2;
@@ -187,8 +193,13 @@ function sort() {
     }
 }
 
-function showFamily(num) {
+const showFamily = (num, type) => {
 
+    if (familyNum == num && type == 1) {
+        return;
+    }
+    
+    $('.familyLi').css({'pointer-events': 'all', 'opacity': '1'});
     $('.closestBirth, .birthdayWish').remove();
 
     if (birthdayToday) {
@@ -203,18 +214,21 @@ function showFamily(num) {
     $('.btnWrapper').css('opacity', 0);
     $('.spinnerWrapper').show();
 
-    setTimeout(function () {
+    setTimeout(() => {
         switch (num) {
             case 1:
                 loadJson('./lists/shalevs.txt');
+                $('#shalevsLi').css({'pointer-events': 'none', 'opacity': '.7'});
                 familyNum = 1;
                 break;
             case 2:
                 loadJson('./lists/waizingers.txt');
+                $('#waizingersLi').css({'pointer-events': 'none', 'opacity': '.7'});
                 familyNum = 2;
                 break;
             case 3:
                 loadJson('./lists/alayevs.txt');
+                $('#alayevsLi').css({'pointer-events': 'none', 'opacity': '.7'});
                 familyNum = 3;
                 break;
         }
@@ -224,53 +238,42 @@ function showFamily(num) {
     sortBtnCounter = 1
 }
 
-function loadJson(textFile) {
-    $.get(textFile, function (data) {
+const loadJson = (textFile) => {
+    $.get(textFile, (data) => {
         family.push(JSON.parse(data));
-        setTimeout(function () {
-            buildPeople('familyWrapper', $('.container'), family);
-            $('body').css('background-image', 'linear-gradient(180deg,rgba(200, 200, 200, .95), rgba(50,50,50,.95))');
+        setTimeout(() => {
+            buildPeople($('.container'), family);
         }, 500);
     });
 }
 
-function goToDiv(div) {
-    $('html, body').animate({ scrollTop: $(div).position().top -170 }, 1500);
+const goToDiv = (div) => {
+    $('html, body').animate({ scrollTop: $(div).position().top -170 }, 500);
 }
 
-function buildPeople(div, wrapper, arr) {
+const buildPeople = (wrapper, arr) => {
 
-    var people = arr[0].family;
-    var date = new Date();
-    var year = date.getFullYear();
-    var birthday;
+    let people = arr[0].family;
+    let date = new Date();
+    let year = date.getFullYear();
+    let birthday;
     let deathday;
 
-    for (var i = 0; i < people.length; i++) {
-        var groupStr = JSON.stringify(people[i].group);
-        var group = groupStr.substring(0, groupStr.indexOf('.'));
+    let peopleGroupArr = [];
 
-        var groupWrapper;
-
-        if ($(groupWrapper).hasClass("group" + group)) {
-
-        } else {
-            groupWrapper = $('<div>', {
-                class: "group" + group + ' groupWrapper'
+    for (let i = 0; i < people.length; i++) {
+        if (!peopleGroupArr.includes(people[i].group)) {
+            peopleGroupArr.push(people[i].group);
+            var groupWrapper = $('<div>', {
+                class: 'groupWrapper'
             }).appendTo(wrapper);
 
             var parentDiv = $('<div>', {
                 class: 'parentDiv'            
             }).appendTo(groupWrapper);
-
-            if (group % 2 == 0) {
-                $(groupWrapper).addClass('evenGroup');
-            } else {
-                $(groupWrapper).addClass('oddGroup');
-            }
         }
 
-        var nameToShow;
+        let nameToShow;
 
         if (lang == 1) {
             nameToShow = people[i].name;
@@ -278,14 +281,13 @@ function buildPeople(div, wrapper, arr) {
             nameToShow = people[i].nameHeb;
         }
 
-        var dateNow = new Date();
-        var monthNow = dateNow.getMonth() + 1;
-        var yearNow = dateNow.getFullYear();
+        let dateNow = new Date();
+        let yearNow = dateNow.getFullYear();
 
-        var date = new Date(people[i].birthday);
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var yearToShow = date.getFullYear();
+        let date2 = new Date(people[i].birthday);
+        let day = date2.getDate();
+        let month = date2.getMonth() + 1;
+        let yearToShow = date2.getFullYear();
 
         if (day < 10) {
             day = '0' + day
@@ -299,10 +301,10 @@ function buildPeople(div, wrapper, arr) {
             month = month;
         }
 
-        var deathdate = new Date(people[i].deathDate);
-        var deathDayForShow = deathdate.getDate();
-        var deathMonth = deathdate.getMonth() + 1;
-        var deathYear = deathdate.getFullYear();
+        let deathdate = new Date(people[i].deathDate);
+        let deathDayForShow = deathdate.getDate();
+        let deathMonth = deathdate.getMonth() + 1;
+        let deathYear = deathdate.getFullYear();
 
         if (deathDayForShow < 10) {
             deathDayForShow = '0' + deathDayForShow
@@ -316,11 +318,11 @@ function buildPeople(div, wrapper, arr) {
             deathMonth = deathMonth;
         }
 
-        var calendar = month + '/' + day;;
-        var dateForShow = day + '/' + month + '/' + yearToShow;
-        var deathdDateForShow = deathDayForShow + '/' + deathMonth + '/' + deathYear;
+        let calendar = month + '/' + day;;
+        let dateForShow = day + '/' + month + '/' + yearToShow;
+        let deathdDateForShow = deathDayForShow + '/' + deathMonth + '/' + deathYear;
 
-        var personWrapper = $('<div>', {
+        let personWrapper = $('<div>', {
             class: 'personWrapper',
             'numId': people[i].id,
             'birthday': people[i].birthday,
@@ -365,36 +367,48 @@ function buildPeople(div, wrapper, arr) {
                 $('.start').html($(this).attr('calendar') + '08:00 AM');
                 $('.end').html($(this).attr('calendar') + '10:00 AM');
                 if (lang == 1) {
+                    if ($(this).attr('deathDate') == "null") {
+                        $('.nextBirthday').html('Next Birthday Will Be On ' + $(this).attr('nextBirthday')).show();
+                    } else {
+                        $('.nextBirthday').hide();
+                    }
                     $('.title').html($(this).attr('name') + "'s Birthday");
                     $('.location').html($(this).attr('name') + "'s Home");
-                    $('.nextBirthday').html('Next Birthday Will Be On ' + $(this).attr('nextBirthday'));
+
                 } else {
+                    if ($(this).attr('deathDate') == "null") {
+                        $('.nextBirthday').html('Next Birthday Will Be On ' + $(this).attr('nextBirthday')).show();
+                    } else {
+                        $('.nextBirthday').hide();
+                    }
                     $('.title').html('יומולדת ל' + $(this).attr('nameHeb'));
                     $('.location').html('הבית של ' + $(this).attr('nameHeb'));
-                    $('.nextBirthday').html('היומולדת הבא יהיה ביום ' + $(this).attr('nextBirthday'));
                 }
 
                 $('.hebBirthday').html('');
 
-                switch($(this).attr('afterSunset')) {
-                    case 'true':
-                        $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1&gs=on`, function (data) {
-                            $('.hebBirthday').html(data.hebrew);
-                        });
-                        break;
-                    case 'false':
-                        $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1`, function (data) {
-                            $('.hebBirthday').html(data.hebrew);
-                        });
-                        break;
-                    case 'null':
-                        $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1`, function (data) {
-                            $('.hebBirthday').html(data.hebrew);
-                        });
-                        $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1&gs=on`, function (data) {
-                            $('.hebBirthday').append('/' + data.hebrew);
-                        });
-                        break;
+                if (people[i].deathDate == 'null') {
+                    switch($(this).attr('afterSunset')) {
+                        case 'true':
+                            $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1&gs=on`, function (data) {
+                                $('.hebBirthday').html(data.hebrew);
+                            });
+                            break;
+                        case 'false':
+                            $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1`, function (data) {
+                                $('.hebBirthday').html(data.hebrew);
+                            });
+                            break;
+                        case 'null':
+                            $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1`, function (data) {
+                                $('.hebBirthday').html(data.hebrew);
+                            });
+                            $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1&gs=on`, function (data) {
+                                $('.hebBirthday').append('/' + data.hebrew);
+                            });
+                            break;
+                    }
+    
                 }
 
                 $('#personDetails').fadeIn(150);
@@ -412,7 +426,7 @@ function buildPeople(div, wrapper, arr) {
         let newMonth;
 
         if ($(personWrapper).attr('gender') == 1) {
-            gender = 'male.webp';
+            gender = 'male.png';
             $(personWrapper).addClass('boy');
 
             if (day.toString().charAt(0) == '0') {
@@ -432,7 +446,7 @@ function buildPeople(div, wrapper, arr) {
             }
 
         } else {
-            gender = 'female.webp';
+            gender = 'female.png';
             $(personWrapper).addClass('girl');
 
             if (day.toString().charAt(0) == '0') {
@@ -464,7 +478,7 @@ function buildPeople(div, wrapper, arr) {
             birthday = 'יומולדת: '
         }
 
-        var genderImg = $('<img>', {
+        let genderImg = $('<img>', {
             class: 'genderImg',
             src: './images/' + gender,
             alt: 'gender img'
@@ -475,133 +489,133 @@ function buildPeople(div, wrapper, arr) {
         switch(month) {
             case '01': case 01:
                 if (day < 20) {
-                    zodiac = '/capricorn.webp';
+                    zodiac = '/capricorn.png';
                 } else {
-                    zodiac = '/aquarius.webp';
+                    zodiac = '/aquarius.png';
                 }
                 break;
             case '02': case 02:
                 if (day < 19) {
-                    zodiac = '/aquarius.webp';
+                    zodiac = '/aquarius.png';
                 } else {
-                    zodiac = '/pisces.webp';
+                    zodiac = '/pisces.png';
                 }
                 break;
             case '03': case 03:
                 if (day < 21) {
-                    zodiac = '/pisces.webp';
+                    zodiac = '/pisces.png';
                 } else {
-                    zodiac = '/aries.webp';
+                    zodiac = '/aries.png';
                 }
                 break;
             case '04': case 04:
                 if (day < 20) {
-                    zodiac = '/aries.webp';
+                    zodiac = '/aries.png';
                 } else {
-                    zodiac = '/taurus.webp';
+                    zodiac = '/taurus.png';
                 }
                 break;
             case '05': case 05:
                 if (day < 21) {
-                    zodiac = '/taurus.webp';
+                    zodiac = '/taurus.png';
                 } else {
-                    zodiac = '/gemini.webp';
+                    zodiac = '/gemini.png';
                 }
                 break;
             case '06': case 06:
                 if (day < 21) {
-                    zodiac = '/gemini.webp';
+                    zodiac = '/gemini.png';
                 } else {
-                    zodiac = '/cancer.webp';
+                    zodiac = '/cancer.png';
                 }
                 break;
             case '07': case 07:
                 if (day < 23) {
-                    zodiac = '/cancer.webp';
+                    zodiac = '/cancer.png';
                 } else {
-                    zodiac = '/leo.webp';
+                    zodiac = '/leo.png';
                 }
                 break;
             case '08': case 08:
                 if (day < 23) {
-                    zodiac = '/leo.webp';
+                    zodiac = '/leo.png';
                 } else {
-                    zodiac = '/virgo.webp';
+                    zodiac = '/virgo.png';
                 }
                 break;
             case '09': case 09:
                 if (day < 23) {
-                    zodiac = '/virgo.webp';
+                    zodiac = '/virgo.png';
                 } else {
-                    zodiac = '/libra.webp';
+                    zodiac = '/libra.png';
                 }
                 break;
             case '10': case 10:
                 if (day < 23) {
-                    zodiac = '/libra.webp';
+                    zodiac = '/libra.png';
                 } else {
-                    zodiac = '/scorpio.webp';
+                    zodiac = '/scorpio.png';
                 }
                 break;
             case '11': case 11:
                 if (day < 22) {
-                    zodiac = '/scorpio.webp';
+                    zodiac = '/scorpio.png';
                 } else {
-                    zodiac = '/sagittarius.webp';
+                    zodiac = '/sagittarius.png';
                 }
                 break;
             case '12': case 12:
                 if (day < 22) {
-                    zodiac = '/sagittarius.webp';
+                    zodiac = '/sagittarius.png';
                 } else {
-                    zodiac = '/capricorn.webp';
+                    zodiac = '/capricorn.png';
                 }
                 break;
         }
 
-        var zodiacImg = $('<img>', {
+        let zodiacImg = $('<img>', {
             class: 'zodiacImg',
             src: './images/zodiac' + zodiac,
             alt: 'zodiac img'
         }).appendTo(personWrapper);
 
-        var age = yearNow - yearToShow;
+        let age = yearNow - yearToShow;
 
         if ($(personWrapper).attr('isParent') == 1) {
             $(personWrapper).appendTo(parentDiv);
             if ($(personWrapper).attr('gender') == 1) {
                 $(personWrapper).addClass('suit');
-                buildCloths('suitImg', 'suit', 'suit img', personWrapper);
+                buildCloths('suit', 'suit img', personWrapper);
             } else {
-                buildCloths('dressImg', 'dress', 'dress img', personWrapper);
+                buildCloths('dress', 'dress img', personWrapper);
             }
 
         } else {
             if ($(personWrapper).attr('gender') == 1) {
                 if (age < 5) {
-                    buildCloths('babyBoyImg', 'babyBoy', 'baby boy img', personWrapper);
+                    buildCloths('babyBoy', 'baby boy img', personWrapper);
                 } else {
                     if ($(personWrapper).attr('married') == 1) {
-                        buildCloths('suitImg', 'suit', 'suit img', personWrapper);
+                        buildCloths('suit', 'suit img', personWrapper);
                     } else {
-                        buildCloths('boyImg', 'boy', 'boy img', personWrapper);
+                        buildCloths('boy', 'boy img', personWrapper);
                     }
                 }
             } else {
                 if (age < 5) {
-                    buildCloths('babyGirlImg', 'babyGirl', 'baby girl img', personWrapper);
+                    buildCloths('babyGirl', 'baby girl img', personWrapper);
                 } else {
                     if ($(personWrapper).attr('married') == 1) {
-                        buildCloths('dressImg', 'dress', 'dress img', personWrapper);
+                        buildCloths('dress', 'dress img', personWrapper);
                     } else {
-                        buildCloths('girlImg', 'girl', 'girl img', personWrapper);
+                        buildCloths('girl', 'girl img', personWrapper);
                     }
                 }
             }
             $(personWrapper).appendTo(groupWrapper);
         }
 
-        var selectedDate = new Date($(personWrapper).attr('calendar') + '/' + year);
+        let selectedDate = new Date($(personWrapper).attr('calendar') + '/' + year);
 
         if (selectedDate < now) {
             $(personWrapper).attr('calendar', $(personWrapper).attr('calendar') + '/' + Number(year + 1));
@@ -609,39 +623,39 @@ function buildPeople(div, wrapper, arr) {
             $(personWrapper).attr('calendar', $(personWrapper).attr('calendar') + '/' + year);
         }
 
-        var personDetailsWrapper = $('<div>', {
+        let personDetailsWrapper = $('<div>', {
             class: 'personDetailsWrapper',
         }).appendTo(personWrapper);
 
-        var personName = $('<p>', {
+        let personName = $('<p>', {
             class: 'personName',
             text: nameToShow
         }).appendTo(personDetailsWrapper);
 
-        var personBirthday = $('<p>', {
+        let personBirthday = $('<p>', {
             class: 'personBirthday',
             text: birthday + dateForShow
         }).appendTo(personDetailsWrapper);
 
         if (people[i].deathDate !== 'null') {
-            var personDeathDay = $('<p>', {
+            let personDeathDay = $('<p>', {
                 class: 'personDeathDay',
                 text: deathday + deathdDateForShow
             }).appendTo(personDetailsWrapper);
         }
 
-        var personImgWrapper = $('<div>', {
+        let personImgWrapper = $('<div>', {
             class: 'personImgWrapper',
         }).appendTo(personWrapper);
 
-        var personImg = $('<img>', {
+        let personImg = $('<img>', {
             class: 'personImg',
             alt: 'personImg',
             src: './images/people' + people[i].image
         }).appendTo(personImgWrapper);
     }
 
-    setTimeout(function () {
+    setTimeout(() => {
         checkAge();
         checkClosest();
         $('.btnWrapper').css('opacity', 1);
@@ -649,7 +663,7 @@ function buildPeople(div, wrapper, arr) {
     }, 0);
 }
 
-function checkClosest() {
+const checkClosest = () => {
     let year;
     birthdayArr = [];
     
@@ -672,25 +686,25 @@ function checkClosest() {
             year = now.getFullYear();
         }
         
-        var finalDate = new Date(year + '/' + birthdayMonth + '/' + birthdayDay);
+        let finalDate = new Date(year + '/' + birthdayMonth + '/' + birthdayDay);
 
         if ($($('.groupWrapper .personWrapper')[i]).attr('deathDate') == 'null') {
             birthdayArr.push({name: name, gender: gender, nameHeb: nameHeb, date: finalDate, img: img});
         }
     }
     
-    setTimeout(function() {
+    setTimeout(() => {
 
-        birthdayArr.sort(function(a, b) {
-            var distancea = Math.abs(now - a.date);
-            var distanceb = Math.abs(now - b.date);
+        birthdayArr.sort((a, b) => {
+            let distancea = Math.abs(now - a.date);
+            let distanceb = Math.abs(now - b.date);
             return distancea - distanceb;
         });
 
         if (lang == 1) {
             let gender;
             if (birthdayToday) {
-                $.each($('.personWrapper'), function (key, value) {
+                $.each($('.personWrapper'), (key, value) => {
                     if ($(value).attr('month') == now.getMonth() + 1 && $(value).attr('day') == now.getDate()) {
                         $(value).clone().appendTo($('#birthdayToday'));
                         if ($(value).attr('gender') == 1) {
@@ -701,7 +715,7 @@ function checkClosest() {
                     }
                 });
 
-                $.each($('#birthdayToday .personWrapper'), function (key, value) {
+                $.each($('#birthdayToday .personWrapper'), (key, value) => {
 
                     let closest = $('<p>',{
                         class: 'closestBirth',
@@ -714,7 +728,6 @@ function checkClosest() {
                         text: birthdayArr[key].name
 
                     }).appendTo(closest);
-
                     
                     let closestSpan = $('<span>',{
                         class: 'closestSpan',
@@ -741,7 +754,7 @@ function checkClosest() {
                         }).appendTo(birthdayWish);
                     }
 
-                    $(value).click(function() {
+                    $(value).click(() => {
                         goToBirthdayPerson($(value).attr('numid'));
                     })
 
@@ -771,7 +784,7 @@ function checkClosest() {
                 }
 
                 if ($(window).width() > 765) {
-                    $('.closestBirth').mouseenter(function () {
+                    $('.closestBirth').mouseenter(() => {
                         if (!$('#searchResults').is(':visible')) {
                             let hoverImgContainer = $('<div>', {
                                 class: 'hoverImgContainer',
@@ -788,10 +801,10 @@ function checkClosest() {
                         }
                     });
                  
-                    $('.closestBirth').mouseleave(function () {
+                    $('.closestBirth').mouseleave(() => {
                         $('.hoverImgContainer').fadeOut(400);
                         $('.closestBirth').css('pointer-events', 'none');
-                        setTimeout(function() {
+                        setTimeout(() => {
                             $('.hoverImgContainer').remove();
                             $('.closestBirth').css('pointer-events', 'all');
                         }, 600);
@@ -802,7 +815,7 @@ function checkClosest() {
         } else {
             let gender;
             if (birthdayToday) {
-                $.each($('.personWrapper'), function (key, value) {
+                $.each($('.personWrapper'), (key, value) => {
                     if ($(value).attr('month') == now.getMonth() + 1 && $(value).attr('day') == now.getDate()) {
                         $(value).clone().appendTo($('#birthdayToday'));
                         if ($(value).attr('gender') == 1) {
@@ -813,7 +826,7 @@ function checkClosest() {
                     }
                 });
 
-                $.each($('#birthdayToday .personWrapper'), function (key, value) {
+                $.each($('#birthdayToday .personWrapper'), (key, value) => {
 
                     let closest = $('<p>',{
                         class: 'closestBirth',
@@ -853,7 +866,7 @@ function checkClosest() {
                         }).appendTo(birthdayWish);
                     }
 
-                    $(value).click(function() {
+                    $(value).click(() => {
                         goToBirthdayPerson($(value).attr('numid'));
                     })
 
@@ -883,7 +896,7 @@ function checkClosest() {
                 }
 
                 if ($(window).width() > 765) {
-                    $('.closestBirth').mouseenter(function () {
+                    $('.closestBirth').mouseenter(() => {
                         if (!$('#searchResults').is(':visible')) {
                             let hoverImgContainer = $('<div>', {
                                 class: 'hoverImgContainer',
@@ -900,10 +913,10 @@ function checkClosest() {
                         }
                     });
                  
-                    $('.closestBirth').mouseleave(function () {
+                    $('.closestBirth').mouseleave(() => {
                         $('.hoverImgContainer').fadeOut(400);
                         $('.closestBirth').css('pointer-events', 'none');
-                        setTimeout(function() {
+                        setTimeout(() => {
                             $('.hoverImgContainer').remove();
                             $('.closestBirth').css('pointer-events', 'all');
                         }, 600);
@@ -911,21 +924,20 @@ function checkClosest() {
                 }
             }
         }
-
     }, 1000);
 }
 
-function goToBirthdayPerson(id) {
+const goToBirthdayPerson = (id) => {
     
-    $.each($('.container .personWrapper'), function (key, value) {
+    $.each($('.container .personWrapper'), (key, value) => {
         if ($(value).attr('numId') == id) {
             $(value).click();
         }
     });
 }
 
-function checkAge() {
-    $.each($('.personWrapper'), function (key, value) {
+const checkAge = () => {
+    $.each($('.personWrapper'), (key, value) => {
         if ($(value).attr('deathDate') == 'null') {
             getAge($(value), $(value).attr('birthday'), $(value).attr('calendar'));
         } else {
@@ -934,22 +946,21 @@ function checkAge() {
     });
 }
 
-function buildCloths(param, img, alt, wrapper) {
-    
-    var param = $('<img>', {
+const buildCloths = (img, alt, wrapper) => {
+    let param = $('<img>', {
         class: 'clothesImg',
         id: img,
-        src: './images/' + img + '.webp',
+        src: './images/' + img + '.png',
         alt: alt
     }).appendTo(wrapper);
 }
 
-function getDeathAge(div, death, birth) {
-    var deathDate = new Date(death);
-    var birthDate = new Date(birth);
-    var age = deathDate.getFullYear() - birthDate.getFullYear();
-    var m = deathDate.getMonth() - birthDate.getMonth();
-    var ageText;
+const getDeathAge = (div, death, birth) => {
+    let deathDate = new Date(death);
+    let birthDate = new Date(birth);
+    let age = deathDate.getFullYear() - birthDate.getFullYear();
+    let m = deathDate.getMonth() - birthDate.getMonth();
+    let ageText;
 
     if (lang == 1) {
         ageText = 'Died: ' + age;
@@ -957,25 +968,25 @@ function getDeathAge(div, death, birth) {
         ageText = ' נפטר בגיל: ' + age;
     }
 
-    var personAge = $('<p>', {
+    let personAge = $('<p>', {
         class: 'personAge',
         text: ageText
     }).appendTo($(div).find($('.personDetailsWrapper')));
 }
 
-function getAge(div, dateString, calendar) {
-    var today = new Date();
-    var birthDate = new Date(dateString);
-    var calendarBirthday = new Date(calendar);
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    var ageText;
+const getAge = (div, dateString, calendar) => {
+    let today = new Date();
+    let birthDate = new Date(dateString);
+    let calendarBirthday = new Date(calendar);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let m = today.getMonth() - birthDate.getMonth();
+    let ageText;
 
-    var month = calendarBirthday.getMonth() + 1;
-    var day = calendarBirthday.getDate();
+    let month = calendarBirthday.getMonth() + 1;
+    let day = calendarBirthday.getDate();
 
-    var daysEng = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var daysHeb = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];
+    let daysEng = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let daysHeb = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];
 
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         if (lang == 1) {
@@ -1034,7 +1045,7 @@ function getAge(div, dateString, calendar) {
         ageText = 'גיל: ';
     }
 
-    var personAge = $('<p>', {
+    let personAge = $('<p>', {
         class: 'personAge',
         text: ageText + age
     }).appendTo($(div).find($('.personDetailsWrapper')));
@@ -1042,24 +1053,21 @@ function getAge(div, dateString, calendar) {
     return age;
 }
 
-function goToTop() {
-    $('html,body').animate({ scrollTop: 0 }, 'slow');
+const goToTop = () => {
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
 }
 
 function scrollBtn() {
 
     if ($(this).scrollTop() > 550) {
-        $('.goToTopBtn').fadeIn();
+        $('#goToTopBtn').fadeIn();
     }
     else {
-        $('.goToTopBtn').fadeOut();
+        $('#goToTopBtn').fadeOut();
     }
 }
 
-function sortFamily(elem1, kind) {
-
-    $('.groupWrapper').removeClass('oddGroup');
-    $('.groupWrapper').removeClass('evenGroup');
+const sortFamily = (elem1, kind) => {
 
     if (elem1 == 'calendar') {
         // counter = 2;
@@ -1083,12 +1091,12 @@ function sortFamily(elem1, kind) {
     }
 
     $.each($('.container'), function (key, value) {
-        var ids = [], obj, i, len;
-        var children = $(this).find('.personWrapper');
+        let ids = [], obj, i, len;
+        let children = $(this).find('.personWrapper');
         for (i = 0, len = children.length; i < len; i++) {
             obj = {};
             obj.element = children[i];
-            var elem2 = $(children[i]).attr(elem1);
+            let elem2 = $(children[i]).attr(elem1);
             switch (kind) {
                 case 1:
                     obj.idNum = new Date(elem2);
@@ -1107,11 +1115,11 @@ function sortFamily(elem1, kind) {
             case 1:
                 switch (counter) {
                     case 1:
-                        ids.sort(function (a, b) { return (b.idNum - a.idNum); });
+                        ids.sort((a, b) => { return (b.idNum - a.idNum); });
                         counter = 2;
                         break;
                     case 2:
-                        ids.sort(function (a, b) { return (a.idNum - b.idNum); });
+                        ids.sort((a, b) => { return (a.idNum - b.idNum); });
                         counter = 1;
                         break;
                 }
@@ -1121,26 +1129,16 @@ function sortFamily(elem1, kind) {
             case 2:
                 switch (counter) {
                     case 1:
-                        ids.sort(function (a, b) {
+                        ids.sort((a, b) => {
                             return a.idNum.localeCompare(b.idNum);
-                            // if (a.idNum > b.idNum) {
-                            //     return 1;
-                            // } else {
-                            //     return -1;
-                            // }
                         });
 
                         counter = 2;
                         break;
 
                     case 2:
-                        ids.sort(function (a, b) {
+                        ids.sort((a, b) => {
                             return b.idNum.localeCompare(a.idNum);
-                            // if (a.idNum < b.idNum) {
-                            //     return 1;
-                            // } else {
-                            //     return -1;
-                            // }
                         });
                         counter = 1;
                         break;
@@ -1155,12 +1153,11 @@ function sortFamily(elem1, kind) {
                     $('.personWrapper').first().remove();
                 }
                 
-                $('body').css('background-image', 'unset');
                 $('.spinnerWrapper').show();
                 $('.btnWrapper').css('opacity', 0);
                 $('.groupSortBtn').css('pointer-events', 'none');
-                showFamily(familyNum);
-                setTimeout(function () {
+                showFamily(familyNum, 2);
+                setTimeout(() => {
                     $('.btnWrapper').css('opacity', 1);
                     $('.spinnerWrapper').hide();
                 }, 500);
@@ -1176,9 +1173,9 @@ function sortFamily(elem1, kind) {
     sortBtnCounter = 1
 }
 
-function removePopup(container) {
+const removePopup = (container) => {
 
-    $(document).mouseup(function (e) {
+    $(document).mouseup((e) => {
         if (container.is(e.target) && container.has(e.target).length === 0) {
             container.hide();
             e.stopPropagation();
@@ -1187,11 +1184,11 @@ function removePopup(container) {
     })
 }
 
-function closeCurrentPopup(that) {
+const closeCurrentPopup = (that) => {
     $($(that)[0].parentElement.parentElement.parentElement).fadeOut(150);
 }
 
-function capitalize(str) {
+const capitalize = (str) => {
     str = str.split(' ');
     for (let i = 0; i < str.length; i++) {
         str[i] = str[i][0].toUpperCase() + str[i].substr(1);
