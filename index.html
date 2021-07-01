@@ -6,40 +6,67 @@
     <title>Family Birthdays</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2, minimum-scale=1, user-scalable=yes">
     <meta name="description" content="Family Birthdays">
-    <link rel="stylesheet" type="text/css" href="css/main.min.css">
-    <link rel="icon" href="images/birthdayCake.webp">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="icon" href="images/birthdayCake.png">
     <link href="https://fonts.googleapis.com/css?family=Kurale&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=David+Libre&display=swap" rel="stylesheet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/main.min.js" defer></script>
-    <script type="text/javascript" src="js/translations.js" async defer></script>
-    <script type="text/javascript" src="js/addToCalendar.js" async defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/translations.js"></script>
+    <script type="text/javascript" src="js/addToCalendar.js"r></script>
+    <script src="js/utils.js"></script>
 
 </head>
 <body>
 
     <header>
-        <div class="headerContainer">
-            <div class="header">
-                <h1>Family Birthdays</h1>
-                <div class="imgWrapper">           
-                    <a href="javascript:void(0)"><img src="images/usFlag.webp" alt="us flag" id="langBtnEn" /></a>
-                    <a href="javascript:void(0)"><img src="images/israelFlag.webp" alt="israel flag" id="langBtnHe" /></a>
-                </div>
-
-                <div class="searchContainer">
-                    <div class="searchContant">
-                        <input type="text" placeholder="Search A Family Member" id="search" aria-label="Search" autocomplete="off" />
-                        <span class="focus-border"></span>
-                        <img src="images/search.webp" alt="search" id="searchImg">
-                        <div id="searchResults"></div>
-                    </div>
-                </div>
+        <div class="searchContainer">
+            <div class="searchContant">
+                <input type="text" placeholder="Search A Family Member" id="search" aria-label="Search" autocomplete="off" />
+                <span class="focus-border"></span>
+                <img src="images/search.png" alt="search" id="searchImg">
+                <div id="searchResults"></div>
             </div>
         </div>
     </header>
+
+    <div id="menuOpenWrapper" onclick="toggleClass($('#toggle')[0], 'on')">
+        <div href="#menu" id="toggle">
+            <span class="menuSpan"></span>
+            <span class="menuSpan"></span>
+            <span class="menuSpan"></span>
+            <span class="menuSpan"></span>
+            <span class="menuSpan"></span>
+            <span class="menuSpan"></span>
+        </div>
+        <div id="menu">
+            <p class="menuHeader" id="langMenuHeader">Lang</p>
+            <ul>
+                <li onclick="menuItemClicked(1)" id="langBtnEn">
+                    <img src="images/usFlag.png" alt="us flag" class="menuImg"/>
+                    <span>English</span>
+                </li>
+                <li onclick="menuItemClicked(2)" id="langBtnHe">
+                    <img src="images/israelFlag.png" alt="israel flag" class="menuImg"/>
+                    <span>Hebrew</span>
+                </li>
+            </ul>
+            <p class="menuHeader" id="familyMenuHeader">Family</p>
+            <ul>
+                <li onclick="showFamily(1, 1)" id="shalevsLi" class="familyLi">
+                    <span class="shalevsBtn">Shalevs</span>
+                </li>
+                <li onclick="showFamily(2, 1)" id="waizingersLi" class="familyLi">
+                    <span class="waizingersBtn">Waizingers</span>
+                </li>
+                <li onclick="showFamily(3, 1)" id="alayevsLi" class="familyLi">
+                    <span class="alayevsBtn">Alayevs</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <main>
 
@@ -64,15 +91,12 @@
                 </div>
             </div>
             <button class="sortBtn" onclick="sort()">Sort</button>
-            <button class="shalevsBtn" onclick="showFamily(1)">Shalevs</button>
-            <button class="waizingersBtn" onclick="showFamily(2)">Waizingers</button>
-            <button class="alayevsBtn" onclick="showFamily(3)">Alayevs</button>
         </div>
 
         <div class="container"></div>
     </main>
 
-    <img src="images/upBtn.webp" alt="up arrow" class="goToTopBtn" onclick="goToTop()" />
+    <svg id="goToTopBtn" onclick="goToTop()" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 7.58l5.995 5.988-1.416 1.414-4.579-4.574-4.59 4.574-1.416-1.414 6.006-5.988z"/></svg>
 
     <!----------------POPUPS---------------->
     <!------------Person Details----------->
@@ -91,8 +115,8 @@
             </div>
             
             <div class="linksWrapper">
-                <a href="" target="_blank" id="facebookLink" rel="noopener"><img src="./images/facebook.webp" alt="facebook image" id="facebookImage" /></a>
-                <a href="" target="_blank" id="instagramLink" rel="noopener"><img src="./images/instagram.webp" alt="instagram image" id="instagramImage" /></a>
+                <a href="" target="_blank" id="facebookLink" rel="noopener"><img src="./images/facebook.png" alt="facebook image" id="facebookImage" /></a>
+                <a href="" target="_blank" id="instagramLink" rel="noopener"><img src="./images/instagram.png" alt="instagram image" id="instagramImage" /></a>
             </div>
             <div class="popupBtnsWrapper">
                 <div title="Add to Calendar" class="addeventatc engCaneldar" data-direct="google">
