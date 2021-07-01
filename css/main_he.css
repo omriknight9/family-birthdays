@@ -7,6 +7,16 @@ body {
     background-image: linear-gradient(to right, rgba(200, 200, 200, .95), rgba(0,0,0,.95));
 }
 
+#menu ul {
+    direction: rtl;
+    text-align: right;
+}
+
+.menuImg {
+    left: unset;
+    right: .2rem;
+}
+
 .popupBtn {
     font-family: 'David Libre', serif;
 }
@@ -24,8 +34,12 @@ body {
     direction: rtl;
 }
 
+.personBirthday {
+    margin-top: 2rem;
+}
+
 .hoverImgWrapper {
-    background: url(../images/‏‏thoughtHeb.webp) center center no-repeat;
+    background: url(../images/‏‏thoughtHeb.png) center center no-repeat;
     background-size: 15rem 15rem;
     right: unset;
     left: 0;  
