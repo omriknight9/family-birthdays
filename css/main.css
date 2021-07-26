@@ -766,6 +766,7 @@ p {
     min-height: 900px;
     background: rgba(210,220,225,.8);
     top: 0;
+    z-index: 99999999;
 }
 
 .popUpInfo h2 {
