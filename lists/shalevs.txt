@@ -37,9 +37,10 @@
 	{"id": 34, "name": "Yaara", "nameHeb": "יערה", "birthday": "12/09/1985", "deathDate": "null", "image": "/yaara.jpg", "facebook": "/yaara.bader", "instagram": "/yaara_bader_shalev", "group": 11, "afterSunset": "null", "gender": 2, "parent": 1, "married": 1},
 	{"id": 35, "name": "Peleg", "nameHeb": "פלג", "birthday": "11/02/2016", "deathDate": "null", "image": "/peleg.jpg", "facebook": "null", "instagram": "/the_shalevs_and_the_pug", "group": 11, "afterSunset": "null", "gender": 1, "parent": 0, "married": 0},
 	{"id": 36, "name": "Tom", "nameHeb": "טום", "birthday": "04/28/2019", "deathDate": "null", "image": "/tom.jpg", "facebook": "null", "instagram": "/the_shalevs_and_the_pug", "group": 11, "afterSunset": "null", "gender": 1, "parent": 0, "married": 0},
-	{"id": 37, "name": "Omri", "nameHeb": "עמרי", "birthday":"10/31/1990", "deathDate": "null",  "image": "/omri.jpg", "facebook": "/omri.shalev.31", "instagram": "/omri_shalev9",  "group": 12, "afterSunset": "true", "gender": 1, "parent": 1, "married": 1},
-	{"id": 38, "name": "Ester", "nameHeb": "אסתר", "birthday": "08/01/1991", "deathDate": "null", "image": "/ester.jpg", "facebook": "/ester.alayev", "instagram": "/esteralayev", "group": 12, "afterSunset": "false", "gender": 2, "parent": 1, "married": 1},
-                     {"id": 39, "name": "Emma", "nameHeb": "אמה", "birthday": "04/03/2020", "deathDate": "null", "image": "/emma.jpeg", "facebook": "null", "instagram": "null", "group": 12, "afterSunset": "false", "gender": 2, "parent": 0, "married": 1}
+                 {"id": 37, "name": "Dean", "nameHeb": "דין", "birthday": "11/05/2021", "deathDate": "null", "image": "/dean.jpeg", "facebook": "null", "instagram": "/the_shalevs_and_the_pug", "group": 11, "afterSunset": "null", "gender": 1, "parent": 0, "married": 0},
+	{"id": 38, "name": "Omri", "nameHeb": "עמרי", "birthday":"10/31/1990", "deathDate": "null",  "image": "/omri.jpg", "facebook": "/omri.shalev.31", "instagram": "/omri_shalev9",  "group": 12, "afterSunset": "true", "gender": 1, "parent": 1, "married": 1},
+	{"id": 39, "name": "Ester", "nameHeb": "אסתר", "birthday": "08/01/1991", "deathDate": "null", "image": "/ester.jpg", "facebook": "/ester.alayev", "instagram": "/esteralayev", "group": 12, "afterSunset": "false", "gender": 2, "parent": 1, "married": 1},
+                     {"id": 40, "name": "Emma", "nameHeb": "אמה", "birthday": "04/03/2020", "deathDate": "null", "image": "/emma.jpeg", "facebook": "null", "instagram": "null", "group": 12, "afterSunset": "false", "gender": 2, "parent": 0, "married": 1}
 
     ]
 }
