@@ -164,12 +164,12 @@ const showResult = (that, resultNum) => {
                 class: 'resultImgWrapper',
             }).appendTo(result);
 
-            let resultImg = $('<img>', {
+            $('<img>', {
                 class: 'resultImg',
                 src: './images/people' + personImg
             }).appendTo(resultImgWrapper);
 
-            let resultName = $('<p>', {
+            $('<p>', {
                 class: 'resultName',
                 text: cap
             }).appendTo(result);
@@ -478,104 +478,15 @@ const buildPeople = (wrapper, arr) => {
             birthday = 'יומולדת: '
         }
 
-        let genderImg = $('<img>', {
+        $('<img>', {
             class: 'genderImg',
             src: './images/' + gender,
             alt: 'gender img'
         }).appendTo(personWrapper);
 
-        let zodiac;
-
-        switch(month) {
-            case '01': case 01:
-                if (day < 20) {
-                    zodiac = '/capricorn.png';
-                } else {
-                    zodiac = '/aquarius.png';
-                }
-                break;
-            case '02': case 02:
-                if (day < 19) {
-                    zodiac = '/aquarius.png';
-                } else {
-                    zodiac = '/pisces.png';
-                }
-                break;
-            case '03': case 03:
-                if (day < 21) {
-                    zodiac = '/pisces.png';
-                } else {
-                    zodiac = '/aries.png';
-                }
-                break;
-            case '04': case 04:
-                if (day < 20) {
-                    zodiac = '/aries.png';
-                } else {
-                    zodiac = '/taurus.png';
-                }
-                break;
-            case '05': case 05:
-                if (day < 21) {
-                    zodiac = '/taurus.png';
-                } else {
-                    zodiac = '/gemini.png';
-                }
-                break;
-            case '06': case 06:
-                if (day < 21) {
-                    zodiac = '/gemini.png';
-                } else {
-                    zodiac = '/cancer.png';
-                }
-                break;
-            case '07': case 07:
-                if (day < 23) {
-                    zodiac = '/cancer.png';
-                } else {
-                    zodiac = '/leo.png';
-                }
-                break;
-            case '08': case 08:
-                if (day < 23) {
-                    zodiac = '/leo.png';
-                } else {
-                    zodiac = '/virgo.png';
-                }
-                break;
-            case '09': case 09:
-                if (day < 23) {
-                    zodiac = '/virgo.png';
-                } else {
-                    zodiac = '/libra.png';
-                }
-                break;
-            case '10': case 10:
-                if (day < 23) {
-                    zodiac = '/libra.png';
-                } else {
-                    zodiac = '/scorpio.png';
-                }
-                break;
-            case '11': case 11:
-                if (day < 22) {
-                    zodiac = '/scorpio.png';
-                } else {
-                    zodiac = '/sagittarius.png';
-                }
-                break;
-            case '12': case 12:
-                if (day < 22) {
-                    zodiac = '/sagittarius.png';
-                } else {
-                    zodiac = '/capricorn.png';
-                }
-                break;
-        }
-
-        let zodiacImg = $('<img>', {
+        $('<img>', {
             class: 'zodiacImg',
-            src: './images/zodiac' + zodiac,
+            src: './images/zodiac' + chosenMonth(day, month),
             alt: 'zodiac img'
         }).appendTo(personWrapper);
 
@@ -627,18 +538,18 @@ const buildPeople = (wrapper, arr) => {
             class: 'personDetailsWrapper',
         }).appendTo(personWrapper);
 
-        let personName = $('<p>', {
+        $('<p>', {
             class: 'personName',
             text: nameToShow
         }).appendTo(personDetailsWrapper);
 
-        let personBirthday = $('<p>', {
+        $('<p>', {
             class: 'personBirthday',
             text: birthday + dateForShow
         }).appendTo(personDetailsWrapper);
 
         if (people[i].deathDate !== 'null') {
-            let personDeathDay = $('<p>', {
+            $('<p>', {
                 class: 'personDeathDay',
                 text: deathday + deathdDateForShow
             }).appendTo(personDetailsWrapper);
@@ -648,7 +559,7 @@ const buildPeople = (wrapper, arr) => {
             class: 'personImgWrapper',
         }).appendTo(personWrapper);
 
-        let personImg = $('<img>', {
+        $('<img>', {
             class: 'personImg',
             alt: 'personImg',
             src: './images/people' + people[i].image
@@ -729,7 +640,7 @@ const checkClosest = () => {
 
                     }).appendTo(closest);
                     
-                    let closestSpan = $('<span>',{
+                    $('<span>',{
                         class: 'closestSpan',
                         text: "'s" + " Birthday Today!"
 
@@ -747,7 +658,7 @@ const checkClosest = () => {
                             birthdayText = 'Wish Her Happy Birthday';
                         }
 
-                        let facebookTest = $('<a>', {
+                        $('<a>', {
                             href: 'https://www.facebook.com' + $(value).attr('facebook'),
                             target: '_blank',
                             text: birthdayText
@@ -772,7 +683,7 @@ const checkClosest = () => {
                     text: 'Closest Birthday: '
                 }).insertAfter($('.spinnerWrapper'));
 
-                let closestSpan = $('<span>', {
+                $('<span>', {
                     class: 'birthdayColor',
                     text: birthdayArr[0].name
                 }).appendTo(closest);
@@ -794,7 +705,7 @@ const checkClosest = () => {
                                 class: 'hoverImgWrapper',
                             }).appendTo(hoverImgContainer);
             
-                            let hoverImg = $('<img>', {
+                            $('<img>', {
                                 class: 'hoverImg',
                                 src: './images/people' + birthdayArr[0].img
                             }).appendTo(hoverImgWrapper)
@@ -849,7 +760,7 @@ const checkClosest = () => {
                         wishText = 'אחל/י לה יום הולדת שמח';
                     }
                     
-                    let closestSpan = $('<span>',{
+                    $('<span>',{
                         class: 'closestSpan',
                         text: celebrateText
                     }).appendTo(closest);
@@ -859,7 +770,7 @@ const checkClosest = () => {
                     }).insertAfter(closest);
 
                     if ($(value).attr('facebook') !== 'null') {
-                        let facebookTest = $('<a>', {
+                        $('<a>', {
                             href: 'https://www.facebook.com' + $(value).attr('facebook'),
                             target: '_blank',
                             text: wishText
@@ -881,10 +792,10 @@ const checkClosest = () => {
 
                 let closest = $('<p>',{
                     class: 'closestBirth',
-                    text: 'החוגג הקרוב: '
+                    text: 'החוגג/ת הקרוב: '
                 }).insertAfter($('.spinnerWrapper'));
 
-                let closestSpan = $('<span>', {
+                $('<span>', {
                     class: 'birthdayColor',
                     text: birthdayArr[0].nameHeb
                 }).appendTo(closest);
@@ -906,7 +817,7 @@ const checkClosest = () => {
                                 class: 'hoverImgWrapper',
                             }).appendTo(hoverImgContainer);
             
-                            let hoverImg = $('<img>', {
+                            $('<img>', {
                                 class: 'hoverImg',
                                 src: './images/people' + birthdayArr[0].img
                             }).appendTo(hoverImgWrapper)
@@ -947,7 +858,7 @@ const checkAge = () => {
 }
 
 const buildCloths = (img, alt, wrapper) => {
-    let param = $('<img>', {
+    $('<img>', {
         class: 'clothesImg',
         id: img,
         src: './images/' + img + '.png',
@@ -965,10 +876,14 @@ const getDeathAge = (div, death, birth) => {
     if (lang == 1) {
         ageText = 'Died: ' + age;
     } else {
-        ageText = ' נפטר בגיל: ' + age;
+        if ($(div).attr('gender') == 1) {
+            ageText = ' נפטר בגיל: ' + age;
+        } else {
+            ageText = ' נפטרה בגיל: ' + age;
+        }
     }
 
-    let personAge = $('<p>', {
+    $('<p>', {
         class: 'personAge',
         text: ageText
     }).appendTo($(div).find($('.personDetailsWrapper')));
@@ -1045,7 +960,7 @@ const getAge = (div, dateString, calendar) => {
         ageText = 'גיל: ';
     }
 
-    let personAge = $('<p>', {
+    $('<p>', {
         class: 'personAge',
         text: ageText + age
     }).appendTo($(div).find($('.personDetailsWrapper')));
