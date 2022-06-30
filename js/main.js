@@ -3,21 +3,17 @@ let family = [];
 let counter = 1;
 let familyNum;
 let lang = 1;
-
 let now = new Date()
 let currentYear = now.getFullYear();
 let sortBtnCounter = 1;
-
 let birthdayArr = [];
 let birthdayToday = false;
-
 let searchVal;
 let lastChar;
 
 const hebCalendarUrl = 'https://www.hebcal.com/converter?cfg=json';
 
 $(document).ready(() => {
-
     if (window.location.href.indexOf("shalevs") > -1) {
         loadJson('./lists/shalevs.txt');
     } else if (window.location.href.indexOf("waizingers") > -1) {
@@ -83,7 +79,6 @@ const menuItemClicked = (type) => {
             if (birthdayToday) {
                 $('.personWrapper').first().remove();
             }
-
             break;
         case 2:
             changeToHeb(1);
@@ -93,14 +88,10 @@ const menuItemClicked = (type) => {
                 $('.personWrapper').first().remove();
             }
             break;
-    
-        default:
-            break;
     }
 } 
 
 const showResult = (that, resultNum) => {
-    
     for (let i = 0; i < $(that).length; i++) {
         let personName = $($(that)[i]).attr('name').toLowerCase();
         let personNameHeb = $($(that)[i]).attr('nameHeb');
@@ -108,7 +99,6 @@ const showResult = (that, resultNum) => {
         let personImg = $($(that)[i]).attr('img');
         let searchVal = $('#search').val();
         let searchValCapitalized = searchVal.charAt(0).toUpperCase() + searchVal.slice(1);
-
         let cap;
         let serachFinal;
 
@@ -194,7 +184,6 @@ const sort = () => {
 }
 
 const showFamily = (num, type) => {
-
     if (familyNum == num && type == 1) {
         return;
     }
@@ -205,6 +194,7 @@ const showFamily = (num, type) => {
     if (birthdayToday) {
         $('.personWrapper').first().remove();
     }
+
     $('.container').empty();
     $('.closestBirth').html('');
     $('.birthdayWish').html('');
@@ -252,13 +242,11 @@ const goToDiv = (div) => {
 }
 
 const buildPeople = (wrapper, arr) => {
-
     let people = arr[0].family;
     let date = new Date();
     let year = date.getFullYear();
     let birthday;
     let deathday;
-
     let peopleGroupArr = [];
 
     for (let i = 0; i < people.length; i++) {
@@ -283,7 +271,6 @@ const buildPeople = (wrapper, arr) => {
 
         let dateNow = new Date();
         let yearNow = dateNow.getFullYear();
-
         let date2 = new Date(people[i].birthday);
         let day = date2.getDate();
         let month = date2.getMonth() + 1;
@@ -340,7 +327,6 @@ const buildPeople = (wrapper, arr) => {
             'deathDate': people[i].deathDate,
             'afterSunset': people[i].afterSunset,
             click: function () {
-
                 if ($(this).attr('facebook') == 'null') {
                     $('#facebookLink').hide();
                 } else {
@@ -408,7 +394,6 @@ const buildPeople = (wrapper, arr) => {
                             });
                             break;
                     }
-    
                 }
 
                 $('#personDetails').fadeIn(150);
@@ -500,7 +485,6 @@ const buildPeople = (wrapper, arr) => {
             } else {
                 buildCloths('dress', 'dress img', personWrapper);
             }
-
         } else {
             if ($(personWrapper).attr('gender') == 1) {
                 if (age < 5) {
@@ -523,6 +507,7 @@ const buildPeople = (wrapper, arr) => {
                     }
                 }
             }
+
             $(personWrapper).appendTo(groupWrapper);
         }
 
@@ -579,7 +564,6 @@ const checkClosest = () => {
     birthdayArr = [];
     
     for (let i = 0; i < $('.groupWrapper .personWrapper').length; i++) {
-
         let name = $($('.groupWrapper .personWrapper')[i]).attr('name');
         let nameHeb = $($('.groupWrapper .personWrapper')[i]).attr('nameHeb');
         let birthdayDay = $($('.groupWrapper .personWrapper')[i]).attr('day');
@@ -605,7 +589,6 @@ const checkClosest = () => {
     }
     
     setTimeout(() => {
-
         birthdayArr.sort((a, b) => {
             let distancea = Math.abs(now - a.date);
             let distanceb = Math.abs(now - b.date);
@@ -675,9 +658,7 @@ const checkClosest = () => {
                         $(closestSpanName).css('color', 'pink');
                     }
                 });
-                
             } else {
-
                 let closest = $('<p>',{
                     class: 'closestBirth',
                     text: 'Closest Birthday: '
@@ -722,7 +703,6 @@ const checkClosest = () => {
                     }).mouseleave()
                 }
             }
-
         } else {
             let gender;
             if (birthdayToday) {
@@ -738,7 +718,6 @@ const checkClosest = () => {
                 });
 
                 $.each($('#birthdayToday .personWrapper'), (key, value) => {
-
                     let closest = $('<p>',{
                         class: 'closestBirth',
                     }).insertAfter($('.spinnerWrapper'));
@@ -746,7 +725,6 @@ const checkClosest = () => {
                     let closestSpanName = $('<span>',{
                         class: 'birthdayColor',
                         text: birthdayArr[key].nameHeb
-
                     }).appendTo(closest);
 
                     let celebrateText;
@@ -787,7 +765,6 @@ const checkClosest = () => {
                         $(closestSpanName).css('color', 'pink');
                     }
                 });
-
             } else {
 
                 let closest = $('<p>',{
@@ -839,7 +816,6 @@ const checkClosest = () => {
 }
 
 const goToBirthdayPerson = (id) => {
-    
     $.each($('.container .personWrapper'), (key, value) => {
         if ($(value).attr('numId') == id) {
             $(value).click();
@@ -896,10 +872,8 @@ const getAge = (div, dateString, calendar) => {
     let age = today.getFullYear() - birthDate.getFullYear();
     let m = today.getMonth() - birthDate.getMonth();
     let ageText;
-
     let month = calendarBirthday.getMonth() + 1;
     let day = calendarBirthday.getDate();
-
     let daysEng = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let daysHeb = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];
 
@@ -911,6 +885,7 @@ const getAge = (div, dateString, calendar) => {
         }
         
         age--;
+
     } else {
         calendarBirthday.setFullYear(calendarBirthday.getFullYear());
         if (lang == 1) {
@@ -921,7 +896,6 @@ const getAge = (div, dateString, calendar) => {
     }
 
     if (age == 0) {
-
         let finalAge;
         let finalMonth;
         let finalDay;
@@ -931,6 +905,7 @@ const getAge = (div, dateString, calendar) => {
         } else {
             finalMonth = today.getMonth() + 1;
         }
+
         if (today.getDate() < 10) {
             finalDay = '0' + Math.round(today.getDate());
         } else {
@@ -973,7 +948,6 @@ const goToTop = () => {
 }
 
 function scrollBtn() {
-
     if ($(this).scrollTop() > 550) {
         $('#goToTopBtn').fadeIn();
     }
@@ -1047,10 +1021,8 @@ const sortFamily = (elem1, kind) => {
                         ids.sort((a, b) => {
                             return a.idNum.localeCompare(b.idNum);
                         });
-
                         counter = 2;
                         break;
-
                     case 2:
                         ids.sort((a, b) => {
                             return b.idNum.localeCompare(a.idNum);
@@ -1064,6 +1036,7 @@ const sortFamily = (elem1, kind) => {
             case 3:
                 $('.closestBirth').html('');
                 $('.birthdayWish').html('');
+
                 if (birthdayToday) {
                     $('.personWrapper').first().remove();
                 }
@@ -1089,7 +1062,6 @@ const sortFamily = (elem1, kind) => {
 }
 
 const removePopup = (container) => {
-
     $(document).mouseup((e) => {
         if (container.is(e.target) && container.has(e.target).length === 0) {
             container.hide();
