@@ -519,6 +519,16 @@ const buildPeople = (wrapper, arr) => {
             $(personWrapper).attr('calendar', $(personWrapper).attr('calendar') + '/' + year);
         }
 
+        let personImgWrapper = $('<div>', {
+            class: 'personImgWrapper',
+        }).appendTo(personWrapper);
+
+        $('<img>', {
+            class: 'personImg',
+            alt: 'personImg',
+            src: './images/people' + people[i].image
+        }).appendTo(personImgWrapper);
+
         let personDetailsWrapper = $('<div>', {
             class: 'personDetailsWrapper',
         }).appendTo(personWrapper);
@@ -539,16 +549,6 @@ const buildPeople = (wrapper, arr) => {
                 text: deathday + deathdDateForShow
             }).appendTo(personDetailsWrapper);
         }
-
-        let personImgWrapper = $('<div>', {
-            class: 'personImgWrapper',
-        }).appendTo(personWrapper);
-
-        $('<img>', {
-            class: 'personImg',
-            alt: 'personImg',
-            src: './images/people' + people[i].image
-        }).appendTo(personImgWrapper);
     }
 
     setTimeout(() => {
