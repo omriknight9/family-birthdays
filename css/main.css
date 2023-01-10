@@ -39,11 +39,6 @@ main {
     background-color: var(--orange);
 }
 
-h1 {
-	text-align: center;
-	margin-top: 2rem;
-}
-
 #langBtnEn {
     opacity: .7;
     pointer-events: none;
@@ -99,7 +94,7 @@ h1 {
     -webkit-flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to right,#e0ffff,rgb(255,123,0),#e0ffff);
+    background-image: linear-gradient(to right,rgb(83, 83, 83),rgb(255,123,0),rgb(83, 83, 83));
     border-radius: 5px;
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.8));
     margin: auto;
@@ -170,6 +165,7 @@ button:active {
 .resultImg {
     width: 80px;
     border-radius: 5px;
+    filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 1px 1px);
 }
 
 #search {
@@ -353,7 +349,6 @@ p {
     width: 100%;
     text-align: center;
 }
-
 
 #menuOpenWrapper {
     position: fixed;
@@ -683,7 +678,6 @@ p {
     width: 20rem;
     height: 25rem;
     z-index: 2;
-
     clip-path: polygon(30% 0%, 100% 0, 100% 30%, 100% 95%, 89% 100%, 0 100%, 0% 92%, 0 0);
     -ms-clip-path: polygon(30% 0%, 100% 0, 100% 30%, 100% 95%, 89% 100%, 0 100%, 0% 92%, 0 0);
     -o-clip-path: polygon(30% 0%, 100% 0, 100% 30%, 100% 95%, 89% 100%, 0 100%, 0% 92%, 0 0);
@@ -855,7 +849,7 @@ p {
     border-radius: 5px;
     cursor:pointer;
     background-color: #ff5a4e;
-    box-shadow: 0 0 0 0.5px rgba(50,50,93,.17), 0 2px 5px 0 rgba(50,50,93,.1), 0 1px 1.5px 0 rgba(0,0,0,.07), 0 1px 2px 0 rgba(0,0,0,.08), 0 0 0 0 transparent!important;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.8));
     font-family: Kurale, sans-serif;
 }
 
@@ -947,6 +941,7 @@ p {
     .personWrapper {
         width: 15rem;
         margin: 1rem;
+        height: 22rem;
     }
 
     .clothesImg {
@@ -1004,7 +999,7 @@ p {
     }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 560px) {
 
     .popUpInfo p , .nextBirthday, #checkBirthdaysLink {
         font-size: 1rem;
@@ -1024,13 +1019,16 @@ p {
         width: 12rem;
     }
 
+    .personImgWrapper {
+        bottom: 1rem;
+    }
+
     .dress {
         height: 80%;
     }
 }
 
 @media only screen and (max-width: 460px) {
-
     .genderImg {
         width: 20px;
     }
@@ -1041,7 +1039,7 @@ p {
     }
 
     .personWrapper {
-        width: 9rem;
+        width: 11rem;
     }
 
     #search {
@@ -1058,10 +1056,41 @@ p {
         height: 75px;
     }
 }
-@media only screen and (max-width: 410px) {
 
-    h1 {
-        font-size: 1.5rem;
+@media only screen and (max-width: 430px) {
+    .personWrapper {
+        width: 100%;
+        height: 12rem;
+        display: flex;
+        box-sizing: border-box;
+        justify-content: space-between;
+        align-items: center;
+        margin: .5rem;
+    }
+
+    .personImgWrapper {
+        width: unset;
+        position: static;
+        display: inline-block;
+        margin-right: .5rem;
+    }
+
+    .personImg {
+        width: 6rem;
+        height: 6rem;
+        margin-left: .5rem;
+    }
+
+    .personDetailsWrapper {
+        display: inline-block;
+        position: static;
+        width: unset;
+        margin-right: .5rem;
+    }
+
+    .personWrapper p {
+        text-align: left;
+        margin: 0;
     }
 
     .popupCont {
@@ -1070,6 +1099,13 @@ p {
 }
 
 @media only screen and (max-width: 370px) {
+    .searchContainer {
+        margin-top: 6rem;
+    }
+
+    .searchContant {
+        width: 90%;
+    }
 
     .clothesImg {
         height: 80%;
@@ -1085,10 +1121,6 @@ p {
         height: 65px;
     }
 
-    .personWrapper {
-        width: 7rem;
-    }
-
     .personImg {
         width: 6rem;
         height: 6rem;
@@ -1097,19 +1129,9 @@ p {
     .genderImg {
         right: .5rem;
     }
-
-    .zodiacImg {
-        width: 25px;
-        left: .2rem;
-    }
 }
 
 @media only screen and (max-width: 350px) {
-
-    h1 {
-        font-size: 1.2rem;
-    }
-
     .popupBtnsWrapper {
         margin-top: 1rem;
     }
