@@ -491,9 +491,13 @@ p {
     opacity: .7;
 }
 
-.closestBirth, .birthdayWish, #BirthdayWish {
+.closestBirth, .birthdayWish {
     font-size: 1.5rem;
     color: lightgray;
+}
+
+.birthdayWish a {
+    color: var(--orange);
 }
 
 .birthdayColor {
