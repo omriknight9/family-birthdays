@@ -44,68 +44,19 @@ main {
     pointer-events: none;
 }
 
-.btnWrapper {
-    display: flex;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 1.5rem;
+.sortWrapper {
     width: 100%;
-    opacity: 0;
-    position: relative;
+    text-align: center;
 }
 
-.btnWrapper button {
-    border: none;
-    width: 7rem;
-    height: 3rem;
-    margin: 1rem;
-    background: white;
-    outline: none;
-    cursor: pointer;
-    border-radius: 5px;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.8));
-    transition: .2s;
-    -webkit-transition: .2s;
-    -o-transition: .2s;
-    -moz-transition: .2s;
-    font-family: Kurale, sans-serif;
-    font-size: 1rem;
+.sortWrapper i {
+    color: var(--orange);
+    font-size: 1.4rem;
+    filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 1px 1px);
 }
 
-.sortContainer {
-    display: none;
-    width: 100%;
-    position: absolute;
-    top: 5rem;
-    z-index: 3;
-}
-
-.sortContent {
-    width: 50%;
-    display: flex;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-image: linear-gradient(to right,rgb(83, 83, 83),rgb(255,123,0),rgb(83, 83, 83));
-    border-radius: 5px;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.8));
-    margin: auto;
-}
-
-button:active {
-  transform: translateY(4px);
-  -ms-transform: translateY(4px);
-  -moz-transform: translateY(4px);
-  -webkit-transform: translateY(4px);
-  -o-transform: translateY(4px);
+.sortWrapper i:not(:last-child) {
+    margin-right: .5rem;
 }
 
 .searchContainer {
@@ -586,7 +537,6 @@ p {
     flex-wrap: wrap;
     -webkit-flex-wrap: wrap;
     justify-content: center;
-    box-shadow: 0 1px 5px #4caf50;
 }
 
 .groupWrapper {
@@ -601,19 +551,9 @@ p {
     position: relative;
 }
 
-.groupWrapper:nth-child(even)::after {
+.groupWrapper::after {
     content: '';
-    background: linear-gradient(to right, transparent, #3a47e4, transparent);
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-}
-
-.groupWrapper:nth-child(odd)::after {
-    content: '';
-    background: linear-gradient(to right, transparent, #3fe09b, transparent);
+    background: linear-gradient(to right, transparent, var(--orange), transparent);
     position: absolute;
     left: 0;
     bottom: 0;
@@ -933,11 +873,6 @@ p {
 }
 
 @media only screen and (max-width: 1200px) {
-
-    .sortContent {
-        width: 70%;
-    }
-
     .personWrapper {
         width: 15rem;
         margin: 1rem;
@@ -971,17 +906,16 @@ p {
 }
 
 @media only screen and (max-width: 880px) {
- 
-    .sortContent {
-        width: 90%;
-    }
-
     .personWrapper img {
         margin-right: 0;
     }
 }
 
 @media only screen and (min-width: 765px) {
+    .sortWrapper i {
+        cursor: pointer;
+    }
+
     .personWrapper:hover {
         transform: perspective(800px) rotateY(20deg) scale(1.05);
         -webkit-transform: perspective(800px) rotateY(20deg) scale(1.05);
