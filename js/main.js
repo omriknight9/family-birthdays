@@ -5,7 +5,6 @@ let familyNum;
 let lang = 1;
 let now = new Date()
 let currentYear = now.getFullYear();
-let sortBtnCounter = 1;
 let birthdayArr = [];
 let birthdayToday = false;
 let searchVal;
@@ -49,7 +48,6 @@ $(document).ready(() => {
     setTimeout(() => {
         $('.spinnerWrapper').hide();
         $('.searchContainer').show();
-        $('.btnWrapper').css('opacity', 1);
     }, 1500);
 
     $('#search').on('input', () => {
@@ -173,16 +171,6 @@ const showResult = (that, resultNum) => {
     }
 }
 
-const sort = () => {
-    if (sortBtnCounter == 1) {
-        $('.sortContainer').fadeIn('fast');
-        sortBtnCounter = 2;
-    } else {
-        $('.sortContainer').fadeOut('fast');
-        sortBtnCounter = 1;
-    }
-}
-
 const showFamily = (num, type) => {
     if (familyNum == num && type == 1) {
         return;
@@ -201,7 +189,6 @@ const showFamily = (num, type) => {
     family = [];
     counter = 1;
     birthdayToday = false;
-    $('.btnWrapper').css('opacity', 0);
     $('.spinnerWrapper').show();
 
     setTimeout(() => {
@@ -223,9 +210,6 @@ const showFamily = (num, type) => {
                 break;
         }
     }, 500);
-
-    $('.sortContainer').fadeOut('fast');
-    sortBtnCounter = 1
 }
 
 const loadJson = (textFile) => {
@@ -554,7 +538,6 @@ const buildPeople = (wrapper, arr) => {
     setTimeout(() => {
         checkAge();
         checkClosest();
-        $('.btnWrapper').css('opacity', 1);
         $('.spinnerWrapper').hide();
     }, 0);
 }
@@ -957,25 +940,18 @@ function scrollBtn() {
 }
 
 const sortFamily = (elem1, kind) => {
+    resetIcons();
 
-    if (elem1 == 'calendar') {
-        // counter = 2;
-    }
-
-    else if ($('.btnWrapper').attr('kind') == kind) {
-
-    }
-
-    else {
-        $('.btnWrapper').attr('kind', kind);
+    if (kind !== 2 && $('.sortWrapper').attr('kind') !== kind.toString()) {
+        $('.sortWrapper').attr('kind', kind);
         counter = 1;
     }
 
-    if (kind == 3) {
+    if (kind == 4) {
         $('.container').empty();
     }
 
-    if (lang == 2 && elem1 == 'name') {
+    if (lang == 2 && kind == 3) {
         elem1 = 'nameHeb';
     }
 
@@ -987,13 +963,13 @@ const sortFamily = (elem1, kind) => {
             obj.element = children[i];
             let elem2 = $(children[i]).attr(elem1);
             switch (kind) {
-                case 1:
+                case 1: case 2:
                     obj.idNum = new Date(elem2);
                     break;
-                case 2:
+                case 3:
                     obj.idNum = elem2;
                     break;
-                case 3:
+                case 4:
                     obj.idNum = parseInt(elem2.replace(/[^\d]/g, ""), 10);
                     break;
             }
@@ -1005,35 +981,53 @@ const sortFamily = (elem1, kind) => {
                 switch (counter) {
                     case 1:
                         ids.sort((a, b) => { return (b.idNum - a.idNum); });
+                        $('.ageSortBtn').attr('class', 'ageSortBtn fa-solid fa-arrow-down-1-9');
                         counter = 2;
                         break;
                     case 2:
                         ids.sort((a, b) => { return (a.idNum - b.idNum); });
+                        $('.ageSortBtn').attr('class', 'ageSortBtn fa-solid fa-arrow-down-9-1');
                         counter = 1;
                         break;
                 }
-                $('.btnWrapper').attr('kind', kind);
+                $('.sortWrapper').attr('kind', kind);
                 $('.groupSortBtn').css('pointer-events', 'all');
                 break;
             case 2:
+                    switch (counter) {
+                        case 1:
+                            ids.sort((a, b) => { return (b.idNum - a.idNum); });
+                            counter = 2;
+                            break;
+                        case 2:
+                            ids.sort((a, b) => { return (a.idNum - b.idNum); });
+                            counter = 1;
+                            break;
+                    }
+                    $('.sortWrapper').attr('kind', kind);
+                    $('.groupSortBtn').css('pointer-events', 'all');
+                break;
+            case 3:
                 switch (counter) {
                     case 1:
                         ids.sort((a, b) => {
                             return a.idNum.localeCompare(b.idNum);
                         });
+                        $('.nameSortBtn').attr('class', 'nameSortBtn fa-solid fa-arrow-down-a-z');
                         counter = 2;
                         break;
                     case 2:
                         ids.sort((a, b) => {
                             return b.idNum.localeCompare(a.idNum);
                         });
+                        $('.nameSortBtn').attr('class', 'nameSortBtn fa-solid fa-arrow-down-z-a');
                         counter = 1;
                         break;
                 }
-                $('.btnWrapper').attr('kind', kind);
+                $('.sortWrapper').attr('kind', kind);
                 $('.groupSortBtn').css('pointer-events', 'all');
                 break;
-            case 3:
+            case 4:
                 $('.closestBirth').html('');
                 $('.birthdayWish').html('');
 
@@ -1042,11 +1036,9 @@ const sortFamily = (elem1, kind) => {
                 }
                 
                 $('.spinnerWrapper').show();
-                $('.btnWrapper').css('opacity', 0);
                 $('.groupSortBtn').css('pointer-events', 'none');
                 showFamily(familyNum, 2);
                 setTimeout(() => {
-                    $('.btnWrapper').css('opacity', 1);
                     $('.spinnerWrapper').hide();
                 }, 500);
                 break;
@@ -1056,9 +1048,11 @@ const sortFamily = (elem1, kind) => {
             $(this).append(ids[i].element);
         }
     });
+}
 
-    $('.sortContainer').fadeOut('fast');
-    sortBtnCounter = 1
+const resetIcons = () => {
+    $('.ageSortBtn').attr('class', 'ageSortBtn fa-solid fa-arrow-down-9-1');
+    $('.nameSortBtn').attr('class', 'nameSortBtn fa-solid fa-arrow-down-z-a');
 }
 
 const removePopup = (container) => {
