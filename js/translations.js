@@ -13,11 +13,6 @@ const changeToHeb = (type) => {
     $('#search').hide().attr('placeholder', 'חפש/י במשפחה').fadeIn('slow');
     $('#closestBirth').html('');
     $('#BirthdayWish').html('');
-    $('.sortBtn').hide().html('מיין/מייני').fadeIn('slow');
-    $('.ageSortBtn').hide().html('לפי גיל').fadeIn('slow');
-    $('.nameSortBtn').hide().html('לפי שם').fadeIn('slow');
-    $('.groupSortBtn').hide().html('לפי קבוצה').fadeIn('slow');
-    $('.calendarSortBtn').hide().html('לפי תאריך').fadeIn('slow');
     $('#checkBirthdaysLink').hide().html('בדוק/בדקי באיזה יום נופל היומולדת בשנים הקרובות').fadeIn('slow');
     $('.hebCaneldar').show();
     $('.engCaneldar').hide();
@@ -57,11 +52,6 @@ const changeToEng = () => {
     $('#search').hide().attr('placeholder', 'Search A Family Member').fadeIn('slow');
     $('#closestBirth').html('');
     $('#BirthdayWish').html('');
-    $('.sortBtn').hide().html('Sort').fadeIn('slow');
-    $('.ageSortBtn').hide().html('By Age').fadeIn('slow');
-    $('.nameSortBtn').hide().html('By Name').fadeIn('slow');
-    $('.groupSortBtn').hide().html('By Group').fadeIn('slow');
-    $('.calendarSortBtn').hide().html('By Date').fadeIn('slow');
     $('#checkBirthdaysLink').hide().html('Check What Day Is The Birthday For Upcoming Years').fadeIn('slow');
     $('.hebCaneldar').hide();
     $('.engCaneldar').show();
