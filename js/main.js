@@ -289,7 +289,9 @@ const buildPeople = (wrapper, arr) => {
             'numId': people[i].id,
             'birthday': people[i].birthday,
             'name': people[i].name,
+            'familyName': people[i].familyName,
             'nameHeb': people[i].nameHeb,
+            'familyNameHeb': people[i].familyNameHeb,
             'group': people[i].group,
             'img': people[i].image,
             'isParent': people[i].parent,
@@ -539,7 +541,9 @@ const checkClosest = () => {
     
     for (let i = 0; i < $('.groupWrapper .personWrapper').length; i++) {
         let name = $($('.groupWrapper .personWrapper')[i]).attr('name');
+        let familyName = $($('.groupWrapper .personWrapper')[i]).attr('familyName');
         let nameHeb = $($('.groupWrapper .personWrapper')[i]).attr('nameHeb');
+        let familyNameHeb = $($('.groupWrapper .personWrapper')[i]).attr('familyNameHeb');
         let birthdayDay = $($('.groupWrapper .personWrapper')[i]).attr('day');
         let birthdayMonth = $($('.groupWrapper .personWrapper')[i]).attr('month');
         let gender = $($('.groupWrapper .personWrapper')[i]).attr('gender');
@@ -558,7 +562,7 @@ const checkClosest = () => {
         let finalDate = new Date(year + '/' + birthdayMonth + '/' + birthdayDay);
 
         if ($($('.groupWrapper .personWrapper')[i]).attr('deathDate') == 'null') {
-            birthdayArr.push({name: name, gender: gender, nameHeb: nameHeb, date: finalDate, img: img});
+            birthdayArr.push({name: name, familyName: familyName, gender: gender, nameHeb: nameHeb, familyNameHeb: familyNameHeb, date: finalDate, img: img});
         }
     }
     
@@ -578,17 +582,14 @@ const checkClosest = () => {
                 });
 
                 $.each($('#birthdayToday .personWrapper'), (key, value) => {
-
                     let closest = $('<p>',{
                         class: 'closestBirth',
                         text: "It's "
-
                     }).insertAfter($('.spinnerWrapper'));
 
                     let closestSpanName = $('<span>',{
                         class: 'birthdayColor',
-                        text: birthdayArr[key].name
-
+                        text: birthdayArr[key].name + ' ' + birthdayArr[key].familyName
                     }).appendTo(closest);
                     
                     $('<span>',{
@@ -634,7 +635,7 @@ const checkClosest = () => {
 
                 $('<span>', {
                     class: 'birthdayColor',
-                    text: birthdayArr[0].name
+                    text: birthdayArr[0].name + ' ' + birthdayArr[0].familyName
                 }).appendTo(closest);
 
                 if (birthdayArr[0].gender == 1) {
@@ -686,7 +687,7 @@ const checkClosest = () => {
 
                     let closestSpanName = $('<span>',{
                         class: 'birthdayColor',
-                        text: birthdayArr[key].nameHeb
+                        text: birthdayArr[key].nameHeb + ' ' + birthdayArr[key].familyNameHeb
                     }).appendTo(closest);
 
                     let celebrateText;
@@ -744,7 +745,7 @@ const checkClosest = () => {
 
                 $('<span>', {
                     class: 'birthdayColor',
-                    text: birthdayArr[0].nameHeb
+                    text: birthdayArr[0].nameHeb + ' ' + birthdayArr[0].familyNameHeb
                 }).appendTo(closest);
 
                 if (birthdayArr[0].gender == 1) {
