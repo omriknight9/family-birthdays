@@ -350,29 +350,27 @@ const buildPeople = (wrapper, arr) => {
 
                 $('.hebBirthday').html('');
 
-                if (people[i].deathDate == 'null') {
-                    switch($(this).attr('afterSunset')) {
-                        case 'true':
-                            $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1&gs=on`, function (data) {
-                                $('.hebBirthday').html(data.hebrew);
-                            });
-                            break;
-                        case 'false':
-                            $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1`, function (data) {
-                                $('.hebBirthday').html(data.hebrew);
-                            });
-                            break;
-                        case 'null':
-                            $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1`, function (data) {
-                                $('.hebBirthday').html(data.hebrew);
-                            });
-                            $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1&gs=on`, function (data) {
-                                $('.hebBirthday').append('/' + data.hebrew);
-                            });
-                            break;
-                    }
+                switch($(this).attr('afterSunset')) {
+                    case 'true':
+                        $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1&gs=on`, function (data) {
+                            $('.hebBirthday').html(data.hebrew);
+                        });
+                        break;
+                    case 'false':
+                        $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1`, function (data) {
+                            $('.hebBirthday').html(data.hebrew);
+                        });
+                        break;
+                    case 'null':
+                        $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1`, function (data) {
+                            $('.hebBirthday').html(data.hebrew);
+                        });
+                        $.get(hebCalendarUrl + `&gy=${$(this).attr('year')}&gm=${$(this).attr('month')}&gd=${$(this).attr('day')}&2h=1&gs=on`, function (data) {
+                            $('.hebBirthday').append('/' + data.hebrew);
+                        });
+                        break;
                 }
-
+                
                 $('#personDetails').fadeIn(150);
 
                 if ($(this).attr('gender') == 1) {
@@ -818,6 +816,10 @@ const getDeathAge = (div, death, birth) => {
     let birthDate = new Date(birth);
     let age = deathDate.getFullYear() - birthDate.getFullYear();
     let m = deathDate.getMonth() - birthDate.getMonth();
+
+    let month = birthDate.getMonth() + 1;
+    let day = birthDate.getDate();
+
     let ageText;
 
     if (lang == 1) {
@@ -834,6 +836,10 @@ const getDeathAge = (div, death, birth) => {
         class: 'personAge',
         text: ageText
     }).appendTo($(div).find($('.personDetailsWrapper')));
+
+    $(div).attr('age', age);
+    $(div).attr('month', month);
+    $(div).attr('day', day);
 }
 
 const getAge = (div, dateString, calendar) => {
